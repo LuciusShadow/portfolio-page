@@ -1,0 +1,22 @@
+@use 'sass:map';
+
+// Light Theme Farben
+$light-theme: (
+  primary: #000000,
+  background: #ffffff,
+  text: #000000,
+);
+
+// Dark Theme Farben
+$dark-theme: (
+  primary: #f59e0b,
+  background: #1f2937,
+  text: #f9fafb,
+);
+
+// Mixin: SCSS-Map → CSS-Variablen schreiben
+@mixin theme-vars($theme) {
+  --color-primary: #{map.get($theme, primary)};
+  --color-background: #{map.get($theme, background)};
+  --color-text: #{map.get($theme, text)};
+}
