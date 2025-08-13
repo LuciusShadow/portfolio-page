@@ -38,9 +38,7 @@ export default function Navbar({ theme, setTheme }: Props) {
           aria-label="Menü öffnen"
           onClick={() => setMenuOpen(!menuOpen)}
         >
-          <span className="navbar__burger-button__item"> </span>
-          <span className="navbar__burger-button__item"> </span>
-          <span className="navbar__burger-button__item"> </span>
+          {[0, 1, 2].map(i => <span key={i} className="navbar__burger-button__item"></span>)}
         </div>
 
         {/* Optional: Mobile Menu Dropdown */}
