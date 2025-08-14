@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import ThemeToggle from '../ThemeToggle';
+import MobileMenu from './MobileMenu';
 
 type Props = {
   theme: 'light' | 'dark';
@@ -41,14 +42,7 @@ export default function Navbar({ theme, setTheme }: Props) {
           {[0, 1, 2].map(i => <span key={i} className="navbar__burger-button__item"></span>)}
         </div>
 
-        {/* Optional: Mobile Menu Dropdown */}
-        {menuOpen && (
-          <div className="navbar__mobile-menu">
-            {menuItems.map((item) => (
-              <button key={item}>{item}</button>
-            ))}
-          </div>
-        )}
+        <MobileMenu menuItems={menuItems} isOpen={menuOpen} />
       </div>
     </div>
   );

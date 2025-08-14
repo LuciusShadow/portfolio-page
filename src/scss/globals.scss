@@ -1,1 +1,75 @@
+@use 'variables' as *;
+@use 'mixins' as *;
 @forward 'variables';
+@forward 'mixins';
+
+// Global button placeholder
+%button-base {
+  @include button-base;
+}
+
+// Global card placeholder
+%card-base {
+  border-radius: $border-radius-md;
+  box-shadow: var(--box-shadow-md);
+  @include card-hover;
+}
+
+// Responsive mixins (keep existing)
+@mixin mobile-only {
+  @media (max-width: #{$mobile-breakpoint - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop-only {
+  @media (min-width: $desktop-breakpoint) {
+    @content;
+  }
+}
+
+// Common button base styles
+%button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  
+  &:focus {
+    outline: none;
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+}
+
+// Interactive element hover effects
+%hover-lift {
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--box-shadow-hover);
+  }
+}
+
+// Clean button reset
+%button-reset {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+}
+
