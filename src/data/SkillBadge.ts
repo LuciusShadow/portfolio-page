@@ -1,4 +1,4 @@
 export interface SkillBadge {
   text: string;
-  colorClass: 'blue' | 'green' | 'purple' | 'orange';
+  colorClass: 'primary' | 'secondary' | 'tertiary' | 'quaternary';
 }

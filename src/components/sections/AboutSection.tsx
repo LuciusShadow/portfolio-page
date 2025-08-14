@@ -20,29 +20,29 @@ export default function AboutSection({
   bio = "As a dedicated frontend developer, I specialize in creating modern, responsive web applications using both Angular and React frameworks with TypeScript. I'm passionate about writing clean, maintainable code and ensuring exceptional user experiences across all devices and browsers. I have extensive experience with Angular and am actively developing my React expertise, while maintaining proficiency in SCSS, testing with Cypress, and working with XSLT templates.",
   profileImage = saschaImage,
   skillBadges = [
-    { text: "Angular & React Developer", colorClass: "blue" },
-    { text: "Responsive Design Expert", colorClass: "green" },
-    { text: "Cross-Browser Compatible", colorClass: "purple" },
-    { text: "Continuous Learner", colorClass: "orange" }
+    { text: "Angular & React Developer", colorClass: "primary" },
+    { text: "Responsive Design Expert", colorClass: "secondary" },
+    { text: "Cross-Browser Compatible", colorClass: "tertiary" },
+    { text: "Continuous Learner", colorClass: "quaternary" }
   ],
   featureCards = [
     {
       icon: Code,
       title: "Frontend Development",
       description: "Building modern web applications with Angular and React frameworks, leveraging TypeScript and JavaScript for robust, scalable solutions.",
-      colorClass: "blue"
+      colorClass: "primary"
     },
     {
       icon: Palette,
       title: "Responsive Design",
       description: "Creating pixel-perfect, responsive interfaces that work seamlessly across all devices and screen sizes.",
-      colorClass: "purple"
+      colorClass: "secondary"
     },
     {
       icon: ShieldCheck,
       title: "Cross-Browser Compatibility",
       description: "Ensuring consistent user experiences across all major browsers with thorough testing and optimization.",
-      colorClass: "teal"
+      colorClass: "tertiary"
     }
   ]
 }: AboutSectionProps) {

@@ -13,22 +13,22 @@ $light-theme: (
   gradient-primary: $gradient-primary,
   gradient-text: $gradient-text,
   
-  // Stat colors for light theme
-  stat-experience-bg: linear-gradient(135deg, #dbeafe, #bfdbfe),
-  stat-experience-value: #2563eb,
-  stat-experience-label: #1d4ed8,
+  // Stat colors using visual hierarchy
+  stat-primary-bg: linear-gradient(135deg, #dbeafe, #bfdbfe),
+  stat-primary-value: #2563eb,
+  stat-primary-label: #1d4ed8,
   
-  stat-design-bg: linear-gradient(135deg, #dcfce7, #bbf7d0),
-  stat-design-value: #16a34a,
-  stat-design-label: #15803d,
+  stat-secondary-bg: linear-gradient(135deg, #dcfce7, #bbf7d0),
+  stat-secondary-value: #16a34a,
+  stat-secondary-label: #15803d,
   
-  stat-technologies-bg: linear-gradient(135deg, #ccfbf1, #99f6e4),
-  stat-technologies-value: #0d9488,
-  stat-technologies-label: #0f766e,
+  stat-tertiary-bg: linear-gradient(135deg, #ccfbf1, #99f6e4),
+  stat-tertiary-value: #0d9488,
+  stat-tertiary-label: #0f766e,
   
-  stat-motivation-bg: linear-gradient(135deg, #e9d5ff, #ddd6fe),
-  stat-motivation-value: #9333ea,
-  stat-motivation-label: #7c3aed,
+  stat-quaternary-bg: linear-gradient(135deg, #e9d5ff, #ddd6fe),
+  stat-quaternary-value: #9333ea,
+  stat-quaternary-label: #7c3aed,
   
   // About section colors
   about-background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 50%, #f0fdfa 100%),
@@ -36,34 +36,34 @@ $light-theme: (
   about-greeting-color: #047857,
   gradient-image-overlay: linear-gradient(45deg, rgba(59, 130, 246, 0.2), rgba(147, 51, 234, 0.2)),
   
-  // Skill badge colors
-  skill-badge-blue-bg: #dbeafe,
-  skill-badge-blue-text: #1e40af,
-  skill-badge-green-bg: #dcfce7,
-  skill-badge-green-text: #166534,
-  skill-badge-purple-bg: #e9d5ff,
-  skill-badge-purple-text: #7c2d12,
-  skill-badge-orange-bg: #fed7aa,
-  skill-badge-orange-text: #9a3412,
+  // Skill badge colors using visual hierarchy
+  skill-badge-primary-bg: #dbeafe,
+  skill-badge-primary-text: #1e40af,
+  skill-badge-secondary-bg: #dcfce7,
+  skill-badge-secondary-text: #166534,
+  skill-badge-tertiary-bg: #e9d5ff,
+  skill-badge-tertiary-text: #7c2d12,
+  skill-badge-quaternary-bg: #fed7aa,
+  skill-badge-quaternary-text: #9a3412,
   
-  // Feature card colors
-  feature-card-blue-bg: linear-gradient(135deg, #dbeafe, #bfdbfe),
-  feature-card-purple-bg: linear-gradient(135deg, #e9d5ff, #ddd6fe),
-  feature-card-teal-bg: linear-gradient(135deg, #ccfbf1, #99f6e4),
+  // Feature card colors using visual hierarchy
+  feature-card-primary-bg: linear-gradient(135deg, #dbeafe, #bfdbfe),
+  feature-card-secondary-bg: linear-gradient(135deg, #e9d5ff, #ddd6fe),
+  feature-card-tertiary-bg: linear-gradient(135deg, #ccfbf1, #99f6e4),
   
-  feature-icon-blue: #2563eb,
-  feature-icon-purple: #9333ea,
-  feature-icon-teal: #0d9488,
+  feature-icon-primary: #2563eb,
+  feature-icon-secondary: #9333ea,
+  feature-icon-tertiary: #0d9488,
   
-  feature-title-blue: #1e40af,
-  feature-title-purple: #7c3aed,
-  feature-title-teal: #0f766e,
+  feature-title-primary: #1e40af,
+  feature-title-secondary: #7c3aed,
+  feature-title-tertiary: #0f766e,
   
-  feature-description-blue: #1d4ed8,
-  feature-description-purple: #6d28d9,
-  feature-description-teal: #115e59,
+  feature-description-primary: #1d4ed8,
+  feature-description-secondary: #6d28d9,
+  feature-description-tertiary: #115e59,
   
-  // Shadow variables using CSS custom properties
+  // Shadow variables
   box-shadow-sm: #{$shadow-sm},
   box-shadow-md: #{$shadow-md},
   box-shadow-lg: #{$shadow-lg}
@@ -81,22 +81,22 @@ $dark-theme: (
   gradient-primary: $gradient-primary,
   gradient-text: $gradient-text,
   
-  // Stat colors for dark theme
-  stat-experience-bg: linear-gradient(135deg, rgba(30, 58, 138, 0.3), rgba(30, 64, 175, 0.3)),
-  stat-experience-value: #2563eb,
-  stat-experience-label: #93c5fd,
+  // Stat colors using visual hierarchy
+  stat-primary-bg: linear-gradient(135deg, rgba(30, 58, 138, 0.3), rgba(30, 64, 175, 0.3)),
+  stat-primary-value: #2563eb,
+  stat-primary-label: #93c5fd,
   
-  stat-design-bg: linear-gradient(135deg, rgba(20, 83, 45, 0.3), rgba(22, 101, 52, 0.3)),
-  stat-design-value: #16a34a,
-  stat-design-label: #86efac,
+  stat-secondary-bg: linear-gradient(135deg, rgba(20, 83, 45, 0.3), rgba(22, 101, 52, 0.3)),
+  stat-secondary-value: #16a34a,
+  stat-secondary-label: #86efac,
   
-  stat-technologies-bg: linear-gradient(135deg, rgba(19, 78, 74, 0.3), rgba(17, 94, 89, 0.3)),
-  stat-technologies-value: #0d9488,
-  stat-technologies-label: #5eead4,
+  stat-tertiary-bg: linear-gradient(135deg, rgba(19, 78, 74, 0.3), rgba(17, 94, 89, 0.3)),
+  stat-tertiary-value: #0d9488,
+  stat-tertiary-label: #5eead4,
   
-  stat-motivation-bg: linear-gradient(135deg, rgba(88, 28, 135, 0.3), rgba(107, 33, 168, 0.3)),
-  stat-motivation-value: #9333ea,
-  stat-motivation-label: #c4b5fd,
+  stat-quaternary-bg: linear-gradient(135deg, rgba(88, 28, 135, 0.3), rgba(107, 33, 168, 0.3)),
+  stat-quaternary-value: #9333ea,
+  stat-quaternary-label: #c4b5fd,
   
   // About section colors
   about-background: linear-gradient(135deg, rgba(20, 83, 45, 0.2) 0%, rgba(6, 78, 59, 0.2) 100%),
@@ -104,32 +104,32 @@ $dark-theme: (
   about-greeting-color: #34d399,
   gradient-image-overlay: linear-gradient(45deg, rgba(59, 130, 246, 0.2), rgba(147, 51, 234, 0.2)),
   
-  // Skill badge colors
-  skill-badge-blue-bg: rgba(30, 58, 138, 0.3),
-  skill-badge-blue-text: #93c5fd,
-  skill-badge-green-bg: rgba(20, 83, 45, 0.3),
-  skill-badge-green-text: #86efac,
-  skill-badge-purple-bg: rgba(88, 28, 135, 0.3),
-  skill-badge-purple-text: #c4b5fd,
-  skill-badge-orange-bg: rgba(154, 52, 18, 0.3),
-  skill-badge-orange-text: #fdba74,
+  // Skill badge colors using visual hierarchy
+  skill-badge-primary-bg: rgba(30, 58, 138, 0.3),
+  skill-badge-primary-text: #93c5fd,
+  skill-badge-secondary-bg: rgba(20, 83, 45, 0.3),
+  skill-badge-secondary-text: #86efac,
+  skill-badge-tertiary-bg: rgba(88, 28, 135, 0.3),
+  skill-badge-tertiary-text: #c4b5fd,
+  skill-badge-quaternary-bg: rgba(154, 52, 18, 0.3),
+  skill-badge-quaternary-text: #fdba74,
   
-  // Feature card colors
-  feature-card-blue-bg: linear-gradient(135deg, rgba(30, 58, 138, 0.3), rgba(30, 64, 175, 0.3)),
-  feature-card-purple-bg: linear-gradient(135deg, rgba(88, 28, 135, 0.3), rgba(107, 33, 168, 0.3)),
-  feature-card-teal-bg: linear-gradient(135deg, rgba(19, 78, 74, 0.3), rgba(17, 94, 89, 0.3)),
+  // Feature card colors using visual hierarchy
+  feature-card-primary-bg: linear-gradient(135deg, rgba(30, 58, 138, 0.3), rgba(30, 64, 175, 0.3)),
+  feature-card-secondary-bg: linear-gradient(135deg, rgba(88, 28, 135, 0.3), rgba(107, 33, 168, 0.3)),
+  feature-card-tertiary-bg: linear-gradient(135deg, rgba(19, 78, 74, 0.3), rgba(17, 94, 89, 0.3)),
   
-  feature-icon-blue: #3b82f6,
-  feature-icon-purple: #a855f7,
-  feature-icon-teal: #14b8a6,
+  feature-icon-primary: #3b82f6,
+  feature-icon-secondary: #a855f7,
+  feature-icon-tertiary: #14b8a6,
   
-  feature-title-blue: #93c5fd,
-  feature-title-purple: #c4b5fd,
-  feature-title-teal: #5eead4,
+  feature-title-primary: #93c5fd,
+  feature-title-secondary: #c4b5fd,
+  feature-title-tertiary: #5eead4,
   
-  feature-description-blue: #dbeafe,
-  feature-description-purple: #e9d5ff,
-  feature-description-teal: #ccfbf1,
+  feature-description-primary: #dbeafe,
+  feature-description-secondary: #e9d5ff,
+  feature-description-tertiary: #ccfbf1,
   
   // Shadow variables
   box-shadow-sm: #{$shadow-sm},
@@ -149,22 +149,22 @@ $dark-theme: (
   --gradient-primary: #{map.get($theme, gradient-primary)};
   --gradient-text: #{map.get($theme, gradient-text)};
   
-  // Stat variables
-  --stat-experience-bg: #{map.get($theme, stat-experience-bg)};
-  --stat-experience-value: #{map.get($theme, stat-experience-value)};
-  --stat-experience-label: #{map.get($theme, stat-experience-label)};
+  // Stat variables using semantic naming
+  --stat-primary-bg: #{map.get($theme, stat-primary-bg)};
+  --stat-primary-value: #{map.get($theme, stat-primary-value)};
+  --stat-primary-label: #{map.get($theme, stat-primary-label)};
   
-  --stat-design-bg: #{map.get($theme, stat-design-bg)};
-  --stat-design-value: #{map.get($theme, stat-design-value)};
-  --stat-design-label: #{map.get($theme, stat-design-label)};
+  --stat-secondary-bg: #{map.get($theme, stat-secondary-bg)};
+  --stat-secondary-value: #{map.get($theme, stat-secondary-value)};
+  --stat-secondary-label: #{map.get($theme, stat-secondary-label)};
   
-  --stat-technologies-bg: #{map.get($theme, stat-technologies-bg)};
-  --stat-technologies-value: #{map.get($theme, stat-technologies-value)};
-  --stat-technologies-label: #{map.get($theme, stat-technologies-label)};
+  --stat-tertiary-bg: #{map.get($theme, stat-tertiary-bg)};
+  --stat-tertiary-value: #{map.get($theme, stat-tertiary-value)};
+  --stat-tertiary-label: #{map.get($theme, stat-tertiary-label)};
   
-  --stat-motivation-bg: #{map.get($theme, stat-motivation-bg)};
-  --stat-motivation-value: #{map.get($theme, stat-motivation-value)};
-  --stat-motivation-label: #{map.get($theme, stat-motivation-label)};
+  --stat-quaternary-bg: #{map.get($theme, stat-quaternary-bg)};
+  --stat-quaternary-value: #{map.get($theme, stat-quaternary-value)};
+  --stat-quaternary-label: #{map.get($theme, stat-quaternary-label)};
   
   // About section variables
   --about-background: #{map.get($theme, about-background)};
@@ -172,29 +172,32 @@ $dark-theme: (
   --about-greeting-color: #{map.get($theme, about-greeting-color)};
   --gradient-image-overlay: #{map.get($theme, gradient-image-overlay)};
   
-  // Skill badge variables
-  --skill-badge-blue-bg: #{map.get($theme, skill-badge-blue-bg)};
-  --skill-badge-blue-text: #{map.get($theme, skill-badge-blue-text)};
-  --skill-badge-green-bg: #{map.get($theme, skill-badge-green-bg)};
-  --skill-badge-green-text: #{map.get($theme, skill-badge-green-text)};
-  --skill-badge-purple-bg: #{map.get($theme, skill-badge-purple-bg)};
-  --skill-badge-purple-text: #{map.get($theme, skill-badge-purple-text)};
-  --skill-badge-orange-bg: #{map.get($theme, skill-badge-orange-bg)};
-  --skill-badge-orange-text: #{map.get($theme, skill-badge-orange-text)};
+  // Skill badge variables using semantic naming
+  --skill-badge-primary-bg: #{map.get($theme, skill-badge-primary-bg)};
+  --skill-badge-primary-text: #{map.get($theme, skill-badge-primary-text)};
+  --skill-badge-secondary-bg: #{map.get($theme, skill-badge-secondary-bg)};
+  --skill-badge-secondary-text: #{map.get($theme, skill-badge-secondary-text)};
+  --skill-badge-tertiary-bg: #{map.get($theme, skill-badge-tertiary-bg)};
+  --skill-badge-tertiary-text: #{map.get($theme, skill-badge-tertiary-text)};
+  --skill-badge-quaternary-bg: #{map.get($theme, skill-badge-quaternary-bg)};
+  --skill-badge-quaternary-text: #{map.get($theme, skill-badge-quaternary-text)};
   
-  // Feature card variables
-  --feature-card-blue-bg: #{map.get($theme, feature-card-blue-bg)};
-  --feature-card-purple-bg: #{map.get($theme, feature-card-purple-bg)};
-  --feature-card-teal-bg: #{map.get($theme, feature-card-teal-bg)};
-  --feature-icon-blue: #{map.get($theme, feature-icon-blue)};
-  --feature-icon-purple: #{map.get($theme, feature-icon-purple)};
-  --feature-icon-teal: #{map.get($theme, feature-icon-teal)};
-  --feature-title-blue: #{map.get($theme, feature-title-blue)};
-  --feature-title-purple: #{map.get($theme, feature-title-purple)};
-  --feature-title-teal: #{map.get($theme, feature-title-teal)};
-  --feature-description-blue: #{map.get($theme, feature-description-blue)};
-  --feature-description-purple: #{map.get($theme, feature-description-purple)};
-  --feature-description-teal: #{map.get($theme, feature-description-teal)};
+  // Feature card variables using semantic naming
+  --feature-card-primary-bg: #{map.get($theme, feature-card-primary-bg)};
+  --feature-card-secondary-bg: #{map.get($theme, feature-card-secondary-bg)};
+  --feature-card-tertiary-bg: #{map.get($theme, feature-card-tertiary-bg)};
+  
+  --feature-icon-primary: #{map.get($theme, feature-icon-primary)};
+  --feature-icon-secondary: #{map.get($theme, feature-icon-secondary)};
+  --feature-icon-tertiary: #{map.get($theme, feature-icon-tertiary)};
+  
+  --feature-title-primary: #{map.get($theme, feature-title-primary)};
+  --feature-title-secondary: #{map.get($theme, feature-title-secondary)};
+  --feature-title-tertiary: #{map.get($theme, feature-title-tertiary)};
+  
+  --feature-description-primary: #{map.get($theme, feature-description-primary)};
+  --feature-description-secondary: #{map.get($theme, feature-description-secondary)};
+  --feature-description-tertiary: #{map.get($theme, feature-description-tertiary)};
   
   // Shadow variables
   --box-shadow-sm: #{map.get($theme, box-shadow-sm)} var(--box-shadow-hover);

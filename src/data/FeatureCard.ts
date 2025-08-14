@@ -1,8 +1,8 @@
-import { LucideIcon } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 
 export interface FeatureCard {
   icon: LucideIcon;
   title: string;
   description: string;
-  colorClass: 'blue' | 'purple' | 'teal';
+  colorClass: 'primary' | 'secondary' | 'tertiary';
 }

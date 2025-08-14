@@ -60,7 +60,7 @@
   }
 
   &__image {
-    width: 17rem;
+    width: 16rem;
     height: 21rem;
     border-radius: 50%;
     object-fit: cover;
@@ -129,24 +129,24 @@
       box-shadow: 0 4px 12px var(--box-shadow-hover);
     }
 
-    &--blue {
-      background: var(--skill-badge-blue-bg);
-      color: var(--skill-badge-blue-text);
+    &--primary {
+      background: var(--skill-badge-primary-bg);
+      color: var(--skill-badge-primary-text);
     }
 
-    &--green {
-      background: var(--skill-badge-green-bg);
-      color: var(--skill-badge-green-text);
+    &--secondary {
+      background: var(--skill-badge-secondary-bg);
+      color: var(--skill-badge-secondary-text);
     }
 
-    &--purple {
-      background: var(--skill-badge-purple-bg);
-      color: var(--skill-badge-purple-text);
+    &--tertiary {
+      background: var(--skill-badge-tertiary-bg);
+      color: var(--skill-badge-tertiary-text);
     }
 
-    &--orange {
-      background: var(--skill-badge-orange-bg);
-      color: var(--skill-badge-orange-text);
+    &--quaternary {
+      background: var(--skill-badge-quaternary-bg);
+      color: var(--skill-badge-quaternary-text);
     }
   }
 
@@ -173,16 +173,16 @@
       transform: translateY(-2px);
     }
 
-    &--blue {
-      background: var(--feature-card-blue-bg);
+    &--primary {
+      background: var(--feature-card-primary-bg);
     }
 
-    &--purple {
-      background: var(--feature-card-purple-bg);
+    &--secondary {
+      background: var(--feature-card-secondary-bg);
     }
 
-    &--teal {
-      background: var(--feature-card-teal-bg);
+    &--tertiary {
+      background: var(--feature-card-tertiary-bg);
     }
   }
 
@@ -195,16 +195,16 @@
     height: 3rem;
     margin: 0 auto 1rem auto;
 
-    &--blue {
-      color: var(--feature-icon-blue);
+    &--primary {
+      color: var(--feature-icon-primary);
     }
 
-    &--purple {
-      color: var(--feature-icon-purple);
+    &--secondary {
+      color: var(--feature-icon-secondary);
     }
 
-    &--teal {
-      color: var(--feature-icon-teal);
+    &--tertiary {
+      color: var(--feature-icon-tertiary);
     }
   }
 
@@ -213,16 +213,16 @@
     font-weight: 600;
     margin: 0;
 
-    &--blue {
-      color: var(--feature-title-blue);
+    &--primary {
+      color: var(--feature-title-primary);
     }
 
-    &--purple {
-      color: var(--feature-title-purple);
+    &--secondary {
+      color: var(--feature-title-secondary);
     }
 
-    &--teal {
-      color: var(--feature-title-teal);
+    &--tertiary {
+      color: var(--feature-title-tertiary);
     }
   }
 
@@ -233,16 +233,16 @@
   &__feature-description {
     margin: 0;
 
-    &--blue {
-      color: var(--feature-description-blue);
+    &--primary {
+      color: var(--feature-description-primary);
     }
 
-    &--purple {
-      color: var(--feature-description-purple);
+    &--secondary {
+      color: var(--feature-description-secondary);
     }
 
-    &--teal {
-      color: var(--feature-description-teal);
+    &--tertiary {
+      color: var(--feature-description-tertiary);
     }
   }
 }
