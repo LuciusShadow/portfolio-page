@@ -9,7 +9,7 @@ export default function ThemeToggle({ theme, setTheme }: Props) {
   };
 
   return (
-    <button className="navbar__container__button" onClick={toggleTheme}>
+    <button className="navbar__container__button toggle-theme" onClick={toggleTheme}>
       {theme === 'light' ? '💡' : '💤'}
     </button>
   );
