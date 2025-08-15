@@ -1,0 +1,77 @@
+@use 'variables' as *;
+
+// Button base mixin
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: $border-radius-sm;
+  
+  &:focus {
+    outline: none;
+    box-shadow: var(--box-shadow-sm);
+  }
+}
+
+// Card hover effect mixin
+@mixin card-hover {
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--box-shadow-lg);
+  }
+}
+
+// Gradient text mixin
+@mixin gradient-text($gradient) {
+  background: $gradient;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+// Flex center mixin
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Aspect ratio mixin
+@mixin aspect-ratio($ratio: 1) {
+  aspect-ratio: $ratio;
+  
+  @supports not (aspect-ratio: 1) {
+    &::before {
+      content: '';
+      float: left;
+      padding-top: calc(100% / #{$ratio});
+    }
+    
+    &::after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+  }
+}
+
+// Responsive breakpoint mixins
+@mixin mobile-only {
+  @media (max-width: variables.$mobile-breakpoint) { 
+    @content;
+  }
+}
+
+@mixin desktop-only {
+  @media (min-width: variables.$desktop-breakpoint) { 
+    @content;
+  }
+}

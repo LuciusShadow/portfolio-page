@@ -1,50 +1,35 @@
 @use 'globals';
 
 .navbar {
-  display: flex;
+  @include globals.flex-center();
   justify-content: space-between;
-  align-items: center;
   padding: 1em;
   background: var(--color-background);
   color: var(--color-text);
-  height: 30px;
+  height: 65px;
 
   &__name {
     font-weight: bold;
     font-size: 1.25rem;
   }
-  // Desktop Bar
+  
   &__container {
     &__button {
-      font-feature-settings: inherit;
-      font-variation-settings: inherit;
-      letter-spacing: inherit;
-      color: inherit;
-      border-radius: 0;
-      border-color: unset;
-      background-color: transparent;
-      opacity: 1;
-
+      @extend %button-reset;
+      @extend %hover-lift;
       padding: 0.6rem 1.2rem;
-      border: none;
       border-radius: 8px;
-      cursor: pointer;
       transition: box-shadow 0.2s ease, transform 0.2s ease;
 
-      &:hover {
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-        transform: translateY(-2px);
-      }
-
       &:active {
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 4px var(--box-shadow-active);
         transform: translateY(0);
       }
     }
   }
-  // Burger-Button für mobile Geräte
+  
   &__burger-button {
-    flex-direction: column;
+    @include globals.flex-center();
     justify-content: space-between;
     width: 20px;
     height: 17px;
@@ -85,8 +70,7 @@
 
   /* Mobile Menu Dropdown */
   .navbar__mobile-menu {
-    display: flex;
-    flex-direction: column;
+    @include globals.flex-center();
     position: absolute;
     right: 0;
     background: var(--color-background);
@@ -94,46 +78,41 @@
     border-radius: 8px;
     padding: 0.5em;
     gap: 0.5em;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px var(--box-shadow-hover);
     z-index: 10;
 
     button {
-      background: none;
-      border: none;
-      color: var(--color-text);
+      @extend %button-reset;
       padding: 0.5em 1em;
       text-align: right;
-      cursor: pointer;
       border-radius: 4px;
       transition: background 0.2s;
 
       &:hover {
-        background: rgba(0, 0, 0, 0.05);
+        background: var(--box-shadow-active);
       }
     }
   }
 }
 
-// Mobile-Only Styles
-@media (max-width: globals.$mobile-breakpoint) {
+@include globals.mobile-only {
   .navbar__container__button {
     display: none;
   }
 }
 
-@media (min-width: globals.$desktop-breakpoint) {
+@include globals.desktop-only {
   .navbar__burger-button {
     display: none;
   }
 }
 
 .theme-toggle {
-  background: none;
-  border: none;
+  @extend %button-reset;
   font-size: 1rem;
-  cursor: pointer;
   transition: transform 0.2s ease;
   width: 20px;
+  
   &:hover {
     transform: scale(1.2);
   }
