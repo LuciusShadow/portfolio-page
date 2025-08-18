@@ -3,8 +3,8 @@ $mobile-breakpoint: 768px;
 $desktop-breakpoint: 769px;
 
 // Color variables
-$purple-primary: #9333ea;
-$blue-primary: #2563eb;
+$color-primary: #9333ea;
+$color-secondary: #2563eb;
 
 // Shadow variables
 $shadow-sm: 0 4px 12px;
@@ -26,9 +26,28 @@ $spacing-2xl: 3rem;
 $spacing-3xl: 4rem;
 
 // Gradient variables
-$gradient-primary: linear-gradient(90deg, $blue-primary 0%, $purple-primary 100%);
-$gradient-text: linear-gradient(to right, $blue-primary, $purple-primary, #0d9488);
-$gradient-hero-light: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 50%, #f3e8ff 100%);
-$gradient-hero-dark: linear-gradient(135deg, rgba(30, 58, 138, 0.3) 0%, rgba(55, 48, 163, 0.3) 50%, rgba(88, 28, 135, 0.3) 100%);
+$gradient-primary: linear-gradient(
+  90deg,
+  $color-secondary 0%,
+  $color-primary 100%
+);
+$gradient-text: linear-gradient(
+  to right,
+  $color-secondary,
+  $color-primary,
+  #0d9488
+);
+$gradient-hero-light: linear-gradient(
+  135deg,
+  #dbeafe 0%,
+  #e0e7ff 50%,
+  #f3e8ff 100%
+);
+$gradient-hero-dark: linear-gradient(
+  135deg,
+  rgba(30, 58, 138, 0.3) 0%,
+  rgba(55, 48, 163, 0.3) 50%,
+  rgba(88, 28, 135, 0.3) 100%
+);
 
 // Add any other global variables here
