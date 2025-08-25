@@ -1,0 +1,85 @@
+@use 'globals';
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.services-section {
+  background: linear-gradient(135deg, #fff7ed 0%, #fee2e2 100%);
+
+  &__container {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 $spacing-md;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: $spacing-3xl;
+  }
+
+  &__title {
+    font-size: 2.25rem;
+    font-weight: bold;
+    margin-bottom: $spacing-md;
+    background: linear-gradient(90deg, #ea580c 0%, #dc2626 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+
+  &__subtitle {
+    font-size: 1.25rem;
+    color: #6b7280;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-xl;
+  }
+
+  &__card {
+    background: linear-gradient(135deg, #fff 0%, #f3f4f6 100%);
+    border-radius: $border-radius-lg;
+    box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.07);
+    padding: $spacing-xl $spacing-lg;
+    text-align: center;
+    transition: box-shadow 0.3s;
+    border: none;
+
+    &:hover {
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.12);
+      transform: translateY(-2px);
+    }
+  }
+
+  &__card-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: $spacing-md;
+  }
+
+  &__icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-bottom: $spacing-sm;
+    color: #ea580c;
+  }
+
+  &__card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: $spacing-xs;
+  }
+
+  &__card-content {
+    min-height: 60px;
+  }
+
+  &__card-description {
+    font-size: 1rem;
+    color: #6b7280;
+    line-height: 1.5;
+  }
+}
