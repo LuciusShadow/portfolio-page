@@ -1,4 +1,4 @@
-@use 'globals';
+@use '../globals';
 
 .navbar {
   @include globals.flex-center();
@@ -105,22 +105,4 @@
   .navbar__burger-button {
     display: none;
   }
-}
-
-.theme-toggle {
-  @extend %button-reset;
-  display: flex;
-  align-items: center;      // Centers vertically
-  justify-content: center;  // Centers horizontally
-  font-size: 1rem;
-  transition: transform 0.2s ease;
-  width: 20px;
-  
-  &:hover {
-    transform: scale(1.2);
-  }
-}
-
-.toggle-theme {
-  width: 10px;
 }

@@ -1,0 +1,396 @@
+@use '../globals';
+@use '../variables' as *;
+
+.skills-section {
+  padding: 5rem 0;
+  background: var(--skills-background);
+  position: relative;
+
+  // Add decorative background elements
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--skills-background-pattern);
+    opacity: 0.03;
+    pointer-events: none;
+  }
+
+  &__container {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 1;
+
+    @include globals.desktop-only {
+      padding: 0 1.5rem;
+    }
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: $skills-header-margin;
+
+    @include globals.mobile-only {
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__title {
+    font-size: 1.875rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    background: var(--gradient-skills-title);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+
+    @include globals.desktop-only {
+      font-size: 2.25rem;
+    }
+
+    @include globals.mobile-only {
+      font-size: 1.5rem;
+    }
+  }
+
+  &__subtitle {
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+    max-width: 40rem;
+    margin: 0 auto;
+
+    @include globals.mobile-only {
+      font-size: 1rem;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: $skills-category-gap;
+
+    @include globals.mobile-only {
+      grid-template-columns: 1fr;
+      gap: $skills-category-gap-mobile;
+    }
+  }
+
+  &__category {
+    background: var(--skills-category-bg);
+    border: 1px solid var(--skills-category-border);
+    border-radius: 1rem;
+    padding: $skills-category-padding;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+    // Add subtle gradient overlay for depth
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--skills-category-gradient-overlay);
+      opacity: 0.8;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    // Add decorative corner accent
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 60px;
+      height: 60px;
+      background: var(--skills-category-accent);
+      clip-path: polygon(100% 0, 0 0, 100% 100%);
+      opacity: 0.1;
+      z-index: 1;
+    }
+
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      
+      &::before {
+        opacity: 0.9;
+      }
+
+      &::after {
+        opacity: 0.2;
+      }
+    }
+
+    @include globals.mobile-only {
+      padding: $skills-category-padding-mobile;
+    }
+
+    // Card-specific color schemes matching your page theme
+    &:nth-child(1) {
+      // Web Frameworks - Blue theme (matching hero primary)
+      background: var(--skills-category-bg-primary);
+      border-color: var(--skills-category-border-primary);
+      
+      &::before {
+        background: var(--skills-gradient-primary);
+      }
+      
+      &::after {
+        background: var(--skills-accent-primary);
+      }
+    }
+
+    &:nth-child(2) {
+      // Styling & Design - Green theme (matching about section)
+      background: var(--skills-category-bg-secondary);
+      border-color: var(--skills-category-border-secondary);
+      
+      &::before {
+        background: var(--skills-gradient-secondary);
+      }
+      
+      &::after {
+        background: var(--skills-accent-secondary);
+      }
+    }
+
+    &:nth-child(3) {
+      // Backend Development - Purple theme (matching hero secondary)
+      background: var(--skills-category-bg-tertiary);
+      border-color: var(--skills-category-border-tertiary);
+      
+      &::before {
+        background: var(--skills-gradient-tertiary);
+      }
+      
+      &::after {
+        background: var(--skills-accent-tertiary);
+      }
+    }
+
+    &:nth-child(4) {
+      // Development Tools - Teal theme (complementary)
+      background: var(--skills-category-bg-quaternary);
+      border-color: var(--skills-category-border-quaternary);
+      
+      &::before {
+        background: var(--skills-gradient-quaternary);
+      }
+      
+      &::after {
+        background: var(--skills-accent-quaternary);
+      }
+    }
+
+    &:nth-child(5) {
+      // Testing & Quality - Orange theme (warm accent)
+      background: var(--skills-category-bg-quinary);
+      border-color: var(--skills-category-border-quinary);
+      
+      &::before {
+        background: var(--skills-gradient-quinary);
+      }
+      
+      &::after {
+        background: var(--skills-accent-quinary);
+      }
+    }
+
+    &:nth-child(6) {
+      // AI-Tools - Indigo theme (tech/AI vibe)
+      background: var(--skills-category-bg-senary);
+      border-color: var(--skills-category-border-senary);
+      
+      &::before {
+        background: var(--skills-gradient-senary);
+      }
+      
+      &::after {
+        background: var(--skills-accent-senary);
+      }
+    }
+  }
+
+  &__category-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--skills-category-title-color);
+    text-align: center;
+    position: relative;
+    z-index: 2;
+
+    @include globals.mobile-only {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__skills {
+    display: flex;
+    flex-direction: column;
+    gap: $skills-skill-gap;
+    position: relative;
+    z-index: 2;
+
+    @include globals.mobile-only {
+      gap: $skills-skill-gap-mobile;
+    }
+  }
+
+  &__skill {
+    // Individual skill container
+  }
+
+  &__skill-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    gap: 1rem;
+
+    @include globals.mobile-only {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.25rem;
+    }
+  }
+
+  &__skill-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--skills-skill-name-color);
+
+    @include globals.mobile-only {
+      font-size: 0.9rem;
+    }
+  }
+
+  &__skill-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    @include globals.mobile-only {
+      gap: 0.5rem;
+    }
+  }
+
+  &__skill-level {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--skills-skill-level-color);
+    background: var(--skills-progress-bg);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.375rem;
+    backdrop-filter: blur(4px);
+
+    @include globals.mobile-only {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.4rem;
+    }
+  }
+
+  &__skill-percentage {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--skills-skill-percentage-color);
+
+    @include globals.mobile-only {
+      font-size: 0.8rem;
+    }
+  }
+
+  &__progress {
+    height: $skills-progress-height;
+    background: var(--skills-progress-bg);
+    border-radius: $skills-progress-radius;
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+  }
+
+  &__progress-bar {
+    height: 100%;
+    border-radius: $skills-progress-radius;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transform: translateX(-100%);
+      animation: shimmer 2s infinite;
+    }
+
+    // Semantic hierarchy classes with enhanced gradients
+    &--primary {
+      background: var(--skills-progress-primary);
+      box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
+    }
+
+    &--secondary {
+      background: var(--skills-progress-secondary);
+      box-shadow: 0 0 8px rgba(16, 185, 129, 0.3);
+    }
+
+    &--tertiary {
+      background: var(--skills-progress-tertiary);
+      box-shadow: 0 0 8px rgba(139, 92, 246, 0.3);
+    }
+
+    &--quaternary {
+      background: var(--skills-progress-quaternary);
+      box-shadow: 0 0 8px rgba(6, 182, 212, 0.3);
+    }
+
+    &--quinary {
+      background: var(--skills-progress-quinary);
+      box-shadow: 0 0 8px rgba(245, 158, 11, 0.3);
+    }
+
+    &--senary {
+      background: var(--skills-progress-senary);
+      box-shadow: 0 0 8px rgba(239, 68, 68, 0.3);
+    }
+  }
+}
+
+// Enhanced shimmer animation
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+// Mobile responsiveness
+@include globals.mobile-only {
+  .skills-section {
+    padding: 3rem 0;
+  }
+}

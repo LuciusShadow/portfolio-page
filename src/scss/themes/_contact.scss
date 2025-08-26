@@ -1,0 +1,66 @@
+// Contact section theme definitions
+
+$contact-light-theme: (
+  // Contact section background (light indigo/purple tones)
+  'contact-background': linear-gradient(135deg, #f0f9ff 0%, #faf5ff 100%),
+  
+  // Contact title gradient (indigo to purple)
+  'gradient-contact-title': linear-gradient(to right, #4f46e5, #7c3aed),
+  
+  // Primary color for icons (indigo)
+  'color-contact-primary': #4f46e5,
+  
+  // Form styling
+  'contact-form-bg': linear-gradient(135deg, #ffffff 0%, #fefefe 100%),
+  'contact-form-border': rgba(79, 70, 229, 0.1),
+  'contact-form-shadow': 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+  // Input styling
+  'contact-input-bg': #ffffff,
+  'contact-input-border': rgba(79, 70, 229, 0.2),
+  'contact-input-focus-ring': rgba(79, 70, 229, 0.1),
+  
+  // Button styling
+  'contact-button-bg': linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%),
+  'contact-button-text': #ffffff,
+  'contact-button-hover-bg': linear-gradient(135deg, #4338ca 0%, #6d28d9 100%),
+  
+  // Social button styling
+  'contact-social-bg': rgba(255, 255, 255, 0.8),
+  'contact-social-text': #4b5563,
+  'contact-social-border': rgba(79, 70, 229, 0.2),
+  'contact-social-hover-bg': #ffffff,
+  'contact-social-hover-border': rgba(79, 70, 229, 0.3),
+);
+
+$contact-dark-theme: (
+  // Contact section background (dark indigo/purple tones)
+  'contact-background': linear-gradient(135deg, rgba(67, 56, 202, 0.2) 0%, rgba(109, 40, 217, 0.2) 100%),
+  
+  // Contact title gradient (brighter indigo to purple for dark mode)
+  'gradient-contact-title': linear-gradient(to right, #6366f1, #a855f7),
+  
+  // Primary color for icons (lighter indigo)
+  'color-contact-primary': #6366f1,
+  
+  // Form styling (dark theme)
+  'contact-form-bg': linear-gradient(135deg, #111827 0%, #1f2937 100%),
+  'contact-form-border': rgba(99, 102, 241, 0.2),
+  'contact-form-shadow': 0 10px 15px -3px rgba(0, 0, 0, 0.3),
+  
+  // Input styling (dark theme)
+  'contact-input-bg': #1f2937,
+  'contact-input-border': rgba(99, 102, 241, 0.3),
+  'contact-input-focus-ring': rgba(99, 102, 241, 0.2),
+  
+  // Button styling (dark theme)
+  'contact-button-bg': linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%),
+  'contact-button-text': #ffffff,
+  'contact-button-hover-bg': linear-gradient(135deg, #6366f1 0%, #a855f7 100%),
+  
+  // Social button styling (dark theme)
+  'contact-social-bg': rgba(31, 41, 55, 0.8),
+  'contact-social-text': #e5e7eb,
+  'contact-social-border': rgba(99, 102, 241, 0.3),
+  'contact-social-hover-bg': #374151,
+  'contact-social-hover-border': rgba(99, 102, 241, 0.4),
+);

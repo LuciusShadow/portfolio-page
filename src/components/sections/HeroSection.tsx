@@ -11,7 +11,7 @@ interface HeroSectionProps {
 
 export default function HeroSection({
   title = "Web-Developer",
-  description = "Creating responsive, cross-browser compatible web applications with Angular, React, and modern frontend technologies",
+  description = "Creating responsive, cross-browser compatible web applications with Angular, React, and modern web technologies",
   primaryButtonText = "View my work",
   secondaryButtonText = "Download Resume",
   statItems = [

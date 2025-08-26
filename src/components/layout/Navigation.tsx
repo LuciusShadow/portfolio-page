@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import ThemeToggle from '../ThemeToggle';
 import MobileMenu from './MobileMenu';
+import { personalConfig } from '../../config/personal';
 
 type Props = {
   theme: 'light' | 'dark';
@@ -19,9 +20,8 @@ export default function Navbar({ theme, setTheme }: Props) {
   ];
 
   return (
-    // TODO Centralize strings, create buttons via loops
     <div className="navbar">
-      <div className="navbar__name">Sascha Bach</div>
+      <div className="navbar__name">{personalConfig.name}</div>
       <div className="navbar__container">
         {menuItems.map((item) => (
           <button

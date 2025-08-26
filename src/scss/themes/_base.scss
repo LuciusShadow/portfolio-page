@@ -1,0 +1,35 @@
+@use 'sass:map';
+@use '../variables' as *;
+
+// Base colors and variables that are used across sections
+$base-light-theme: (
+  primary: #000000,
+  background: #ffffff,
+  text: #000000,
+  text-muted: #6b7280,
+  active-box-shadow: rgba(0, 0, 0, 0.1),
+  hover-box-shadow: rgba(0, 0, 0, 0.15),
+  gradient-primary: $gradient-primary,
+  gradient-text: $gradient-text,
+
+  // Shadow variables
+  box-shadow-sm: #{$shadow-sm},
+  box-shadow-md: #{$shadow-md},
+  box-shadow-lg: #{$shadow-lg},
+);
+
+$base-dark-theme: (
+  primary: #9333ea,
+  background: #1f2937,
+  text: #f9fafb,
+  text-muted: #9ca3af,
+  active-box-shadow: rgba(255, 255, 255, 0.1),
+  hover-box-shadow: rgba(255, 255, 255, 0.15),
+  gradient-primary: $gradient-primary,
+  gradient-text: $gradient-text,
+
+  // Shadow variables
+  box-shadow-sm: #{$shadow-sm},
+  box-shadow-md: #{$shadow-md},
+  box-shadow-lg: #{$shadow-lg},
+);

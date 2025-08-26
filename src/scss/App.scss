@@ -1,11 +1,13 @@
-@use 'themes' as t;
+@use 'themes/index' as t;
 @use 'variables';
 @use 'mixins';
 @use 'globals';
-@use 'topbar';
-@use 'hero-section';
-@use 'about-section';
-@use 'services-section';
+
+// Layout components (topbar, footer, etc.)
+@use 'layout';
+
+// All sections imported through index
+@use 'sections';
 
 // Import Geist font from Google Fonts or local files
 @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100;200;300;400;500;600;700;800;900&display=swap');

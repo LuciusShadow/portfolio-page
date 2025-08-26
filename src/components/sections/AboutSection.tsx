@@ -1,6 +1,6 @@
 import { Code, Palette, ShieldCheck } from 'lucide-react';
 import type { SkillBadge } from '../../data/SkillBadge';
-import type { FeatureCard } from '../../data/FeatureCard';
+import type { Service } from '../../data/Service';
 import saschaImage from '../../assets/sascha.png';
 
 interface AboutSectionProps {
@@ -10,14 +10,14 @@ interface AboutSectionProps {
   bio?: string;
   profileImage?: string;
   skillBadges?: SkillBadge[];
-  featureCards?: FeatureCard[];
+  featureCards?: Service[];
 }
 
 export default function AboutSection({
   name = "Sascha Bach",
   title = "About Me",
-  subtitle = "Frontend developer specializing in modern web technologies. Since 2020, I've been building efficient, scalable solutions – from complex Angular applications to creative React projects. My focus is on clean, maintainable code that solves real-world problems.",
-  bio = "As a dedicated frontend developer, I specialize in creating modern, responsive web applications using both Angular and React frameworks with TypeScript. I'm passionate about writing clean, maintainable code and ensuring exceptional user experiences across all devices and browsers. I have extensive experience with Angular and am actively developing my React expertise, while maintaining proficiency in SCSS, testing with Cypress, and working with XSLT templates.",
+  subtitle = "Web developer specializing in modern web technologies. Since 2020, I've been building efficient, scalable solutions – from complex Angular applications to creative React projects. My focus is on clean, maintainable code that solves real-world problems.",
+  bio = "As a dedicated web developer, I specialize in creating modern, responsive web applications using both Angular and React frameworks with TypeScript. I'm passionate about writing clean, maintainable code and ensuring exceptional user experiences across all devices and browsers. I have extensive experience with Angular and am actively developing my React expertise, while maintaining proficiency in SCSS, testing with Cypress, and working with XSLT templates.",
   profileImage = saschaImage,
   skillBadges = [
     { text: "Angular & React Developer", colorClass: "primary" },
@@ -28,7 +28,7 @@ export default function AboutSection({
   featureCards = [
     {
       icon: Code,
-      title: "Frontend Development",
+      title: "Web Development",
       description: "Building modern web applications with Angular and React frameworks, leveraging TypeScript and JavaScript for robust, scalable solutions.",
       colorClass: "primary"
     },
@@ -64,7 +64,7 @@ export default function AboutSection({
           <div className="about-section__image-wrapper">
             <img
               src={profileImage}
-              alt={`${name} - Full Stack Developer`}
+              alt={`${name} - Web Developer`}
               className="about-section__image"
             />
             <div className="about-section__image-overlay"></div>

@@ -1,6 +1,6 @@
-@use 'globals';
-@use 'variables' as *;
-@use 'mixins' as *;
+@use '../globals';
+@use '../variables' as *;
+@use '../mixins' as *;
 
 // Hero-specific button extensions
 %hero-button-base {

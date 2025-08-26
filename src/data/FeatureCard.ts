@@ -1,8 +1,0 @@
-import type { LucideIcon } from 'lucide-react';
-
-export interface ServiceCard {
-  icon: LucideIcon;
-  title: string;
-  description: string;
-  colorClass: 'primary' | 'secondary' | 'tertiary' | 'quaternary' | 'quinary' | 'senary';
-}
