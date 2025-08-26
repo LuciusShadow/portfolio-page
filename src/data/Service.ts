@@ -1,6 +1,6 @@
 import type { LucideIcon } from 'lucide-react';
 
-export interface ServiceCard {
+export interface Service {
   icon: LucideIcon;
   title: string;
   description: string;

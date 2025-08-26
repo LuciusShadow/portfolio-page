@@ -1,85 +1,335 @@
 @use 'globals';
 @use 'variables' as *;
-@use 'mixins' as *;
 
 .services-section {
-  background: linear-gradient(135deg, #fff7ed 0%, #fee2e2 100%);
-
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+  background: var(--services-background);
+  
   &__container {
-    max-width: 1120px;
+    max-width: 80rem;
     margin: 0 auto;
-    padding: 0 $spacing-md;
+    padding: 0 1rem;
+    width: 100%;
+
+    @include globals.desktop-only {
+      padding: 0 1.5rem;
+    }
   }
 
   &__header {
     text-align: center;
-    margin-bottom: $spacing-3xl;
+    margin-bottom: $services-header-margin;
+
+    @include globals.mobile-only {
+      margin-bottom: 1.5rem;
+    }
   }
 
   &__title {
-    font-size: 2.25rem;
+    font-size: 1.875rem;
     font-weight: bold;
-    margin-bottom: $spacing-md;
-    background: linear-gradient(90deg, #ea580c 0%, #dc2626 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+    background: var(--gradient-services-title);
     background-clip: text;
+    -webkit-background-clip: text;
     color: transparent;
+    -webkit-text-fill-color: transparent;
+
+    @include globals.desktop-only {
+      font-size: 2.25rem;
+    }
+
+    @include globals.mobile-only {
+      font-size: 1.5rem;
+    }
   }
 
   &__subtitle {
     font-size: 1.25rem;
-    color: #6b7280;
+    color: var(--color-text-muted);
+    max-width: 32rem;
+    margin: 0 auto;
+
+    @include globals.mobile-only {
+      font-size: 1rem;
+    }
   }
 
   &__grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: $spacing-xl;
+    gap: $services-grid-gap;
+    max-height: calc(100vh - 12rem);
+    overflow: hidden;
+
+    // Mobile: 1 card per row (320px - 767px)
+    @media (max-width: 767px) {
+      grid-template-columns: 1fr;
+      gap: $services-grid-gap-mobile;
+      max-height: none;
+      overflow: visible;
+    }
+
+    // Tablet Portrait: 2 cards per row (768px - 1023px)
+    @media (min-width: 768px) and (max-width: 1023px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    // Desktop Small: 3 cards per row (1024px - 1279px)
+    @media (min-width: 1024px) and (max-width: 1279px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    // Desktop Large: 3 cards per row (1280px+)
+    @media (min-width: 1280px) {
+      grid-template-columns: repeat(3, 1fr);
+      max-width: 1200px; // Limit width for better card proportions
+      margin: 0 auto;
+    }
+
+    // Ultra-wide: 4 cards per row (1920px+) - Optional
+    @media (min-width: 1920px) {
+      grid-template-columns: repeat(4, 1fr);
+      max-width: 1600px;
+    }
   }
 
   &__card {
-    background: linear-gradient(135deg, #fff 0%, #f3f4f6 100%);
-    border-radius: $border-radius-lg;
-    box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.07);
-    padding: $spacing-xl $spacing-lg;
-    text-align: center;
-    transition: box-shadow 0.3s;
-    border: none;
+    background: white;
+    border-radius: $services-card-border-radius;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 250px; // Ensures consistent card heights
 
     &:hover {
-      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.12);
-      transform: translateY(-2px);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    // Responsive card heights
+    @media (min-width: 768px) {
+      height: 280px; // Fixed height for consistent rows
+    }
+
+    @media (min-width: 1024px) {
+      height: 300px;
+    }
+
+    @media (min-width: 1280px) {
+      height: 320px;
+    }
+
+    &--primary {
+      background: var(--service-card-primary-bg);
+    }
+
+    &--secondary {
+      background: var(--service-card-secondary-bg);
+    }
+
+    &--tertiary {
+      background: var(--service-card-tertiary-bg);
+    }
+
+    &--quaternary {
+      background: var(--service-card-quaternary-bg);
+    }
+
+    &--quinary {
+      background: var(--service-card-quinary-bg);
+    }
+
+    &--senary {
+      background: var(--service-card-senary-bg);
     }
   }
 
   &__card-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: $spacing-md;
+    padding: $services-card-padding;
+    text-align: center;
+    flex-shrink: 0;
+
+    @media (max-width: 767px) {
+      padding: 1.25rem;
+    }
   }
 
   &__icon {
-    width: 2.5rem;
-    height: 2.5rem;
-    margin-bottom: $spacing-sm;
-    color: #ea580c;
+    width: $services-icon-size;
+    height: $services-icon-size;
+    margin: 0 auto 1rem auto;
+    display: block;
+
+    @media (max-width: 767px) {
+      width: 2rem;
+      height: 2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    &--primary {
+      color: var(--service-icon-primary);
+    }
+
+    &--secondary {
+      color: var(--service-icon-secondary);
+    }
+
+    &--tertiary {
+      color: var(--service-icon-tertiary);
+    }
+
+    &--quaternary {
+      color: var(--service-icon-quaternary);
+    }
+
+    &--quinary {
+      color: var(--service-icon-quinary);
+    }
+
+    &--senary {
+      color: var(--service-icon-senary);
+    }
   }
 
   &__card-title {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     font-weight: 600;
-    margin-bottom: $spacing-xs;
+    margin: 0;
+    line-height: 1.4;
+
+    @media (max-width: 767px) {
+      font-size: 1rem;
+    }
+
+    @media (min-width: 1280px) {
+      font-size: 1.25rem;
+    }
+
+    &--primary {
+      color: var(--service-title-primary);
+    }
+
+    &--secondary {
+      color: var(--service-title-secondary);
+    }
+
+    &--tertiary {
+      color: var(--service-title-tertiary);
+    }
+
+    &--quaternary {
+      color: var(--service-title-quaternary);
+    }
+
+    &--quinary {
+      color: var(--service-title-quinary);
+    }
+
+    &--senary {
+      color: var(--service-title-senary);
+    }
   }
 
   &__card-content {
-    min-height: 60px;
+    padding: 0 $services-card-padding $services-card-padding $services-card-padding;
+    flex: 1;
+    display: flex;
+    align-items: center;
+
+    @media (max-width: 767px) {
+      padding: 0 1.25rem 1.25rem 1.25rem;
+    }
   }
 
   &__card-description {
-    font-size: 1rem;
-    color: #6b7280;
+    margin: 0;
     line-height: 1.5;
+    font-size: 0.875rem;
+    text-align: center;
+
+    @media (max-width: 767px) {
+      font-size: 0.8rem;
+      line-height: 1.4;
+    }
+
+    @media (min-width: 1280px) {
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    &--primary {
+      color: var(--service-description-primary);
+    }
+
+    &--secondary {
+      color: var(--service-description-secondary);
+    }
+
+    &--tertiary {
+      color: var(--service-description-tertiary);
+    }
+
+    &--quaternary {
+      color: var(--service-description-quaternary);
+    }
+
+    &--quinary {
+      color: var(--service-description-quinary);
+    }
+
+    &--senary {
+      color: var(--service-description-senary);
+    }
+  }
+}
+
+// Handle 6 cards specifically for better distribution
+.services-section__grid:has(.services-section__card:nth-child(6):last-child) {
+  // For exactly 6 cards
+  @media (min-width: 768px) and (max-width: 1023px) {
+    grid-template-columns: repeat(2, 1fr);
+    
+    // Make last 2 cards center themselves
+    .services-section__card:nth-child(5),
+    .services-section__card:nth-child(6) {
+      // This ensures the last row centers properly
+    }
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+// Ultra-compact mobile layout for very small screens
+@media (max-height: 700px) and (max-width: 767px) {
+  .services-section {
+    min-height: auto;
+    padding: 1rem 0;
+
+    &__header {
+      margin-bottom: 1rem;
+    }
+
+    &__card {
+      min-height: 200px;
+      height: auto;
+    }
+
+    &__card-header {
+      padding: 1rem;
+    }
+
+    &__icon {
+      width: 1.75rem;
+      height: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
   }
 }

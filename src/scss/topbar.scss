@@ -109,6 +109,9 @@
 
 .theme-toggle {
   @extend %button-reset;
+  display: flex;
+  align-items: center;      // Centers vertically
+  justify-content: center;  // Centers horizontally
   font-size: 1rem;
   transition: transform 0.2s ease;
   width: 20px;
