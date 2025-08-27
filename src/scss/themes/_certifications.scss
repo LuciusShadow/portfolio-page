@@ -2,44 +2,73 @@
 
 $certifications-light-theme: (
   // Certifications section background
-  'certifications-background': linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%),
-  
-  // Certifications title gradient (purple to pink)
+  'certifications-background': linear-gradient(
+      135deg,
+      #e0e7ef 0%,
+      #91c5e0 100%
+    ),
   'gradient-certifications-title': linear-gradient(to right, #9333ea, #ec4899),
-  
-  // Primary color for icons (purple)
   'color-certifications-primary': #9333ea,
-  
+
   // Card styling
-  'certifications-card-background': linear-gradient(135deg, #ffffff 0%, #fafafa 100%),
+  'certifications-card-background':
+    linear-gradient(135deg, #ffffff 0%, #fafafa 100%),
   'certifications-card-shadow': 0 10px 15px -3px rgba(0, 0, 0, 0.1),
   'certifications-card-shadow-hover': 0 20px 25px -5px rgba(0, 0, 0, 0.1),
-  'certifications-card-overlay': linear-gradient(135deg, rgba(147, 51, 234, 0.02) 0%, rgba(236, 72, 153, 0.02) 100%),
-  
+  'certifications-card-overlay':
+    linear-gradient(
+      135deg,
+      rgba(147, 51, 234, 0.02) 0%,
+      rgba(236, 72, 153, 0.02) 100%
+    ),
   // Badge styling (purple/pink theme)
-  'certifications-badge-background': linear-gradient(to right, #f3e8ff, #fce7f3),
+  'certifications-badge-background': linear-gradient(
+      to right,
+      #f3e8ff,
+      #fce7f3
+    ),
   'certifications-badge-border': rgba(147, 51, 234, 0.2),
-  'color-certifications-badge-text': #7e22ce,
+  'color-certifications-badge-text': #7e22ce
 );
 
 $certifications-dark-theme: (
   // Certifications section background (dark purple/pink gradient)
-  'certifications-background': linear-gradient(135deg, rgba(88, 28, 135, 0.2) 0%, rgba(157, 23, 77, 0.2) 100%),
-  
+  'certifications-background': linear-gradient(
+      135deg,
+      #a78bfa 0%,
+      #dc2626 100%
+    ),
   // Certifications title gradient (brighter purple to pink for dark mode)
   'gradient-certifications-title': linear-gradient(to right, #a855f7, #f472b6),
-  
   // Primary color for icons (lighter purple)
   'color-certifications-primary': #a855f7,
-  
+
   // Card styling (dark theme)
-  'certifications-card-background': linear-gradient(135deg, #111827 0%, #1f2937 100%),
+  'certifications-card-background':
+    linear-gradient(135deg, #111827 0%, #1f2937 100%),
   'certifications-card-shadow': 0 10px 15px -3px rgba(0, 0, 0, 0.3),
   'certifications-card-shadow-hover': 0 20px 25px -5px rgba(0, 0, 0, 0.4),
-  'certifications-card-overlay': linear-gradient(135deg, rgba(168, 85, 247, 0.05) 0%, rgba(244, 114, 182, 0.05) 100%),
-  
+  'certifications-card-overlay':
+    linear-gradient(
+      135deg,
+      rgba(168, 85, 247, 0.05) 0%,
+      rgba(244, 114, 182, 0.05) 100%
+    ),
   // Badge styling (dark theme with purple/pink)
-  'certifications-badge-background': linear-gradient(to right, rgba(88, 28, 135, 0.3), rgba(157, 23, 77, 0.3)),
+  'certifications-badge-background':
+    linear-gradient(to right, rgba(88, 28, 135, 0.3), rgba(157, 23, 77, 0.3)),
   'certifications-badge-border': rgba(168, 85, 247, 0.3),
-  'color-certifications-badge-text': #d8b4fe,
+  'color-certifications-badge-text': #d8b4fe
 );
+
+// Add to your certifications section SCSS file
+
+.certifications-section__card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.certifications-section__card-content {
+  margin-top: auto;
+}

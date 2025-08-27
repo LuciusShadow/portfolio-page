@@ -38,18 +38,6 @@ $gradient-text: linear-gradient(
   $color-primary,
   #0d9488
 );
-$gradient-hero-light: linear-gradient(
-  135deg,
-  #dbeafe 0%,
-  #e0e7ff 50%,
-  #f3e8ff 100%
-);
-$gradient-hero-dark: linear-gradient(
-  135deg,
-  rgba(30, 58, 138, 0.3) 0%,
-  rgba(55, 48, 163, 0.3) 50%,
-  rgba(88, 28, 135, 0.3) 100%
-);
 
 // Services Section Variables
 $services-card-padding: 1.5rem;

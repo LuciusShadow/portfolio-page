@@ -1,10 +1,11 @@
 $about-light-theme: (
   // About section colors
-  about-background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 50%, #f0fdfa 100%),
+  about-background: linear-gradient(135deg, #e0e7ef 0%, #bae6fd 100%),
+  // soft green to blue dbeafe
   gradient-about-title: linear-gradient(90deg, #059669, #0d9488),
   about-greeting-color: #047857,
-  gradient-image-overlay: linear-gradient(45deg, rgba(59, 130, 246, 0.2), rgba(147, 51, 234, 0.2)),
-
+  gradient-image-overlay:
+    linear-gradient(45deg, rgba(59, 130, 246, 0.2), rgba(147, 51, 234, 0.2)),
   // Skill badge colors using visual hierarchy
   skill-badge-primary-bg: #dbeafe,
   skill-badge-primary-text: #1e40af,
@@ -29,16 +30,17 @@ $about-light-theme: (
 
   feature-description-primary: #1d4ed8,
   feature-description-secondary: #6d28d9,
-  feature-description-tertiary: #115e59,
+  feature-description-tertiary: #115e59
 );
 
 $about-dark-theme: (
   // About section colors
-  about-background: linear-gradient(135deg, rgba(20, 83, 45, 0.2) 0%, rgba(6, 78, 59, 0.2) 100%),
+  about-background: linear-gradient(135deg, #166534 0%, #1e293b 100%),
+  // deep green to blue
   gradient-about-title: linear-gradient(90deg, #10b981, #14b8a6),
   about-greeting-color: #34d399,
-  gradient-image-overlay: linear-gradient(45deg, rgba(59, 130, 246, 0.2), rgba(147, 51, 234, 0.2)),
-
+  gradient-image-overlay:
+    linear-gradient(45deg, rgba(59, 130, 246, 0.2), rgba(147, 51, 234, 0.2)),
   // Skill badge colors using visual hierarchy
   skill-badge-primary-bg: rgba(30, 58, 138, 0.3),
   skill-badge-primary-text: #93c5fd,
@@ -50,9 +52,12 @@ $about-dark-theme: (
   skill-badge-quaternary-text: #fdba74,
 
   // Feature card colors using visual hierarchy
-  feature-card-primary-bg: linear-gradient(135deg, rgba(30, 58, 138, 0.3), rgba(30, 64, 175, 0.3)),
-  feature-card-secondary-bg: linear-gradient(135deg, rgba(88, 28, 135, 0.3), rgba(107, 33, 168, 0.3)),
-  feature-card-tertiary-bg: linear-gradient(135deg, rgba(19, 78, 74, 0.3), rgba(17, 94, 89, 0.3)),
+  feature-card-primary-bg:
+    linear-gradient(135deg, rgba(30, 58, 138, 0.3), rgba(30, 64, 175, 0.3)),
+  feature-card-secondary-bg:
+    linear-gradient(135deg, rgba(88, 28, 135, 0.3), rgba(107, 33, 168, 0.3)),
+  feature-card-tertiary-bg:
+    linear-gradient(135deg, rgba(19, 78, 74, 0.3), rgba(17, 94, 89, 0.3)),
   feature-icon-primary: #3b82f6,
   feature-icon-secondary: #a855f7,
   feature-icon-tertiary: #14b8a6,
@@ -63,5 +68,5 @@ $about-dark-theme: (
 
   feature-description-primary: #dbeafe,
   feature-description-secondary: #e9d5ff,
-  feature-description-tertiary: #ccfbf1,
+  feature-description-tertiary: #ccfbf1
 );

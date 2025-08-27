@@ -1,6 +1,9 @@
 import { Github, ExternalLink } from 'lucide-react';
 import { personalConfig } from '../../config/personal';
 import type { Project } from '../../data/Project';
+import ergoVRImage from '../../assets/ErgoVR.PNG';
+import portfolioImage from '../../assets/portfolio.PNG'
+
 
 interface ProjectsSectionProps {
   title?: string;
@@ -16,7 +19,7 @@ export default function ProjectsSection({
       id: 1,
       title: "Portfolio Website",
       description: "A personal portfolio website to showcase my skills, projects, and experience.",
-      image: "",
+      image: portfolioImage,
       technologies: ["React", "TypeScript", "SCSS", "Vercel", "Github Copilot"],
       github: personalConfig.projects.portfolio,
       live: ""
@@ -25,7 +28,7 @@ export default function ProjectsSection({
       id: 2,
       title: "ErgoVR",
       description: "A virtual reality application for analysis of motion sickness in VR environments.",
-      image: "",
+      image: ergoVRImage,
       technologies: ["Unity3D", "C#", "Oculus SDK"],
       github: personalConfig.projects.ergoVR
     }
@@ -49,17 +52,17 @@ export default function ProjectsSection({
           {projects.map((project) => (
             <div key={project.id} className="projects-section__card">
               <div className="projects-section__image-container">
-                <img 
-                  src={project.image || "/api/placeholder/400/200"} 
+                <img
+                  src={project.image || "/api/placeholder/400/200"}
                   alt={project.title}
                   className="projects-section__image"
                 />
                 <div className="projects-section__overlay">
                   <div className="projects-section__actions">
                     {project.github && (
-                      <a 
-                        href={project.github} 
-                        target="_blank" 
+                      <a
+                        href={project.github}
+                        target="_blank"
                         rel="noopener noreferrer"
                         className="projects-section__action-button projects-section__action-button--secondary"
                       >
@@ -68,9 +71,9 @@ export default function ProjectsSection({
                       </a>
                     )}
                     {project.live && (
-                      <a 
-                        href={project.live} 
-                        target="_blank" 
+                      <a
+                        href={project.live}
+                        target="_blank"
                         rel="noopener noreferrer"
                         className="projects-section__action-button projects-section__action-button--primary"
                       >

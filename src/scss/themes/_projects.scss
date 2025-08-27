@@ -2,66 +2,70 @@
 
 $projects-light-theme: (
   // Projects section background (light orange/red tones)
-  'projects-background': linear-gradient(135deg, #fff7ed 0%, #fef2f2 100%),
-  
+  'projects-background': linear-gradient(135deg, #e0e7ef 0%, #bae6fd 100%),
   // Projects title gradient (orange to red)
   'gradient-projects-title': linear-gradient(to right, #ea580c, #dc2626),
-  
   // Card styling
   'projects-card-background': linear-gradient(135deg, #ffffff 0%, #fefefe 100%),
   'projects-card-border': rgba(234, 88, 12, 0.1),
   'projects-card-shadow': 0 4px 6px -1px rgba(0, 0, 0, 0.1),
   'projects-card-shadow-hover': 0 20px 25px -5px rgba(0, 0, 0, 0.1),
-  
   // Overlay styling
   'projects-overlay-background': rgba(0, 0, 0, 0.6),
-  
   // Button styling
-  'projects-button-primary-bg': linear-gradient(135deg, #ea580c 0%, #dc2626 100%),
+  'projects-button-primary-bg':
+    linear-gradient(135deg, #ea580c 0%, #dc2626 100%),
   'projects-button-primary-text': #ffffff,
   'projects-button-primary-border': rgba(234, 88, 12, 0.3),
-  'projects-button-primary-hover-bg': linear-gradient(135deg, #dc2626 0%, #b91c1c 100%),
-  
+  'projects-button-primary-hover-bg':
+    linear-gradient(135deg, #dc2626 0%, #b91c1c 100%),
   'projects-button-secondary-bg': rgba(255, 255, 255, 0.9),
   'projects-button-secondary-text': #374151,
   'projects-button-secondary-border': rgba(255, 255, 255, 0.2),
   'projects-button-secondary-hover-bg': #ffffff,
-  
+
   // Tech badge styling
   'projects-tech-badge-bg': linear-gradient(135deg, #fed7aa 0%, #fecaca 100%),
   'projects-tech-badge-text': #c2410c,
-  'projects-tech-badge-border': rgba(234, 88, 12, 0.2),
+  'projects-tech-badge-border': rgba(234, 88, 12, 0.2)
 );
 
 $projects-dark-theme: (
   // Projects section background (dark orange/red tones)
-  'projects-background': linear-gradient(135deg, rgba(124, 45, 18, 0.2) 0%, rgba(127, 29, 29, 0.2) 100%),
-  
+  'projects-background':
+    linear-gradient(
+      135deg,
+      rgba(124, 45, 18, 0.2) 0%,
+      rgba(127, 29, 29, 0.2) 100%
+    ),
   // Projects title gradient (brighter orange to red for dark mode)
   'gradient-projects-title': linear-gradient(to right, #fb923c, #f87171),
-  
   // Card styling (dark theme)
   'projects-card-background': linear-gradient(135deg, #111827 0%, #1f2937 100%),
   'projects-card-border': rgba(251, 146, 60, 0.2),
   'projects-card-shadow': 0 4px 6px -1px rgba(0, 0, 0, 0.3),
   'projects-card-shadow-hover': 0 20px 25px -5px rgba(0, 0, 0, 0.4),
-  
   // Overlay styling
   'projects-overlay-background': rgba(0, 0, 0, 0.7),
-  
   // Button styling (dark theme)
-  'projects-button-primary-bg': linear-gradient(135deg, #ea580c 0%, #dc2626 100%),
+  'projects-button-primary-bg':
+    linear-gradient(135deg, #ea580c 0%, #dc2626 100%),
   'projects-button-primary-text': #ffffff,
   'projects-button-primary-border': rgba(234, 88, 12, 0.3),
-  'projects-button-primary-hover-bg': linear-gradient(135deg, #fb923c 0%, #f87171 100%),
-  
+  'projects-button-primary-hover-bg':
+    linear-gradient(135deg, #fb923c 0%, #f87171 100%),
   'projects-button-secondary-bg': rgba(31, 41, 55, 0.9),
   'projects-button-secondary-text': #e5e7eb,
   'projects-button-secondary-border': rgba(75, 85, 99, 0.3),
   'projects-button-secondary-hover-bg': #374151,
-  
+
   // Tech badge styling (dark theme)
-  'projects-tech-badge-bg': linear-gradient(135deg, rgba(124, 45, 18, 0.3) 0%, rgba(127, 29, 29, 0.3) 100%),
+  'projects-tech-badge-bg':
+    linear-gradient(
+      135deg,
+      rgba(124, 45, 18, 0.3) 0%,
+      rgba(127, 29, 29, 0.3) 100%
+    ),
   'projects-tech-badge-text': #fed7aa,
-  'projects-tech-badge-border': rgba(251, 146, 60, 0.3),
+  'projects-tech-badge-border': rgba(251, 146, 60, 0.3)
 );

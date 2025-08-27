@@ -1,8 +1,7 @@
 @use '../variables' as *;
 
 $hero-light-theme: (
-  hero-background: $gradient-hero-light,
-
+  hero-background: linear-gradient(135deg, #e0e7ef 0%, #91c5e0 100%),
   // Stat colors using visual hierarchy
   stat-primary-bg: linear-gradient(135deg, #dbeafe, #bfdbfe),
   stat-primary-value: #2563eb,
@@ -22,22 +21,31 @@ $hero-light-theme: (
 );
 
 $hero-dark-theme: (
-  hero-background: $gradient-hero-dark,
-
+  hero-background:
+    linear-gradient(
+      135deg,
+      rgba(30, 58, 138, 0.3) 0%,
+      rgba(55, 48, 163, 0.3) 50%,
+      rgba(88, 28, 135, 0.3) 100%
+    ),
   // Stat colors using visual hierarchy
-  stat-primary-bg: linear-gradient(135deg, rgba(30, 58, 138, 0.3), rgba(30, 64, 175, 0.3)),
+  stat-primary-bg:
+    linear-gradient(135deg, rgba(30, 58, 138, 0.3), rgba(30, 64, 175, 0.3)),
   stat-primary-value: #2563eb,
   stat-primary-label: #93c5fd,
 
-  stat-secondary-bg: linear-gradient(135deg, rgba(20, 83, 45, 0.3), rgba(22, 101, 52, 0.3)),
+  stat-secondary-bg:
+    linear-gradient(135deg, rgba(20, 83, 45, 0.3), rgba(22, 101, 52, 0.3)),
   stat-secondary-value: #16a34a,
   stat-secondary-label: #86efac,
 
-  stat-tertiary-bg: linear-gradient(135deg, rgba(19, 78, 74, 0.3), rgba(17, 94, 89, 0.3)),
+  stat-tertiary-bg:
+    linear-gradient(135deg, rgba(19, 78, 74, 0.3), rgba(17, 94, 89, 0.3)),
   stat-tertiary-value: #0d9488,
   stat-tertiary-label: #5eead4,
 
-  stat-quaternary-bg: linear-gradient(135deg, rgba(88, 28, 135, 0.3), rgba(107, 33, 168, 0.3)),
+  stat-quaternary-bg:
+    linear-gradient(135deg, rgba(88, 28, 135, 0.3), rgba(107, 33, 168, 0.3)),
   stat-quaternary-value: #9333ea,
   stat-quaternary-label: #c4b5fd,
 );
