@@ -2,6 +2,7 @@ import { Mail, Github, Linkedin } from 'lucide-react';
 import { useState } from 'react';
 import type { FormEvent } from 'react';
 import { personalConfig, getObfuscatedEmail, createEmailLink } from '../../config/personal';
+import { getApiUrl, ENDPOINTS } from '../../config/api';
 
 interface ContactSectionProps {
   title?: string;
@@ -24,6 +25,10 @@ export default function ContactSection({
   // Anti-spam honeypot state
   const [honeypot, setHoneypot] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formStatus, setFormStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' });
 
   // Email obfuscation function using config
   const handleEmailClick = (e: React.MouseEvent) => {
@@ -33,10 +38,15 @@ export default function ContactSection({
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
+
     // Check honeypot - if filled, it's likely spam
     if (honeypot) {
       console.warn('Spam detected - honeypot field was filled');
+      setFormStatus({
+        type: 'error',
+        message: 'Invalid form submission detected.'
+      });
+      setIsSubmitting(false);
       return;
     }
 
@@ -46,7 +56,8 @@ export default function ContactSection({
     }
 
     setIsSubmitting(true);
-    
+    setFormStatus({ type: null, message: '' }); // Clear previous status
+
     // Get form data
     const formData = new FormData(e.currentTarget);
     const data = {
@@ -59,7 +70,10 @@ export default function ContactSection({
 
     // Basic validation
     if (!data.firstName || !data.lastName || !data.email || !data.message) {
-      alert('Please fill in all required fields.');
+      setFormStatus({
+        type: 'error',
+        message: 'Please fill in all required fields.'
+      });
       setIsSubmitting(false);
       return;
     }
@@ -67,38 +81,106 @@ export default function ContactSection({
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(data.email)) {
-      alert('Please enter a valid email address.');
+      setFormStatus({
+        type: 'error',
+        message: 'Please enter a valid email address.'
+      });
       setIsSubmitting(false);
       return;
     }
 
     try {
-      // Submit to Formspree (replace YOUR_FORM_ID with actual ID from Formspree)
-      const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      // Submit to your own backend API
+      const apiUrl = `${getApiUrl()}${ENDPOINTS.contact}`;
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          name: `${data.firstName} ${data.lastName}`,
+          firstName: data.firstName,
+          lastName: data.lastName,
           email: data.email,
           subject: data.subject || 'Contact from Portfolio',
           message: data.message,
-          _replyto: data.email, // This tells Formspree what email to reply to
+          website: honeypot, // Include honeypot for spam detection
         }),
       });
 
-      if (response.ok) {
-        alert('Thank you for your message! I\'ll get back to you soon.');
+      const result = await response.json();
+
+      if (result.success) {
+        setFormStatus({
+          type: 'success',
+          message: result.message
+        });
         e.currentTarget.reset();
+        setHoneypot(''); // Reset honeypot
+
+        // Clear success message after 5 seconds
+        setTimeout(() => {
+          setFormStatus({ type: null, message: '' });
+        }, 5000);
       } else {
-        throw new Error('Form submission failed');
+        // Handle different types of server errors
+        let errorMessage = 'Form submission failed';
+
+        if (response.status === 400) {
+          if (result.errors && Array.isArray(result.errors)) {
+            // Validation errors from server
+            const validationErrors = result.errors.map((err: any) =>
+              typeof err === 'object' ? err.message : err
+            ).join(', ');
+            errorMessage = `Validation errors: ${validationErrors}`;
+          } else if (result.message) {
+            errorMessage = result.message;
+          } else {
+            errorMessage = 'Please check your form data and try again.';
+          }
+        } else if (response.status === 429) {
+          errorMessage = 'Too many requests. Please wait a moment and try again.';
+        } else if (response.status === 500) {
+          errorMessage = 'Server error. Our team has been notified. Please try again later.';
+        } else if (result.message) {
+          errorMessage = result.message;
+        }
+
+        throw new Error(errorMessage);
       }
     } catch (error) {
       console.error('Form submission error:', error);
-      alert('Sorry, there was an error sending your message. Please try again.');
+
+      let userMessage = 'Sorry, there was an error sending your message.';
+
+      if (error instanceof Error) {
+        // Network errors
+        if (error.message.includes('Failed to fetch') || error.message.includes('NetworkError')) {
+          userMessage = 'Network error: Please check your internet connection and try again.';
+        }
+        // Timeout errors
+        else if (error.message.includes('timeout')) {
+          userMessage = 'Request timeout: The server is taking too long to respond. Please try again.';
+        }
+        // CORS errors
+        else if (error.message.includes('CORS')) {
+          userMessage = 'Connection error: Please refresh the page and try again.';
+        }
+        // Server validation errors or custom error messages
+        else if (error.message.length > 0 && !error.message.includes('Form submission failed')) {
+          userMessage = error.message;
+        }
+        // Generic fallback
+        else {
+          userMessage = 'Unexpected error occurred. Please try again or contact us directly.';
+        }
+      }
+
+      setFormStatus({
+        type: 'error',
+        message: userMessage
+      });
     }
-    
+
     setIsSubmitting(false);
   };
 
@@ -142,21 +224,21 @@ export default function ContactSection({
             </div>
 
             <div className="contact-section__social">
-              <button 
+              <button
                 className="contact-section__social-button"
                 onClick={() => window.open(personalConfig.social.github.url, '_blank')}
                 aria-label="GitHub Profile"
               >
                 <Github className="contact-section__social-icon" />
               </button>
-              <button 
+              <button
                 className="contact-section__social-button"
                 onClick={() => window.open(personalConfig.social.linkedin.url, '_blank')}
                 aria-label="LinkedIn Profile"
               >
                 <Linkedin className="contact-section__social-icon" />
               </button>
-              <button 
+              <button
                 className="contact-section__social-button"
                 onClick={handleEmailClick}
                 aria-label="Send Email"
@@ -174,14 +256,23 @@ export default function ContactSection({
                 I'll get back to you as soon as possible
               </p>
             </div>
-            
+
+            {/* Status Message Display */}
+            {formStatus.type && (
+              <div className={`contact-section__status contact-section__status--${formStatus.type}`}>
+                <p className="contact-section__status-message">
+                  {formStatus.message}
+                </p>
+              </div>
+            )}
+
             <form className="contact-section__form" onSubmit={handleSubmit}>
               {/* Honeypot field - hidden from users but visible to bots */}
               <div className="contact-section__honeypot">
                 <label htmlFor="website" className="contact-section__honeypot-label">
                   Website (leave blank)
                 </label>
-                <input 
+                <input
                   id="website"
                   name="website"
                   type="text"
@@ -198,11 +289,11 @@ export default function ContactSection({
                   <label htmlFor="firstName" className="contact-section__form-label">
                     First Name *
                   </label>
-                  <input 
-                    id="firstName" 
+                  <input
+                    id="firstName"
                     name="firstName"
                     type="text"
-                    placeholder="John" 
+                    placeholder="John"
                     className="contact-section__form-input"
                     required
                   />
@@ -211,60 +302,60 @@ export default function ContactSection({
                   <label htmlFor="lastName" className="contact-section__form-label">
                     Last Name *
                   </label>
-                  <input 
-                    id="lastName" 
+                  <input
+                    id="lastName"
                     name="lastName"
                     type="text"
-                    placeholder="Doe" 
+                    placeholder="Doe"
                     className="contact-section__form-input"
                     required
                   />
                 </div>
               </div>
-              
+
               <div className="contact-section__form-group">
                 <label htmlFor="email" className="contact-section__form-label">
                   Email *
                 </label>
-                <input 
-                  id="email" 
+                <input
+                  id="email"
                   name="email"
-                  type="email" 
-                  placeholder="john@example.com" 
+                  type="email"
+                  placeholder="john@example.com"
                   className="contact-section__form-input"
                   required
                 />
               </div>
-              
+
               <div className="contact-section__form-group">
                 <label htmlFor="subject" className="contact-section__form-label">
                   Subject
                 </label>
-                <input 
-                  id="subject" 
+                <input
+                  id="subject"
                   name="subject"
                   type="text"
-                  placeholder="Project Inquiry" 
+                  placeholder="Project Inquiry"
                   className="contact-section__form-input"
                 />
               </div>
-              
+
               <div className="contact-section__form-group">
                 <label htmlFor="message" className="contact-section__form-label">
                   Message *
                 </label>
-                <textarea 
-                  id="message" 
+                <textarea
+                  id="message"
                   name="message"
-                  placeholder="Tell me about your project..." 
+                  placeholder="Tell me about your project..."
                   rows={5}
                   className="contact-section__form-textarea"
                   required
                 ></textarea>
               </div>
-              
-              <button 
-                type="submit" 
+
+              <button
+                type="submit"
                 className="contact-section__form-button"
                 disabled={isSubmitting}
               >

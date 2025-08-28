@@ -151,6 +151,32 @@
     font-size: 0.875rem;
   }
 
+  // Status Message Styles
+  &__status {
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+
+    &--success {
+      background-color: var(--contact-status-success-bg);
+      border: 1px solid var(--contact-status-success-border);
+      color: var(--contact-status-success-text);
+    }
+
+    &--error {
+      background-color: var(--contact-status-error-bg);
+      border: 1px solid var(--contact-status-error-border);
+      color: var(--contact-status-error-text);
+    }
+  }
+
+  &__status-message {
+    margin: 0;
+    line-height: 1.4;
+  }
+
   &__form {
     padding: 0 1.5rem 1.5rem;
     display: flex;
