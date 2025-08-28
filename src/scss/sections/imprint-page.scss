@@ -1,0 +1,125 @@
+@use '../globals';
+
+.imprint-page {
+  min-height: 100vh;
+  background: var(--bg-primary);
+  padding: 6rem 0 4rem; // Top padding to account for fixed navigation
+
+  &__container {
+    max-width: 50rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+
+    @include globals.desktop-only {
+      padding: 0 1.5rem;
+    }
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  &__title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+
+    @include globals.desktop-only {
+      font-size: 3rem;
+    }
+  }
+
+  &__subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  &__section {
+    background: var(--bg-secondary);
+    padding: 2rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--border-color);
+  }
+
+  &__section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--color-primary);
+    padding-bottom: 0.5rem;
+  }
+
+  &__subsection {
+    margin-bottom: 2rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__subsection-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+  }
+
+  &__info {
+    line-height: 1.6;
+
+    p {
+      margin-bottom: 0.5rem;
+      color: var(--color-text);
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      strong {
+        font-weight: 600;
+        color: var(--color-text);
+      }
+    }
+  }
+
+  &__text {
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+    text-align: justify;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // Responsive design
+  @include globals.mobile-only {
+    padding: 5rem 0 3rem;
+
+    &__title {
+      font-size: 2rem;
+    }
+
+    &__section {
+      padding: 1.5rem;
+    }
+
+    &__section-title {
+      font-size: 1.25rem;
+    }
+
+    &__subsection-title {
+      font-size: 1.125rem;
+    }
+  }
+}

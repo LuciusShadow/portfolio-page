@@ -17,7 +17,7 @@ export default function AboutSection({
   name = "Sascha Bach",
   title = "About Me",
   subtitle = "Web developer specializing in modern web technologies. Since 2020, I've been building efficient, scalable solutions – from complex Angular applications to creative React projects. My focus is on clean, maintainable code that solves real-world problems.",
-  bio = "As a dedicated web developer, I specialize in creating modern, responsive web applications using both Angular and React frameworks with TypeScript. I'm passionate about writing clean, maintainable code and ensuring exceptional user experiences across all devices and browsers. I have extensive experience with Angular and am actively developing my React expertise, while maintaining proficiency in SCSS, testing with Cypress, and working with XSLT templates.",
+  bio = "As a dedicated web developer, I specialize in creating modern, responsive web applications using both Angular and React frameworks with TypeScript. I'm passionate about writing clean, maintainable code and ensuring exceptional user experiences across all devices and browsers. I have extensive experience with Angular and am actively developing my React expertise. Also, I have a history in working with Unity3D.",
   profileImage = saschaImage,
   skillBadges = [
     { text: "Angular & React Developer", colorClass: "primary" },

@@ -1,5 +1,7 @@
 import { Download } from 'lucide-react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import type { StatItem } from '../../data/StatItem';
+import { scrollToProjects } from '../../utils/scrollUtils';
 
 interface HeroSectionProps {
   title?: string;
@@ -21,6 +23,17 @@ export default function HeroSection({
     { label: "Frameworks", value: "3+" },
   ]
 }: HeroSectionProps) {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleViewWork = () => {
+    scrollToProjects(location.pathname, navigate);
+  };
+
+  const handleDownloadResume = () => {
+    // Add your resume download logic here
+    console.log('Download resume clicked');
+  };
   return (
     <section className="hero-section">
       <div className="hero-section__container">
@@ -29,10 +42,16 @@ export default function HeroSection({
           {description}
         </p>
         <div className="hero-section__buttons">
-          <button className="hero-section__button hero-section__button--primary">
+          <button
+            className="hero-section__button hero-section__button--primary"
+            onClick={handleViewWork}
+          >
             {primaryButtonText}
           </button>
-          <button className="hero-section__button hero-section__button--secondary">
+          <button
+            className="hero-section__button hero-section__button--secondary"
+            onClick={handleDownloadResume}
+          >
             <Download className="hero-section__button-icon" />
             {secondaryButtonText}
           </button>
@@ -44,7 +63,7 @@ export default function HeroSection({
               <span className="hero-section__stat-label">{item.label}</span>
             </div>
           ))}
-        </div>          
+        </div>
       </div>
     </section>
   );

@@ -1,4 +1,3 @@
-import React from 'react';
 import type { Skill } from '../../data/Skill';
 
 interface SkillCategory {
@@ -96,7 +95,7 @@ export default function SkillsSection({
             {subtitle}
           </p>
         </div>
-        
+
         <div className="skills-section__grid">
           {skillCategories.map((category, categoryIndex) => (
             <div key={categoryIndex} className="skills-section__category">
@@ -109,7 +108,7 @@ export default function SkillsSection({
                   const displayLevel = skillItem.level || calculateSkillLevel(skillItem.value);
                   // Use provided color or get color based on position in array
                   const colorClass = skillItem.color || getColorByPosition(skillIndex);
-                  
+
                   return (
                     <div key={skillIndex} className="skills-section__skill">
                       <div className="skills-section__skill-header">
@@ -126,7 +125,7 @@ export default function SkillsSection({
                         </div>
                       </div>
                       <div className="skills-section__progress">
-                        <div 
+                        <div
                           className={`skills-section__progress-bar skills-section__progress-bar--${colorClass}`}
                           style={{ width: `${skillItem.value}%` }}
                         ></div>

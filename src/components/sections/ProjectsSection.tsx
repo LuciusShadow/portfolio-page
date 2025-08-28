@@ -31,6 +31,30 @@ export default function ProjectsSection({
       image: ergoVRImage,
       technologies: ["Unity3D", "C#", "Oculus SDK"],
       github: personalConfig.projects.ergoVR
+    },
+    {
+      id: 3,
+      title: "Icarace",
+      description: "Participated in the development of a web-platform for a fitness racing game for Icaros GmbH until 2018.",
+      image: ergoVRImage,
+      technologies: ["Angular 4", "Typescript", "HTML", "CSS"],
+      github: personalConfig.projects.ergoVR
+    },
+    {
+      id: 4,
+      title: "ErgoVR",
+      description: "Gravity is a fitness game for the Icaros Device developed by Icaros GmbH. I participated in developing behavior scripts in C#.",
+      image: ergoVRImage,
+      technologies: ["Unity3D", "C#", "Oculus SDK"],
+      github: personalConfig.projects.ergoVR
+    },
+    {
+      id: 5,
+      title: "ErgoVR",
+      description: "A virtual reality application for analysis of motion sickness in VR environments.",
+      image: ergoVRImage,
+      technologies: ["Unity3D", "C#", "Oculus SDK"],
+      github: personalConfig.projects.ergoVR
     }
   ]
 }: ProjectsSectionProps) {

@@ -21,13 +21,46 @@
     flex-direction: column;
     align-items: center;
     gap: 1rem;
+  }
 
+  &__bottom-row {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  &__links {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__link {
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+    text-decoration: none;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      color: var(--color-text);
+      background-color: var(--color-background-hover);
+    }
+
+    &:focus {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
   }
 
   &__copyright {
     color: var(--color-text-muted);
     font-size: 0.875rem;
     text-align: center;
+    margin: 0;
   }
 
   &__social {

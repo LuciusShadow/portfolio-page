@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import ThemeToggle from '../ThemeToggle';
 import MobileMenu from './MobileMenu';
 import { personalConfig } from '../../config/personal';
+import { scrollToSection } from '../../utils/scrollUtils';
 
 type Props = {
   theme: 'light' | 'dark';
@@ -10,6 +12,9 @@ type Props = {
 
 export default function Navbar({ theme, setTheme }: Props) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const menuItems = [
     'About',
     'Services',
@@ -19,21 +24,22 @@ export default function Navbar({ theme, setTheme }: Props) {
     'Contact',
   ];
 
-  function scrollToSection(section: string): void {
-    const element = document.getElementById(section);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+  function handleNavigation(section: string): void {
+    const sectionId = section.toLowerCase();
+    scrollToSection(sectionId, location.pathname, navigate);
+
+    // Close mobile menu if open
+    setMenuOpen(false);
   }
 
   return (
     <div className="navbar">
-      <div className="navbar__name">{personalConfig.name}</div>
+      <Link to="/" className="navbar__name">{personalConfig.name}</Link>
       <div className="navbar__container">
         {menuItems.map((item) => (
           <button
             key={item}
-            onClick={() => scrollToSection(item.toLowerCase())}
+            onClick={() => handleNavigation(item)}
             className="navbar__container__button"
           >
             {item}
@@ -49,7 +55,11 @@ export default function Navbar({ theme, setTheme }: Props) {
           {[0, 1, 2].map(i => <span key={i} className="navbar__burger-button__item"></span>)}
         </div>
 
-        <MobileMenu menuItems={menuItems} isOpen={menuOpen} />
+        <MobileMenu
+          menuItems={menuItems}
+          isOpen={menuOpen}
+          onItemClick={handleNavigation}
+        />
       </div>
     </div>
   );

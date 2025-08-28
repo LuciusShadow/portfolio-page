@@ -43,3 +43,14 @@ section {
   padding: 1rem 1rem;
   margin: 0; // Remove any section margins
 }
+
+// App-level styles for routing
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &__main {
+    flex: 1;
+  }
+}
