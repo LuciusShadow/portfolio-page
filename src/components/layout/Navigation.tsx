@@ -19,6 +19,13 @@ export default function Navbar({ theme, setTheme }: Props) {
     'Contact',
   ];
 
+  function scrollToSection(section: string): void {
+    const element = document.getElementById(section);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
   return (
     <div className="navbar">
       <div className="navbar__name">{personalConfig.name}</div>
@@ -26,7 +33,7 @@ export default function Navbar({ theme, setTheme }: Props) {
         {menuItems.map((item) => (
           <button
             key={item}
-            /* onClick={() => scrollToSection(item.toLowerCase())} */
+            onClick={() => scrollToSection(item.toLowerCase())}
             className="navbar__container__button"
           >
             {item}
