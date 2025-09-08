@@ -1,8 +1,8 @@
 import { Mail, Github, Linkedin } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import type { FormEvent } from 'react';
 import { personalConfig, getObfuscatedEmail, createEmailLink } from '../../config/personal';
-import { getApiUrl, ENDPOINTS } from '../../config/api';
+import { API_CONFIG } from '../../config/api';
 
 interface ContactSectionProps {
   title?: string;
@@ -30,11 +30,17 @@ export default function ContactSection({
     message: string;
   }>({ type: null, message: '' });
 
+  // GDPR consent state
+  const [gdprConsent, setGdprConsent] = useState(false);
+
   // Email obfuscation function using config
   const handleEmailClick = (e: React.MouseEvent) => {
     e.preventDefault();
     window.location.href = createEmailLink();
   };
+
+  // Add form ref
+  const formRef = useRef<HTMLFormElement>(null);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -47,6 +53,15 @@ export default function ContactSection({
         message: 'Invalid form submission detected.'
       });
       setIsSubmitting(false);
+      return;
+    }
+
+    // GDPR consent validation
+    if (!gdprConsent) {
+      setFormStatus({
+        type: 'error',
+        message: 'Please accept the privacy policy to continue.'
+      });
       return;
     }
 
@@ -66,6 +81,8 @@ export default function ContactSection({
       email: formData.get('email') as string,
       subject: formData.get('subject') as string,
       message: formData.get('message') as string,
+      gdprConsent: gdprConsent.toString(), // Add this
+      website: honeypot, // Anti-spam honeypot
     };
 
     // Basic validation
@@ -91,8 +108,7 @@ export default function ContactSection({
 
     try {
       // Submit to your own backend API
-      const apiUrl = `${getApiUrl()}${ENDPOINTS.contact}`;
-      const response = await fetch(apiUrl, {
+      const response = await fetch(`${API_CONFIG.BASE_URL}${API_CONFIG.ENDPOINTS.CONTACT}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -107,14 +123,29 @@ export default function ContactSection({
         }),
       });
 
-      const result = await response.json();
+      // Check if response is ok before trying to parse JSON
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      // Check if response has content before parsing JSON
+      const text = await response.text();
+      if (!text) {
+        throw new Error('Empty response from server');
+      }
+
+      const result = JSON.parse(text);
 
       if (result.success) {
         setFormStatus({
           type: 'success',
           message: result.message
         });
-        e.currentTarget.reset();
+
+        // Reset form using ref
+        if (formRef.current) {
+          formRef.current.reset();
+        }
         setHoneypot(''); // Reset honeypot
 
         // Clear success message after 5 seconds
@@ -266,7 +297,11 @@ export default function ContactSection({
               </div>
             )}
 
-            <form className="contact-section__form" onSubmit={handleSubmit}>
+            <form
+              ref={formRef}
+              className="contact-section__form"
+              onSubmit={handleSubmit}
+            >
               {/* Honeypot field - hidden from users but visible to bots */}
               <div className="contact-section__honeypot">
                 <label htmlFor="website" className="contact-section__honeypot-label">
@@ -354,10 +389,30 @@ export default function ContactSection({
                 ></textarea>
               </div>
 
+              {/* GDPR Consent Checkbox */}
+              <div className="contact-section__form-group contact-section__form-group--checkbox">
+                <label className="contact-section__checkbox-label">
+                  <input
+                    type="checkbox"
+                    checked={gdprConsent}
+                    onChange={(e) => setGdprConsent(e.target.checked)}
+                    className="contact-section__checkbox"
+                    required
+                  />
+                  <span className="contact-section__checkbox-text">
+                    I consent to the processing of my personal data according to the{' '}
+                    <a href="/privacy-policy" target="_blank" rel="noopener noreferrer">
+                      Privacy Policy
+                    </a>{' '}
+                    (GDPR/DSGVO compliant) *
+                  </span>
+                </label>
+              </div>
+
               <button
                 type="submit"
                 className="contact-section__form-button"
-                disabled={isSubmitting}
+                disabled={isSubmitting || !gdprConsent} // Disable if no consent
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>

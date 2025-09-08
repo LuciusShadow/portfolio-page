@@ -1,74 +1,93 @@
 import express from 'express';
+import rateLimit from 'express-rate-limit';
+import { body, validationResult } from 'express-validator';
 import { sendContactEmail } from '../services/emailService.js';
-import { validateContactForm } from '../middleware/validation.js';
-import { asyncHandler } from '../middleware/asyncHandler.js';
 
 const router = express.Router();
 
-// POST /api/contact - Send contact form email
-router.post(
-  '/',
-  validateContactForm,
-  asyncHandler(async (req, res) => {
-    const { firstName, lastName, email, subject, message } = req.body;
+// GDPR compliant rate limiting
+const contactLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 3, // Limit each IP to 3 requests per windowMs
+  message: {
+    error: 'Too many contact requests from this IP, please try again later.',
+    retryAfter: 15 * 60,
+  },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
 
-    // Check for honeypot (if present in body)
-    if (req.body.website && req.body.website.trim() !== '') {
-      console.warn('Spam detected: honeypot field filled', {
-        ip: req.ip,
-        email,
-      });
+// GDPR compliant validation
+const validateContactForm = [
+  body('firstName').trim().isLength({ min: 1, max: 50 }).escape(),
+  body('lastName').trim().isLength({ min: 1, max: 50 }).escape(),
+  body('email').trim().isEmail().normalizeEmail().isLength({ max: 254 }),
+  body('subject').trim().isLength({ min: 1, max: 100 }).escape(),
+  body('message').trim().isLength({ min: 10, max: 2000 }).escape(),
+  body('gdprConsent').equals('true').withMessage('GDPR consent required'),
+  body('website').optional().isEmpty(), // Honeypot
+];
+
+router.post('/', contactLimiter, validateContactForm, async (req, res) => {
+  try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
       return res.status(400).json({
         success: false,
-        message: 'Invalid form submission detected.',
+        message: 'Invalid form data.',
+        errors: errors.array(),
       });
     }
 
-    try {
-      // Send the email
-      await sendContactEmail({
-        firstName,
-        lastName,
-        email,
-        subject: subject || 'New Portfolio Contact',
-        message,
-        senderIP: req.ip,
-        userAgent: req.get('User-Agent'),
-      });
+    const {
+      firstName,
+      lastName,
+      email,
+      subject,
+      message,
+      gdprConsent,
+      website,
+    } = req.body;
 
-      console.log('Contact email sent successfully', {
-        from: email,
-        name: `${firstName} ${lastName}`,
-        subject: subject || 'New Portfolio Contact',
-        ip: req.ip,
-      });
-
-      res.json({
-        success: true,
-        message:
-          "Your message has been sent successfully! I'll get back to you soon.",
-      });
-    } catch (error) {
-      console.error('Failed to send contact email:', error);
-
-      res.status(500).json({
+    // Honeypot check
+    if (website) {
+      console.warn('🚨 Spam detected:', req.ip);
+      return res.status(400).json({
         success: false,
-        message:
-          'Sorry, there was an error sending your message. Please try again later.',
+        message: 'Invalid submission detected.',
       });
     }
-  })
-);
 
-// GET /api/contact/test - Test endpoint (development only)
-if (process.env.NODE_ENV === 'development') {
-  router.get('/test', (req, res) => {
-    res.json({
-      message: 'Contact API is working!',
-      timestamp: new Date().toISOString(),
-      environment: process.env.NODE_ENV,
+    // GDPR consent check
+    if (gdprConsent !== 'true') {
+      return res.status(400).json({
+        success: false,
+        message: 'GDPR consent required.',
+      });
+    }
+
+    // Send email with minimal logging for GDPR
+    await sendContactEmail({
+      firstName,
+      lastName,
+      email,
+      subject,
+      message,
+      senderIP: req.ip,
+      userAgent: req.get('User-Agent'),
     });
-  });
-}
+
+    res.json({
+      success: true,
+      message: "Thank you for your message! I'll get back to you soon.",
+    });
+  } catch (error) {
+    console.error('❌ Contact error:', error.message); // No personal data in logs
+    res.status(500).json({
+      success: false,
+      message: 'Failed to send message. Please try again later.',
+    });
+  }
+});
 
 export { router as contactRouter };

@@ -24,6 +24,9 @@ async function startServer() {
   const app = express();
   const PORT = process.env.PORT || 3001;
 
+  // Trust proxy (required for Railway, Heroku, etc.)
+  app.set('trust proxy', 1);
+
   // Security middleware
   app.use(
     helmet({
@@ -34,10 +37,14 @@ async function startServer() {
   // CORS configuration
   app.use(
     cors({
-      origin: process.env.FRONTEND_URL || 'http://localhost:5173',
-      methods: ['GET', 'POST'],
-      allowedHeaders: ['Content-Type', 'Authorization'],
+      origin: [
+        'http://localhost:5173',
+        'http://localhost:3000',
+        'https://portfolio-page-zeta-ten.vercel.app',
+      ],
       credentials: true,
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+      allowedHeaders: ['Content-Type', 'Authorization'],
     })
   );
 
@@ -53,6 +60,11 @@ async function startServer() {
     },
     standardHeaders: true,
     legacyHeaders: false,
+    // Add this for better proxy support
+    skip: (req) => {
+      // Skip rate limiting for health checks
+      return req.path === '/health';
+    },
   });
 
   app.use('/api/', limiter);
@@ -81,7 +93,7 @@ async function startServer() {
   app.use(errorHandler);
 
   // Start server
-  app.listen(PORT, () => {
+  app.listen(PORT, '0.0.0.0', () => {
     console.log(`🚀 Server is running on port ${PORT}`);
     console.log(
       `📧 Email service: ${process.env.EMAIL_SERVICE || 'Not configured'}`

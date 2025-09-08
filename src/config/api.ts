@@ -1,22 +1,21 @@
-// API configuration for different environments
-type Environment = 'development' | 'production';
+const isDevelopment = import.meta.env.DEV;
 
-const API_CONFIG: Record<Environment, { baseURL: string }> = {
-  development: {
-    baseURL: 'http://localhost:3002',
+export const API_CONFIG = {
+  BASE_URL: isDevelopment
+    ? 'http://localhost:3002'
+    : 'https://portfolio-backend-production-39b3.up.railway.app',
+  ENDPOINTS: {
+    CONTACT: '/api/contact',
   },
-  production: {
-    baseURL: 'https://your-backend-api.herokuapp.com', // Update with your actual backend URL
-  },
 };
 
-export const getApiUrl = (): string => {
-  const isDev = import.meta.env.DEV;
-  const environment: Environment = isDev ? 'development' : 'production';
-  return API_CONFIG[environment].baseURL;
+// Export individual items for backward compatibility
+export const ENDPOINTS = API_CONFIG.ENDPOINTS;
+
+// Helper function to get full API URL
+export const getApiUrl = (endpoint: string): string => {
+  return `${API_CONFIG.BASE_URL}${endpoint}`;
 };
 
-export const ENDPOINTS = {
-  contact: '/api/contact',
-  health: '/health',
-};
+// Default export
+export default API_CONFIG;
