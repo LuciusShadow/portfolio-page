@@ -16,6 +16,44 @@ $base-light-theme: (
   box-shadow-sm: #{$shadow-sm},
   box-shadow-md: #{$shadow-md},
   box-shadow-lg: #{$shadow-lg},
+
+  // Common card shadows
+  shadow-card: #{$shadow-card},
+  shadow-card-hover: #{$shadow-card-hover},
+  shadow-card-lg: #{$shadow-card-lg},
+  shadow-button: #{$shadow-button},
+
+  // Common spacing and sizing
+  card-border-radius: #{$card-border-radius},
+  card-padding: #{$card-padding},
+  card-padding-sm: #{$card-padding-sm},
+  card-gap: #{$card-gap},
+  card-gap-sm: #{$card-gap-sm},
+
+  // Transitions
+  transition-default: #{$transition-default},
+  transition-fast: #{$transition-fast},
+
+  // Form and text variables
+  form-background: #ffffff,
+  form-border: #e5e7eb,
+  text-primary: #111827,
+  text-secondary: #6b7280,
+  primary-color: #9333ea,
+
+  // Contact status colors (light theme)
+  contact-status-success-bg: #d1fae5,
+  contact-status-success-border: #10b981,
+  contact-status-success-text: #065f46,
+  contact-status-error-bg: #fee2e2,
+  contact-status-error-border: #ef4444,
+  contact-status-error-text: #991b1b,
+
+  // Additional missing variables
+  box-shadow-hover: rgba(0, 0, 0, 0.15),
+  bg-primary: #ffffff,
+  bg-secondary: #f9fafb,
+  border-color: #e5e7eb,
 );
 
 $base-dark-theme: (
@@ -32,4 +70,41 @@ $base-dark-theme: (
   box-shadow-sm: #{$shadow-sm},
   box-shadow-md: #{$shadow-md},
   box-shadow-lg: #{$shadow-lg},
+
+  // Common card shadows (adjusted for dark theme)
+  shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.3),
+  shadow-card-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.3),
+  shadow-card-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3),
+  shadow-button: 0 4px 6px -1px rgba(0, 0, 0, 0.3),
+  // Common spacing and sizing
+  card-border-radius: #{$card-border-radius},
+  card-padding: #{$card-padding},
+  card-padding-sm: #{$card-padding-sm},
+  card-gap: #{$card-gap},
+  card-gap-sm: #{$card-gap-sm},
+
+  // Transitions
+  transition-default: #{$transition-default},
+  transition-fast: #{$transition-fast},
+
+  // Form and text variables (dark theme)
+  form-background: #374151,
+  form-border: #4b5563,
+  text-primary: #f9fafb,
+  text-secondary: #9ca3af,
+  primary-color: #9333ea,
+
+  // Contact status colors (dark theme)
+  contact-status-success-bg: #064e3b,
+  contact-status-success-border: #059669,
+  contact-status-success-text: #a7f3d0,
+  contact-status-error-bg: #7f1d1d,
+  contact-status-error-border: #dc2626,
+  contact-status-error-text: #fecaca,
+
+  // Additional missing variables (dark theme)
+  box-shadow-hover: rgba(255, 255, 255, 0.15),
+  bg-primary: #1f2937,
+  bg-secondary: #374151,
+  border-color: #4b5563,
 );

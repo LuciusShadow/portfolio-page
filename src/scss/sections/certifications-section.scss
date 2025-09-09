@@ -1,4 +1,5 @@
 @use '../globals';
+@use '../variables' as *;
 
 .certifications-section {
   background: var(--certifications-background);
@@ -57,11 +58,11 @@
   &__card {
     text-align: center;
     border: none;
-    border-radius: 1rem;
+    border-radius: $card-border-radius-md;
     box-shadow: var(--certifications-card-shadow);
     background: var(--certifications-card-background);
-    padding: 2rem 1.5rem;
-    transition: all 0.3s ease;
+    padding: $card-padding-lg $card-padding-lg;
+    transition: $transition-base;
     position: relative;
     overflow: hidden;
 
@@ -142,7 +143,7 @@
   // Responsive adjustments
   @include globals.mobile-only {
     &__card {
-      padding: 1.5rem 1rem;
+      padding: $card-padding-lg $card-padding-md;
     }
 
     &__card-icon,

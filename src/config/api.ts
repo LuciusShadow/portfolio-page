@@ -1,11 +1,10 @@
-const isDevelopment = import.meta.env.DEV;
+// Note: API configuration no longer needed since we're using direct mailto links
+// This file is kept for reference but can be removed
 
 export const API_CONFIG = {
-  BASE_URL: isDevelopment
-    ? 'http://localhost:3002'
-    : 'https://portfolio-backend-production-39b3.up.railway.app',
+  BASE_URL: '', // No longer used
   ENDPOINTS: {
-    CONTACT: '/api/contact',
+    CONTACT: '/api/contact', // No longer used
   },
 };
 

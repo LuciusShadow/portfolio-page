@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import ThemeToggle from '../ThemeToggle';
 import MobileMenu from './MobileMenu';
 import { personalConfig } from '../../config/personal';
+import { getTexts } from '../../config/texts';
 import { scrollToSection } from '../../utils/scrollUtils';
 
 type Props = {
@@ -10,19 +11,16 @@ type Props = {
   setTheme: React.Dispatch<React.SetStateAction<'light' | 'dark'>>;
 };
 
-export default function Navbar({ theme, setTheme }: Props) {
+export default function Navbar({
+  theme,
+  setTheme
+}: Props) {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const texts = getTexts();
 
-  const menuItems = [
-    'About',
-    'Services',
-    'Skills',
-    'Certifications',
-    'Projects',
-    'Contact',
-  ];
+  const menuItems = texts.navigation.menuItems;
 
   function handleNavigation(section: string): void {
     const sectionId = section.toLowerCase();
@@ -49,7 +47,7 @@ export default function Navbar({ theme, setTheme }: Props) {
         {/* Burger Button für Mobile */}
         <div
           className={`navbar__burger-button ${menuOpen ? 'active' : ''}`}
-          aria-label="Menü öffnen"
+          aria-label={texts.navigation.mobileMenuAriaLabel}
           onClick={() => setMenuOpen(!menuOpen)}
         >
           {[0, 1, 2].map(i => <span key={i} className="navbar__burger-button__item"></span>)}

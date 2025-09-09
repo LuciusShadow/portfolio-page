@@ -1,4 +1,5 @@
 @use '../globals';
+@use '../variables' as *;
 
 .projects-section {
   background: var(--projects-background);
@@ -56,10 +57,10 @@
 
   &__card {
     background: var(--projects-card-background);
-    border-radius: 1rem;
+    border-radius: $card-border-radius-md;
     box-shadow: var(--projects-card-shadow);
     overflow: hidden;
-    transition: all 0.3s ease;
+    transition: $transition-base;
     border: 1px solid var(--projects-card-border);
 
     &:hover {
@@ -146,7 +147,7 @@
   }
 
   &__content {
-    padding: 1.5rem;
+    padding: $card-padding-lg;
   }
 
   &__header-content {
@@ -187,11 +188,11 @@
   // Responsive adjustments
   @include globals.mobile-only {
     &__card {
-      border-radius: 0.75rem;
+      border-radius: $card-border-radius-sm;
     }
 
     &__content {
-      padding: 1rem;
+      padding: $card-padding-md;
     }
 
     &__image-container {

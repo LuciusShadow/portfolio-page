@@ -2,7 +2,7 @@
 @use '../variables' as *;
 
 .skills-section {
-  padding: 5rem 0;
+  padding: $section-padding-y 0;
   background: var(--skills-background);
   position: relative;
 
@@ -84,13 +84,13 @@
   &__category {
     background: var(--skills-category-bg);
     border: 1px solid var(--skills-category-border);
-    border-radius: 1rem;
+    border-radius: $card-border-radius-md;
     padding: $skills-category-padding;
     backdrop-filter: blur(10px);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: $transition-smooth;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    box-shadow: $shadow-card;
 
     // Add subtle gradient overlay for depth
     &::before {
@@ -122,8 +122,9 @@
 
     &:hover {
       transform: translateY(-8px);
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-      
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+        0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
       &::before {
         opacity: 0.9;
       }
@@ -142,11 +143,11 @@
       // Web Frameworks - Blue theme (matching hero primary)
       background: var(--skills-category-bg-primary);
       border-color: var(--skills-category-border-primary);
-      
+
       &::before {
         background: var(--skills-gradient-primary);
       }
-      
+
       &::after {
         background: var(--skills-accent-primary);
       }
@@ -156,11 +157,11 @@
       // Styling & Design - Green theme (matching about section)
       background: var(--skills-category-bg-secondary);
       border-color: var(--skills-category-border-secondary);
-      
+
       &::before {
         background: var(--skills-gradient-secondary);
       }
-      
+
       &::after {
         background: var(--skills-accent-secondary);
       }
@@ -170,11 +171,11 @@
       // Backend Development - Purple theme (matching hero secondary)
       background: var(--skills-category-bg-tertiary);
       border-color: var(--skills-category-border-tertiary);
-      
+
       &::before {
         background: var(--skills-gradient-tertiary);
       }
-      
+
       &::after {
         background: var(--skills-accent-tertiary);
       }
@@ -184,11 +185,11 @@
       // Development Tools - Teal theme (complementary)
       background: var(--skills-category-bg-quaternary);
       border-color: var(--skills-category-border-quaternary);
-      
+
       &::before {
         background: var(--skills-gradient-quaternary);
       }
-      
+
       &::after {
         background: var(--skills-accent-quaternary);
       }
@@ -198,11 +199,11 @@
       // Testing & Quality - Orange theme (warm accent)
       background: var(--skills-category-bg-quinary);
       border-color: var(--skills-category-border-quinary);
-      
+
       &::before {
         background: var(--skills-gradient-quinary);
       }
-      
+
       &::after {
         background: var(--skills-accent-quinary);
       }
@@ -212,11 +213,11 @@
       // AI-Tools - Indigo theme (tech/AI vibe)
       background: var(--skills-category-bg-senary);
       border-color: var(--skills-category-border-senary);
-      
+
       &::before {
         background: var(--skills-gradient-senary);
       }
-      
+
       &::after {
         background: var(--skills-accent-senary);
       }
@@ -251,7 +252,8 @@
   }
 
   &__skill {
-    // Individual skill container
+    // Individual skill container styling
+    margin-bottom: 1rem;
   }
 
   &__skill-header {
@@ -327,7 +329,7 @@
     border-radius: $skills-progress-radius;
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
-    
+
     &::after {
       content: '';
       position: absolute;
@@ -335,7 +337,12 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+      );
       transform: translateX(-100%);
       animation: shimmer 2s infinite;
     }

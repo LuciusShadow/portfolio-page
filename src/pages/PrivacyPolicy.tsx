@@ -1,25 +1,43 @@
-export default function PrivacyPolicy() {
-  return (
-    <div className="privacy-policy">
-      <h1>Privacy Policy (GDPR/DSGVO)</h1>
-      <p>Last updated: {new Date().toLocaleDateString()}</p>
+import { getTexts } from '../config/texts';
 
-      <h2>Data Collection</h2>
-      <p>We collect only the information you provide through our contact form:</p>
+export default function PrivacyPolicy() {
+  const texts = getTexts().privacyPolicy;
+  return (
+    <div className="privacy-policy" style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem' }}>
+      <h1>{texts.title}</h1>
+      <p><strong>{texts.lastUpdated}</strong> {new Date().toLocaleDateString()}</p>
+
+      <h2>{texts.dataCollectionTitle}</h2>
+      <p>{texts.dataCollectionText}</p>
       <ul>
-        <li>Name (first and last)</li>
-        <li>Email address</li>
-        <li>Message content</li>
+        {texts.dataCollectionList.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
       </ul>
 
-      <h2>Purpose</h2>
-      <p>Your data is used solely to respond to your inquiry.</p>
+      <h2>{texts.purposeTitle}</h2>
+      <p>{texts.purposeText}</p>
 
-      <h2>Data Retention</h2>
-      <p>Your data is not stored permanently. Email content is processed and forwarded immediately.</p>
+      <h2>{texts.providerTitle}</h2>
+      <p>{texts.providerText}</p>
 
-      <h2>Your Rights</h2>
-      <p>You have the right to access, rectify, or delete your personal data. Contact: info@sascha-bach.de</p>
+      <h2>{texts.retentionTitle}</h2>
+      <p>{texts.retentionText}</p>
+
+      <h2>{texts.rightsTitle}</h2>
+      <p>{texts.rightsText}</p>
+      <ul>
+        {texts.rightsList.map((right, index) => (
+          <li key={index}>{right}</li>
+        ))}
+      </ul>
+
+      <h2>{texts.contactTitle}</h2>
+      <p>{texts.contactText}</p>
+      <p><strong>Email:</strong> {texts.contactEmail}</p>
+
+      <h2>{texts.legalBasisTitle}</h2>
+      <p>{texts.legalBasisText}</p>
     </div>
   );
 }

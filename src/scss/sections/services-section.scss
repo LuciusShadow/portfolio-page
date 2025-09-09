@@ -5,9 +5,9 @@
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding: 2rem 0;
+  padding: $section-padding-y 0;
   background: var(--services-background);
-  
+
   &__container {
     max-width: 80rem;
     margin: 0 auto;
@@ -98,9 +98,9 @@
 
   &__card {
     background: white;
-    border-radius: $services-card-border-radius;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    border-radius: $card-border-radius-md;
+    box-shadow: $shadow-card;
+    transition: $transition-base;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -109,7 +109,7 @@
 
     &:hover {
       transform: translateY(-4px);
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      box-shadow: $shadow-card-hover;
     }
 
     // Responsive card heights
@@ -151,12 +151,12 @@
   }
 
   &__card-header {
-    padding: $services-card-padding;
+    padding: $card-padding-lg;
     text-align: center;
     flex-shrink: 0;
 
     @media (max-width: 767px) {
-      padding: 1.25rem;
+      padding: $card-padding-sm;
     }
   }
 
@@ -237,7 +237,8 @@
   }
 
   &__card-content {
-    padding: 0 $services-card-padding $services-card-padding $services-card-padding;
+    padding: 0 $services-card-padding $services-card-padding
+      $services-card-padding;
     flex: 1;
     display: flex;
     align-items: center;
@@ -294,11 +295,11 @@
   // For exactly 6 cards
   @media (min-width: 768px) and (max-width: 1023px) {
     grid-template-columns: repeat(2, 1fr);
-    
-    // Make last 2 cards center themselves
+
+    // Make last 2 cards center themselves if needed
     .services-section__card:nth-child(5),
     .services-section__card:nth-child(6) {
-      // This ensures the last row centers properly
+      justify-self: center;
     }
   }
 

@@ -66,9 +66,21 @@ $dark-theme: map.merge(
   --gradient-primary: #{map.get($theme, gradient-primary)};
   --gradient-text: #{map.get($theme, gradient-text)};
 
+  // Common card and form variables
+  --card-border-radius: #{map.get($theme, card-border-radius)};
+  --card-padding: #{map.get($theme, card-padding)};
+  --card-padding-sm: #{map.get($theme, card-padding-sm)};
+  --card-gap-sm: #{map.get($theme, card-gap-sm)};
+  --form-background: #{map.get($theme, form-background)};
+  --form-border: #{map.get($theme, form-border)};
+  --text-primary: #{map.get($theme, text-primary)};
+  --text-secondary: #{map.get($theme, text-secondary)};
+  --primary-color: #{map.get($theme, primary-color)};
+  --transition-default: #{map.get($theme, transition-default)};
+
   // Hero section variables
   --hero-background: #{map.get($theme, hero-background)};
-  
+
   // Stat variables using semantic naming
   --stat-primary-bg: #{map.get($theme, stat-primary-bg)};
   --stat-primary-value: #{map.get($theme, stat-primary-value)};
@@ -110,8 +122,14 @@ $dark-theme: map.merge(
   --feature-title-secondary: #{map.get($theme, feature-title-secondary)};
   --feature-title-tertiary: #{map.get($theme, feature-title-tertiary)};
   --feature-description-primary: #{map.get($theme, feature-description-primary)};
-  --feature-description-secondary: #{map.get($theme, feature-description-secondary)};
-  --feature-description-tertiary: #{map.get($theme, feature-description-tertiary)};
+  --feature-description-secondary: #{map.get(
+      $theme,
+      feature-description-secondary
+    )};
+  --feature-description-tertiary: #{map.get(
+      $theme,
+      feature-description-tertiary
+    )};
 
   // Services section variables
   --services-background: #{map.get($theme, services-background)};
@@ -140,9 +158,18 @@ $dark-theme: map.merge(
   --service-title-senary: #{map.get($theme, service-title-senary)};
 
   --service-description-primary: #{map.get($theme, service-description-primary)};
-  --service-description-secondary: #{map.get($theme, service-description-secondary)};
-  --service-description-tertiary: #{map.get($theme, service-description-tertiary)};
-  --service-description-quaternary: #{map.get($theme, service-description-quaternary)};
+  --service-description-secondary: #{map.get(
+      $theme,
+      service-description-secondary
+    )};
+  --service-description-tertiary: #{map.get(
+      $theme,
+      service-description-tertiary
+    )};
+  --service-description-quaternary: #{map.get(
+      $theme,
+      service-description-quaternary
+    )};
   --service-description-quinary: #{map.get($theme, service-description-quinary)};
   --service-description-senary: #{map.get($theme, service-description-senary)};
 
@@ -155,37 +182,64 @@ $dark-theme: map.merge(
   --skills-category-title-color: #{map.get($theme, skills-category-title-color)};
   --skills-skill-name-color: #{map.get($theme, skills-skill-name-color)};
   --skills-skill-level-color: #{map.get($theme, skills-skill-level-color)};
-  --skills-skill-percentage-color: #{map.get($theme, skills-skill-percentage-color)};
+  --skills-skill-percentage-color: #{map.get(
+      $theme,
+      skills-skill-percentage-color
+    )};
   --skills-progress-bg: #{map.get($theme, skills-progress-bg)};
 
   // Card-specific backgrounds and accents
   --skills-category-bg-primary: #{map.get($theme, skills-category-bg-primary)};
-  --skills-category-border-primary: #{map.get($theme, skills-category-border-primary)};
+  --skills-category-border-primary: #{map.get(
+      $theme,
+      skills-category-border-primary
+    )};
   --skills-gradient-primary: #{map.get($theme, skills-gradient-primary)};
   --skills-accent-primary: #{map.get($theme, skills-accent-primary)};
 
-  --skills-category-bg-secondary: #{map.get($theme, skills-category-bg-secondary)};
-  --skills-category-border-secondary: #{map.get($theme, skills-category-border-secondary)};
+  --skills-category-bg-secondary: #{map.get(
+      $theme,
+      skills-category-bg-secondary
+    )};
+  --skills-category-border-secondary: #{map.get(
+      $theme,
+      skills-category-border-secondary
+    )};
   --skills-gradient-secondary: #{map.get($theme, skills-gradient-secondary)};
   --skills-accent-secondary: #{map.get($theme, skills-accent-secondary)};
 
   --skills-category-bg-tertiary: #{map.get($theme, skills-category-bg-tertiary)};
-  --skills-category-border-tertiary: #{map.get($theme, skills-category-border-tertiary)};
+  --skills-category-border-tertiary: #{map.get(
+      $theme,
+      skills-category-border-tertiary
+    )};
   --skills-gradient-tertiary: #{map.get($theme, skills-gradient-tertiary)};
   --skills-accent-tertiary: #{map.get($theme, skills-accent-tertiary)};
 
-  --skills-category-bg-quaternary: #{map.get($theme, skills-category-bg-quaternary)};
-  --skills-category-border-quaternary: #{map.get($theme, skills-category-border-quaternary)};
+  --skills-category-bg-quaternary: #{map.get(
+      $theme,
+      skills-category-bg-quaternary
+    )};
+  --skills-category-border-quaternary: #{map.get(
+      $theme,
+      skills-category-border-quaternary
+    )};
   --skills-gradient-quaternary: #{map.get($theme, skills-gradient-quaternary)};
   --skills-accent-quaternary: #{map.get($theme, skills-accent-quaternary)};
 
   --skills-category-bg-quinary: #{map.get($theme, skills-category-bg-quinary)};
-  --skills-category-border-quinary: #{map.get($theme, skills-category-border-quinary)};
+  --skills-category-border-quinary: #{map.get(
+      $theme,
+      skills-category-border-quinary
+    )};
   --skills-gradient-quinary: #{map.get($theme, skills-gradient-quinary)};
   --skills-accent-quinary: #{map.get($theme, skills-accent-quinary)};
 
   --skills-category-bg-senary: #{map.get($theme, skills-category-bg-senary)};
-  --skills-category-border-senary: #{map.get($theme, skills-category-border-senary)};
+  --skills-category-border-senary: #{map.get(
+      $theme,
+      skills-category-border-senary
+    )};
   --skills-gradient-senary: #{map.get($theme, skills-gradient-senary)};
   --skills-accent-senary: #{map.get($theme, skills-accent-senary)};
 
@@ -199,15 +253,33 @@ $dark-theme: map.merge(
 
   // Certifications section variables
   --certifications-background: #{map.get($theme, certifications-background)};
-  --gradient-certifications-title: #{map.get($theme, gradient-certifications-title)};
-  --color-certifications-primary: #{map.get($theme, color-certifications-primary)};
-  --certifications-card-background: #{map.get($theme, certifications-card-background)};
+  --gradient-certifications-title: #{map.get(
+      $theme,
+      gradient-certifications-title
+    )};
+  --color-certifications-primary: #{map.get(
+      $theme,
+      color-certifications-primary
+    )};
+  --certifications-card-background: #{map.get(
+      $theme,
+      certifications-card-background
+    )};
   --certifications-card-shadow: #{map.get($theme, certifications-card-shadow)};
-  --certifications-card-shadow-hover: #{map.get($theme, certifications-card-shadow-hover)};
+  --certifications-card-shadow-hover: #{map.get(
+      $theme,
+      certifications-card-shadow-hover
+    )};
   --certifications-card-overlay: #{map.get($theme, certifications-card-overlay)};
-  --certifications-badge-background: #{map.get($theme, certifications-badge-background)};
+  --certifications-badge-background: #{map.get(
+      $theme,
+      certifications-badge-background
+    )};
   --certifications-badge-border: #{map.get($theme, certifications-badge-border)};
-  --color-certifications-badge-text: #{map.get($theme, color-certifications-badge-text)};
+  --color-certifications-badge-text: #{map.get(
+      $theme,
+      color-certifications-badge-text
+    )};
 
   // Projects section variables
   --projects-background: #{map.get($theme, projects-background)};
@@ -218,13 +290,34 @@ $dark-theme: map.merge(
   --projects-card-shadow-hover: #{map.get($theme, projects-card-shadow-hover)};
   --projects-overlay-background: #{map.get($theme, projects-overlay-background)};
   --projects-button-primary-bg: #{map.get($theme, projects-button-primary-bg)};
-  --projects-button-primary-text: #{map.get($theme, projects-button-primary-text)};
-  --projects-button-primary-border: #{map.get($theme, projects-button-primary-border)};
-  --projects-button-primary-hover-bg: #{map.get($theme, projects-button-primary-hover-bg)};
-  --projects-button-secondary-bg: #{map.get($theme, projects-button-secondary-bg)};
-  --projects-button-secondary-text: #{map.get($theme, projects-button-secondary-text)};
-  --projects-button-secondary-border: #{map.get($theme, projects-button-secondary-border)};
-  --projects-button-secondary-hover-bg: #{map.get($theme, projects-button-secondary-hover-bg)};
+  --projects-button-primary-text: #{map.get(
+      $theme,
+      projects-button-primary-text
+    )};
+  --projects-button-primary-border: #{map.get(
+      $theme,
+      projects-button-primary-border
+    )};
+  --projects-button-primary-hover-bg: #{map.get(
+      $theme,
+      projects-button-primary-hover-bg
+    )};
+  --projects-button-secondary-bg: #{map.get(
+      $theme,
+      projects-button-secondary-bg
+    )};
+  --projects-button-secondary-text: #{map.get(
+      $theme,
+      projects-button-secondary-text
+    )};
+  --projects-button-secondary-border: #{map.get(
+      $theme,
+      projects-button-secondary-border
+    )};
+  --projects-button-secondary-hover-bg: #{map.get(
+      $theme,
+      projects-button-secondary-hover-bg
+    )};
   --projects-tech-badge-bg: #{map.get($theme, projects-tech-badge-bg)};
   --projects-tech-badge-text: #{map.get($theme, projects-tech-badge-text)};
   --projects-tech-badge-border: #{map.get($theme, projects-tech-badge-border)};
@@ -247,4 +340,19 @@ $dark-theme: map.merge(
   --contact-social-border: #{map.get($theme, contact-social-border)};
   --contact-social-hover-bg: #{map.get($theme, contact-social-hover-bg)};
   --contact-social-hover-border: #{map.get($theme, contact-social-hover-border)};
+  --contact-status-success-bg: #{map.get($theme, contact-status-success-bg)};
+  --contact-status-success-border: #{map.get(
+      $theme,
+      contact-status-success-border
+    )};
+  --contact-status-success-text: #{map.get($theme, contact-status-success-text)};
+  --contact-status-error-bg: #{map.get($theme, contact-status-error-bg)};
+  --contact-status-error-border: #{map.get($theme, contact-status-error-border)};
+  --contact-status-error-text: #{map.get($theme, contact-status-error-text)};
+
+  // Additional variables
+  --box-shadow-hover: #{map.get($theme, box-shadow-hover)};
+  --bg-primary: #{map.get($theme, bg-primary)};
+  --bg-secondary: #{map.get($theme, bg-secondary)};
+  --border-color: #{map.get($theme, border-color)};
 }

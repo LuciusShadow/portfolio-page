@@ -1,8 +1,10 @@
 import { Github, ExternalLink } from 'lucide-react';
 import { personalConfig } from '../../config/personal';
+import { getTexts } from '../../config/texts';
 import type { Project } from '../../data/Project';
 import ergoVRImage from '../../assets/ErgoVR.PNG';
 import portfolioImage from '../../assets/portfolio.PNG'
+import icaraceImage from '../../assets/icarace.PNG'
 
 
 interface ProjectsSectionProps {
@@ -12,8 +14,8 @@ interface ProjectsSectionProps {
 }
 
 export default function ProjectsSection({
-  title = "Featured Projects",
-  subtitle = "A showcase of my recent work and personal projects",
+  title,
+  subtitle,
   projects = [
     {
       id: 1,
@@ -27,7 +29,7 @@ export default function ProjectsSection({
     {
       id: 2,
       title: "ErgoVR",
-      description: "A virtual reality application for analysis of motion sickness in VR environments.",
+      description: "A virtual reality application for analysis of motion sickness in VR environments from 2015.",
       image: ergoVRImage,
       technologies: ["Unity3D", "C#", "Oculus SDK"],
       github: personalConfig.projects.ergoVR
@@ -36,38 +38,27 @@ export default function ProjectsSection({
       id: 3,
       title: "Icarace",
       description: "Participated in the development of a web-platform for a fitness racing game for Icaros GmbH until 2018.",
-      image: ergoVRImage,
+      image: icaraceImage,
       technologies: ["Angular 4", "Typescript", "HTML", "CSS"],
-      github: personalConfig.projects.ergoVR
-    },
-    {
-      id: 4,
-      title: "ErgoVR",
-      description: "Gravity is a fitness game for the Icaros Device developed by Icaros GmbH. I participated in developing behavior scripts in C#.",
-      image: ergoVRImage,
-      technologies: ["Unity3D", "C#", "Oculus SDK"],
-      github: personalConfig.projects.ergoVR
-    },
-    {
-      id: 5,
-      title: "ErgoVR",
-      description: "A virtual reality application for analysis of motion sickness in VR environments.",
-      image: ergoVRImage,
-      technologies: ["Unity3D", "C#", "Oculus SDK"],
       github: personalConfig.projects.ergoVR
     }
   ]
 }: ProjectsSectionProps) {
+  const texts = getTexts();
+
+  // Use texts from centralized config with fallbacks
+  const sectionTitle = title || texts.projects.title;
+  const sectionSubtitle = subtitle || texts.projects.subtitle;
   return (
     <section id="projects" className="projects-section">
       <div className="projects-section__container">
         {/* Section Header */}
         <div className="projects-section__header">
           <h2 className="projects-section__title">
-            {title}
+            {sectionTitle}
           </h2>
           <p className="projects-section__subtitle">
-            {subtitle}
+            {sectionSubtitle}
           </p>
         </div>
 
@@ -91,7 +82,7 @@ export default function ProjectsSection({
                         className="projects-section__action-button projects-section__action-button--secondary"
                       >
                         <Github className="projects-section__action-icon" />
-                        Code
+                        {texts.projects.codeButtonText}
                       </a>
                     )}
                     {project.live && (
@@ -102,7 +93,7 @@ export default function ProjectsSection({
                         className="projects-section__action-button projects-section__action-button--primary"
                       >
                         <ExternalLink className="projects-section__action-icon" />
-                        Live
+                        {texts.projects.liveButtonText}
                       </a>
                     )}
                   </div>

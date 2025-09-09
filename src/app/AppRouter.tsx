@@ -5,6 +5,7 @@ import Navbar from '../components/layout/Navigation';
 import Footer from '../components/layout/Footer';
 import HomePage from '../pages/HomePage';
 import ImprintPage from '../pages/ImprintPage';
+import PrivacyPolicy from '../pages/PrivacyPolicy';
 
 function AppRouter() {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
@@ -56,6 +57,7 @@ function AppRouter() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/imprint" element={<ImprintPage />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           </Routes>
         </main>
         <Footer />

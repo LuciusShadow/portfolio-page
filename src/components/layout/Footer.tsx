@@ -1,8 +1,10 @@
 import { Github, Linkedin, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { personalConfig, createEmailLink } from '../../config/personal';
+import { getTexts } from '../../config/texts';
 
 export default function Footer() {
+  const texts = getTexts();
   // Email obfuscation function using config
   const handleEmailClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -17,10 +19,10 @@ export default function Footer() {
         <div className="footer__content">
           <div className="footer__bottom-row">
             <Link to="/imprint" className="footer__link">
-              Impressum
+              {texts.footer.imprintText}
             </Link>
             <div className="footer__copyright">
-              © {new Date().getFullYear()} {personalConfig.name}. All rights reserved.
+              © {new Date().getFullYear()} {personalConfig.name}. {texts.footer.copyrightText}
             </div>
           </div>
 
@@ -28,7 +30,7 @@ export default function Footer() {
             <button
               className="footer__social-button"
               onClick={() => window.open(personalConfig.social.github.url, '_blank')}
-              aria-label="GitHub Profile"
+              aria-label={texts.footer.githubAriaLabel}
             >
               <Github className="footer__social-icon" />
             </button>
@@ -36,7 +38,7 @@ export default function Footer() {
             <button
               className="footer__social-button"
               onClick={() => window.open(personalConfig.social.linkedin.url, '_blank')}
-              aria-label="LinkedIn Profile"
+              aria-label={texts.footer.linkedinAriaLabel}
             >
               <Linkedin className="footer__social-icon" />
             </button>
@@ -44,7 +46,7 @@ export default function Footer() {
             <button
               className="footer__social-button"
               onClick={handleEmailClick}
-              aria-label="Send Email"
+              aria-label={texts.footer.emailAriaLabel}
             >
               <Mail className="footer__social-icon" />
             </button>
