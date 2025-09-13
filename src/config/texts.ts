@@ -325,12 +325,12 @@ export const defaultTexts: TextConfig = {
     privacyText:
       'Die Nutzung unserer Webseite ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder E-Mail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht an Dritte weitergegeben.',
     address: {
-      street: 'Musterstraße 123',
-      city: '12345 Musterstadt',
+      street: 'Alt-Tempelhof 15',
+      city: '12099 Berlin',
       country: 'Deutschland',
     },
     contact: {
-      phone: '+49 (0) 123 456789',
+      phone: '+49 (0) 179 9364867',
     },
   },
 
