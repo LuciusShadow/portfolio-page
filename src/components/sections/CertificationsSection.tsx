@@ -12,6 +12,12 @@ export default function CertificationsSection({
   subtitle = "My professional qualifications and continuous learning",
   certifications = [
     {
+      name: "Prompt Engineering from Scratch",
+      issuer: "Udemy",
+      year: "2025",
+      icon: ""
+    },
+    {
       name: "Understanding Typescript",
       issuer: "Udemy",
       year: "2025",
@@ -61,10 +67,10 @@ export default function CertificationsSection({
             <div key={index} className="certifications-section__card">
               <div className="certifications-section__card-header">
                 {cert.icon ? (
-                  <img 
-                    src={cert.icon} 
-                    alt={cert.issuer} 
-                    className="certifications-section__card-icon-image" 
+                  <img
+                    src={cert.icon}
+                    alt={cert.issuer}
+                    className="certifications-section__card-icon-image"
                   />
                 ) : (
                   <Award className="certifications-section__card-icon" />
