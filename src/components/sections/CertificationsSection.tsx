@@ -12,20 +12,20 @@ export default function CertificationsSection({
   subtitle = "My professional qualifications and continuous learning",
   certifications = [
     {
-      name: "Prompt Engineering from Scratch",
-      issuer: "Udemy",
+      name: "Practical Prompt Engineering Masterclass: Hands-On Learning",
+      issuer: "Udemy Lecture - Asif Farooqi, Abdullah Dar",
       year: "2025",
       icon: ""
     },
     {
       name: "Understanding Typescript",
-      issuer: "Udemy",
+      issuer: "Udemy Lecture - Maximilian Schwarzmüller",
       year: "2025",
       icon: ""
     },
     {
       name: "Angular Step by Step",
-      issuer: "Udemy",
+      issuer: "Udemy Lecture - Shivprasad Koirala",
       year: "2020",
       icon: ""
     },
