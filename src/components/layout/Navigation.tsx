@@ -45,13 +45,16 @@ export default function Navbar({
         ))}
         <ThemeToggle theme={theme} setTheme={setTheme} />
         {/* Burger Button für Mobile */}
-        <div
+        <button
+          type="button"
           className={`navbar__burger-button ${menuOpen ? 'active' : ''}`}
           aria-label={texts.navigation.mobileMenuAriaLabel}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
           onClick={() => setMenuOpen(!menuOpen)}
         >
           {[0, 1, 2].map(i => <span key={i} className="navbar__burger-button__item"></span>)}
-        </div>
+        </button>
 
         <MobileMenu
           menuItems={menuItems}

@@ -32,6 +32,7 @@
 
   &__burger-button {
     @include globals.flex-center();
+    flex-direction: column;
     justify-content: space-between;
     width: 20px;
     height: 17px;
@@ -42,30 +43,27 @@
 
     &__item {
       display: block;
-      height: 4px;
+      height: 3px;
       width: 100%;
       background-color: var(--color-text);
       border-radius: 2px;
       transition: all 0.3s ease;
-      margin-top: 2px;
+      margin: 1px 0;
     }
 
-    &:hover .navbar__container__burger-button__item {
+    &:hover &__item {
       background-color: var(--color-primary);
     }
 
     &.active {
-      .navbar__container__burger-button__item:nth-child(1) {
+      &__item:nth-child(1) {
         transform: rotate(45deg) translate(5px, 5px);
       }
-      .navbar__container__burger-button__item:nth-child(2) {
+      &__item:nth-child(2) {
         opacity: 0;
       }
-      .navbar__container__burger-button__item:nth-child(3) {
+      &__item:nth-child(3) {
         transform: rotate(-45deg) translate(5px, -5px);
-      }
-      .navbar__container__burger-button__item:nth-child(n + 4) {
-        opacity: 0;
       }
     }
   }

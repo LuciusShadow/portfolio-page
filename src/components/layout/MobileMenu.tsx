@@ -1,3 +1,5 @@
+import { useEffect, useRef } from 'react';
+
 type Props = {
   menuItems: string[];
   isOpen: boolean;
@@ -5,19 +7,29 @@ type Props = {
 };
 
 export default function MobileMenu({ menuItems, isOpen, onItemClick }: Props) {
+  const firstButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (isOpen && firstButtonRef.current) {
+      firstButtonRef.current.focus();
+    }
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   return (
-    <div className="navbar__mobile-menu">
-      {menuItems.map((item) => (
+    <nav id="mobile-menu" className="navbar__mobile-menu" role="navigation" aria-label="Mobile navigation">
+      {menuItems.map((item, index) => (
         <button
           key={item}
+          ref={index === 0 ? firstButtonRef : undefined}
           onClick={() => onItemClick(item)}
           className="navbar__mobile-menu__item"
+          type="button"
         >
           {item}
         </button>
       ))}
-    </div>
+    </nav>
   );
 }

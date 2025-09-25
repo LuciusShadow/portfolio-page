@@ -18,7 +18,7 @@ export default function ServicesSection(props: ServicesSectionProps = {}) {
     services = [
       {
         icon: Eye,
-        title: "Web Accessiblity",
+        title: "Web Accessibility",
         description: "Building inclusive and accessible web applications by implementing Web Content Accessibility Guidelines, semantic HTML, and support for assistive technologies.",
         colorClass: "primary"
       },

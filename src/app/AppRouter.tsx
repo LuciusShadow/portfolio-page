@@ -52,8 +52,9 @@ function AppRouter() {
   return (
     <Router>
       <div className="app">
+        <a href="#main-content" className="skip-link">Skip to main content</a>
         <Navbar theme={theme} setTheme={setTheme} />
-        <main className="app__main">
+        <main id="main-content" className="app__main">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/imprint" element={<ImprintPage />} />

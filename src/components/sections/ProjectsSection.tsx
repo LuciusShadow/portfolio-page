@@ -79,6 +79,7 @@ export default function ProjectsSection(props: ProjectsSectionProps = {}) {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="projects-section__action-button projects-section__action-button--secondary"
+                        aria-label={`View ${project.title} source code on GitHub`}
                       >
                         <Github className="projects-section__action-icon" />
                         {texts.codeButtonText}
@@ -90,6 +91,7 @@ export default function ProjectsSection(props: ProjectsSectionProps = {}) {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="projects-section__action-button projects-section__action-button--primary"
+                        aria-label={`View ${project.title} live demo`}
                       >
                         <ExternalLink className="projects-section__action-icon" />
                         {texts.liveButtonText}

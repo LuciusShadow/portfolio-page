@@ -3,6 +3,27 @@
 @forward 'variables';
 @forward 'mixins';
 
+// Skip link for accessibility
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--color-primary);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 9999;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: top 0.3s;
+
+  &:focus {
+    top: 6px;
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+  }
+}
+
 // Global button placeholder
 %button-base {
   @include button-base;
@@ -39,15 +60,15 @@
   border-radius: 8px;
   transition: all 0.3s ease;
   text-decoration: none;
-  
+
   &:focus {
     outline: none;
   }
-  
+
   &:active {
     transform: translateY(0);
   }
-  
+
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
@@ -72,4 +93,3 @@
   cursor: pointer;
   font: inherit;
 }
-
