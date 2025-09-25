@@ -1,4 +1,5 @@
-import { Code, Palette, ShieldCheck } from 'lucide-react';
+import { Code, Palette, ShieldCheck, Eye } from 'lucide-react';
+import { getTexts } from '../../config/texts';
 import type { SkillBadge } from '../../data/SkillBadge';
 import type { Service } from '../../data/Service';
 import saschaImage from '../../assets/sascha.png';
@@ -13,39 +14,49 @@ interface AboutSectionProps {
   featureCards?: Service[];
 }
 
-export default function AboutSection({
-  name = "Sascha Bach",
-  title = "About Me",
-  subtitle = "Web developer specializing in modern web technologies. Since 2020, I've been building efficient, scalable solutions – from complex Angular applications to creative React projects. My focus is on clean, maintainable code that solves real-world problems.",
-  bio = "As a dedicated web developer, I specialize in creating modern, responsive web applications using both Angular and React frameworks with TypeScript. I'm passionate about writing clean, maintainable code and ensuring exceptional user experiences across all devices and browsers. I have extensive experience with Angular and am actively developing my React expertise. Also, I have a history in working with Unity3D.",
-  profileImage = saschaImage,
-  skillBadges = [
-    { text: "Angular & React Developer", colorClass: "primary" },
-    { text: "Responsive Design Expert", colorClass: "secondary" },
-    { text: "Cross-Browser Compatible", colorClass: "tertiary" },
-    { text: "Continuous Learner", colorClass: "quaternary" }
-  ],
-  featureCards = [
-    {
-      icon: Code,
-      title: "Web Development",
-      description: "Building modern web applications with Angular and React frameworks, leveraging TypeScript and JavaScript for robust, scalable solutions.",
-      colorClass: "primary"
-    },
-    {
-      icon: Palette,
-      title: "Responsive Design",
-      description: "Creating pixel-perfect, responsive interfaces that work seamlessly across all devices and screen sizes.",
-      colorClass: "secondary"
-    },
-    {
-      icon: ShieldCheck,
-      title: "Cross-Browser Compatibility",
-      description: "Ensuring consistent user experiences across all major browsers with thorough testing and optimization.",
-      colorClass: "tertiary"
-    }
-  ]
-}: AboutSectionProps) {
+export default function AboutSection(props: AboutSectionProps = {}) {
+  const texts = getTexts().about;
+
+  // Use centralized texts as defaults, allow props to override
+  const {
+    name = texts.name,
+    title = texts.title,
+    subtitle = texts.subtitle,
+    bio = texts.bio,
+    profileImage = saschaImage,
+    skillBadges = [
+      { text: "Angular & React Developer", colorClass: "primary" },
+      { text: "Responsive Design Expert", colorClass: "secondary" },
+      { text: "Cross-Browser Compatible", colorClass: "tertiary" },
+      { text: "Continuous Learner", colorClass: "quaternary" }
+    ],
+    featureCards = [
+      {
+        icon: Code,
+        title: "Web Development",
+        description: "Building modern web applications with Angular and React frameworks, leveraging TypeScript and JavaScript for robust, scalable solutions.",
+        colorClass: "primary"
+      },
+      {
+        icon: Palette,
+        title: "Responsive Design",
+        description: "Creating pixel-perfect, responsive interfaces that work seamlessly across all devices and screen sizes.",
+        colorClass: "secondary"
+      },
+      {
+        icon: ShieldCheck,
+        title: "Cross-Browser Compatibility",
+        description: "Ensuring consistent user experiences across all major browsers with thorough testing and optimization.",
+        colorClass: "tertiary"
+      },
+      {
+        icon: Eye,
+        title: "Web Accessibility",
+        description: "Implementing accessibility best practices to deliver websites that support screen readers, keyboard navigation, and assistive technologies.",
+        colorClass: "quaternary"
+      }
+    ]
+  } = props;
   return (
     <section id="about" className="about-section">
       <div className="about-section__container">

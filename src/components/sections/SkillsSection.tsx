@@ -1,3 +1,4 @@
+import { getTexts } from '../../config/texts';
 import type { Skill } from '../../data/Skill';
 
 interface SkillCategory {
@@ -25,65 +26,69 @@ const getColorByPosition = (index: number): string => {
   return colors[index % colors.length];
 };
 
-export default function SkillsSection({
-  title = "Skills & Technologies",
-  subtitle = "Technologies I work with to build amazing web experiences",
-  skillCategories = [
-    {
-      title: "Web Frameworks",
-      skills: [
-        { skill: "Angular", value: 90 },
-        { skill: "React", value: 70 },
-        { skill: "Next.js", value: 70 },
-        { skill: "TypeScript", value: 95 }
-      ]
-    },
-    {
-      title: "Styling & Design",
-      skills: [
-        { skill: "SCSS/Sass", value: 95 },
-        { skill: "CSS3", value: 90 },
-        { skill: "Accessibility (a11y) Standards", value: 45 },
-        { skill: "Bootstrap", value: 65 }
-      ]
-    },
-    {
-      title: "Backend Development",
-      skills: [
-        { skill: "Node.js", value: 65 },
-        { skill: "Express.js", value: 25 },
-        { skill: "REST APIs", value: 70 },
-        { skill: "MongoDB", value: 50 }
-      ]
-    },
-    {
-      title: "Development Tools",
-      skills: [
-        { skill: "Git & GitHub", value: 90 },
-        { skill: "Visual Studio Code", value: 75 },
-        { skill: "Vite", value: 80 },
-        { skill: "NPM", value: 85 }
-      ]
-    },
-    {
-      title: "Testing & Quality",
-      skills: [
-        { skill: "Cypress", value: 85 },
-        { skill: "Jasmine/Karma", value: 75 },
-        { skill: "ESLint", value: 90 },
-        { skill: "Prettier", value: 95 }
-      ]
-    },
-    {
-      title: "AI-Tools",
-      skills: [
-        { skill: "GitHub Copilot", value: 85 },
-        { skill: "Prompt Engineering", value: 45 },
-        { skill: "Prototyping / MVP-Building with AI", value: 45 }
-      ]
-    }
-  ]
-}: SkillsSectionProps) {
+export default function SkillsSection(props: SkillsSectionProps = {}) {
+  const texts = getTexts().skills;
+
+  // Use centralized texts as defaults, allow props to override
+  const {
+    title = texts.title,
+    subtitle = texts.subtitle,
+    skillCategories = [
+      {
+        title: "Web Frameworks",
+        skills: [
+          { skill: "Angular", value: 90 },
+          { skill: "React", value: 70 },
+          { skill: "Next.js", value: 70 },
+          { skill: "TypeScript", value: 95 }
+        ]
+      },
+      {
+        title: "Styling & Design",
+        skills: [
+          { skill: "SCSS/Sass", value: 95 },
+          { skill: "CSS3", value: 90 },
+          { skill: "Accessibility (a11y) Standards", value: 45 },
+          { skill: "Bootstrap", value: 65 }
+        ]
+      },
+      {
+        title: "Backend Development",
+        skills: [
+          { skill: "Node.js", value: 65 },
+          { skill: "Express.js", value: 25 },
+          { skill: "REST APIs", value: 70 },
+          { skill: "MongoDB", value: 50 }
+        ]
+      },
+      {
+        title: "Development Tools",
+        skills: [
+          { skill: "Git & GitHub", value: 90 },
+          { skill: "Visual Studio Code", value: 75 },
+          { skill: "Vite", value: 80 },
+          { skill: "NPM", value: 85 }
+        ]
+      },
+      {
+        title: "Testing & Quality",
+        skills: [
+          { skill: "Cypress", value: 85 },
+          { skill: "Jasmine/Karma", value: 75 },
+          { skill: "ESLint", value: 90 },
+          { skill: "Prettier", value: 95 }
+        ]
+      },
+      {
+        title: "AI-Tools",
+        skills: [
+          { skill: "GitHub Copilot", value: 85 },
+          { skill: "Prompt Engineering", value: 45 },
+          { skill: "Prototyping / MVP-Building with AI", value: 45 }
+        ]
+      }
+    ]
+  } = props;
   return (
     <section id="skills" className="skills-section">
       <div className="skills-section__container">

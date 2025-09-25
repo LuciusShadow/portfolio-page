@@ -2,11 +2,16 @@
 @use '../variables' as *;
 
 .services-section {
-  min-height: 100vh;
+  min-height: auto;
   display: flex;
   align-items: center;
   padding: $section-padding-y 0;
   background: var(--services-background);
+
+  // Only apply min-height on larger screens where we have more space
+  @media (min-width: 1024px) and (min-height: 800px) {
+    min-height: 100vh;
+  }
 
   &__container {
     max-width: 80rem;
@@ -61,15 +66,11 @@
   &__grid {
     display: grid;
     gap: $services-grid-gap;
-    max-height: calc(100vh - 12rem);
-    overflow: hidden;
 
     // Mobile: 1 card per row (320px - 767px)
     @media (max-width: 767px) {
       grid-template-columns: 1fr;
       gap: $services-grid-gap-mobile;
-      max-height: none;
-      overflow: visible;
     }
 
     // Tablet Portrait: 2 cards per row (768px - 1023px)
@@ -112,17 +113,22 @@
       box-shadow: $shadow-card-hover;
     }
 
-    // Responsive card heights
+    // Responsive card heights - more flexible approach
     @media (min-width: 768px) {
-      height: 280px; // Fixed height for consistent rows
+      min-height: 280px; // Use min-height instead of fixed height
     }
 
     @media (min-width: 1024px) {
-      height: 300px;
+      min-height: 300px;
     }
 
     @media (min-width: 1280px) {
-      height: 320px;
+      min-height: 320px;
+    }
+
+    // Ensure cards don't get too tall on large screens
+    @media (min-width: 1920px) {
+      max-height: 400px;
     }
 
     &--primary {

@@ -1,4 +1,5 @@
 import { Award } from 'lucide-react';
+import { getTexts } from '../../config/texts';
 import type { Certification } from '../../data/Certification';
 
 interface CertificationsSectionProps {
@@ -7,42 +8,46 @@ interface CertificationsSectionProps {
   certifications?: Certification[];
 }
 
-export default function CertificationsSection({
-  title = "Certifications & Achievements",
-  subtitle = "My professional qualifications and continuous learning",
-  certifications = [
-    {
-      name: "Practical Prompt Engineering Masterclass: Hands-On Learning",
-      issuer: "Udemy Lecture - Asif Farooqi, Abdullah Dar",
-      year: "2025",
-      icon: ""
-    },
-    {
-      name: "Understanding Typescript",
-      issuer: "Udemy Lecture - Maximilian Schwarzmüller",
-      year: "2025",
-      icon: ""
-    },
-    {
-      name: "Angular Step by Step",
-      issuer: "Udemy Lecture - Shivprasad Koirala",
-      year: "2020",
-      icon: ""
-    },
-    {
-      name: "Angular and Typescript",
-      issuer: "LinkedIn TestDome",
-      year: "2020",
-      icon: ""
-    },
-    {
-      name: "Bachelor of Science in Computer Science",
-      issuer: "TU Darmstadt",
-      year: "2015",
-      icon: ""
-    }
-  ]
-}: CertificationsSectionProps) {
+export default function CertificationsSection(props: CertificationsSectionProps = {}) {
+  const texts = getTexts().certifications;
+
+  // Use centralized texts as defaults, allow props to override  
+  const {
+    title = texts.title,
+    subtitle = texts.subtitle,
+    certifications = [
+      {
+        name: "Practical Prompt Engineering Masterclass: Hands-On Learning",
+        issuer: "Udemy Lecture - Asif Farooqi, Abdullah Dar",
+        year: "2025",
+        icon: ""
+      },
+      {
+        name: "Understanding Typescript",
+        issuer: "Udemy Lecture - Maximilian Schwarzmüller",
+        year: "2025",
+        icon: ""
+      },
+      {
+        name: "Angular Step by Step",
+        issuer: "Udemy Lecture - Shivprasad Koirala",
+        year: "2020",
+        icon: ""
+      },
+      {
+        name: "Angular and Typescript",
+        issuer: "LinkedIn TestDome",
+        year: "2020",
+        icon: ""
+      },
+      {
+        name: "Bachelor of Science in Computer Science",
+        issuer: "TU Darmstadt",
+        year: "2015",
+        icon: ""
+      }
+    ]
+  } = props;
   // Sort certifications by year in descending order (newest first)
   const sortedCertifications = [...certifications].sort((a, b) => {
     return parseInt(b.year) - parseInt(a.year);

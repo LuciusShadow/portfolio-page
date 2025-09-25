@@ -46,6 +46,12 @@ export default function ContactSection(props: ContactSectionProps = {}) {
     window.location.href = `mailto:info@sascha-bach.de?subject=${subject}&body=${body}`;
   };
 
+  // Replace the hardcoded email with obfuscated construction
+  const getEmailAddress = () => {
+    const parts = ['freelancer', 'sascha-bach', 'de'];
+    return parts[0] + '@' + parts[1] + '.' + parts[2];
+  };
+
   return (
     <section id="contact" className="contact-section">
       <div className="contact-section__container">
@@ -75,9 +81,10 @@ export default function ContactSection(props: ContactSectionProps = {}) {
 
             <button
               onClick={() => {
+                const email = getEmailAddress();
                 const subject = encodeURIComponent("Portfolio Inquiry - Let's discuss your project");
                 const body = encodeURIComponent("Hello Sascha,\n\nI visited your portfolio and would like to discuss a potential project or collaboration.\n\nBest regards,");
-                window.location.href = `mailto:freelancer@sascha-bach.de?subject=${subject}&body=${body}`;
+                window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
               }}
               className="contact-section__email-button"
               type="button"

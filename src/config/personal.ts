@@ -1,47 +1,43 @@
 export const personalConfig = {
   // Basic Information
-  name: "Sascha Bach",
-  title: "Freelance Software Developer",
-  
+  name: 'Sascha Bach',
+  title: 'Freelance Software Developer',
+
   // Contact Information
   email: {
-    user: "freelancer",
-    domain: "sascha-bach.de",
-    full: "freelancer@sascha-bach.de"
+    user: 'freelancer',
+    domain: 'sascha-bach.de',
+    full: 'freelancer [at] sascha-bach.de',
   },
-  
+
   // Social Links
   social: {
     github: {
-      url: "https://github.com/LuciusShadow",
-      username: "LuciusShadow"
+      url: 'https://github.com/LuciusShadow',
+      username: 'LuciusShadow',
     },
     linkedin: {
-      url: "https://www.linkedin.com/in/saschabach/",
-      username: "saschabach"
-    }
+      url: 'https://www.linkedin.com/in/saschabach/',
+      username: 'saschabach',
+    },
   },
-  
+
   // Project Repository
   projects: {
-    portfolio: "https://github.com/LuciusShadow/portfolio-page",
-    ergoVR: "https://github.com/LuciusShadow/ErgoVR"
+    portfolio: 'https://github.com/LuciusShadow/portfolio-page',
+    ergoVR: 'https://github.com/LuciusShadow/ErgoVR',
   },
-  
+
   // Professional Details
-  location: "Germany",
-  timezone: "CET/CEST",
-  
-  // Branding
-  brand: {
-    tagline: "Building digital solutions with passion and precision",
-    description: "Freelance software developer specializing in modern web technologies and user experience."
-  }
+  location: 'Germany',
+  timezone: 'CET/CEST',
 } as const;
 
 // Helper functions
 export const getObfuscatedEmail = () => {
-  return personalConfig.email.full.replace('@', ' [at] ').replace('.', ' [dot] ');
+  return personalConfig.email.full
+    .replace('@', ' [at] ')
+    .replace('.', ' [dot] ');
 };
 
 export const createEmailLink = () => {

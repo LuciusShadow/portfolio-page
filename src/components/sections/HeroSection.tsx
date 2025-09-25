@@ -2,6 +2,7 @@ import { Download } from 'lucide-react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import type { StatItem } from '../../data/StatItem';
 import { scrollToProjects } from '../../utils/scrollUtils';
+import { getTexts } from '../../config/texts';
 
 interface HeroSectionProps {
   title?: string;
@@ -11,18 +12,17 @@ interface HeroSectionProps {
   statItems?: StatItem[];
 }
 
-export default function HeroSection({
-  title = "Web-Developer",
-  description = "Creating responsive, cross-browser compatible web applications with Angular, React, and modern web technologies",
-  primaryButtonText = "View my work",
-  secondaryButtonText = "Download Resume",
-  statItems = [
-    { label: "Years of Experience", value: "10+" },
-    { label: "Responsive Design", value: "100%" },
-    { label: "Technologies Used", value: "10+" },
-    { label: "Frameworks", value: "3+" },
-  ]
-}: HeroSectionProps) {
+export default function HeroSection(props: HeroSectionProps = {}) {
+  const texts = getTexts().hero;
+
+  // Use centralized texts as defaults, allow props to override
+  const {
+    title = texts.title,
+    description = texts.description,
+    primaryButtonText = texts.primaryButtonText,
+    secondaryButtonText = texts.secondaryButtonText,
+    statItems = texts.statItems,
+  } = props;
   const location = useLocation();
   const navigate = useNavigate();
 

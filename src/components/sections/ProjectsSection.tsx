@@ -13,52 +13,51 @@ interface ProjectsSectionProps {
   projects?: Project[];
 }
 
-export default function ProjectsSection({
-  title,
-  subtitle,
-  projects = [
-    {
-      id: 1,
-      title: "Portfolio Website",
-      description: "A personal portfolio website to showcase my skills, projects, and experience.",
-      image: portfolioImage,
-      technologies: ["React", "TypeScript", "SCSS", "Vercel", "Github Copilot"],
-      github: personalConfig.projects.portfolio,
-      live: ""
-    },
-    {
-      id: 2,
-      title: "ErgoVR",
-      description: "A virtual reality application for analysis of motion sickness in VR environments from 2015.",
-      image: ergoVRImage,
-      technologies: ["Unity3D", "C#", "Oculus SDK"],
-      github: personalConfig.projects.ergoVR
-    },
-    {
-      id: 3,
-      title: "Icarace",
-      description: "Participated in the development of a web-platform for a fitness racing game for Icaros GmbH until 2018.",
-      image: icaraceImage,
-      technologies: ["Angular 4", "Typescript", "HTML", "CSS"],
-      github: personalConfig.projects.ergoVR
-    }
-  ]
-}: ProjectsSectionProps) {
-  const texts = getTexts();
+export default function ProjectsSection(props: ProjectsSectionProps = {}) {
+  const texts = getTexts().projects;
 
-  // Use texts from centralized config with fallbacks
-  const sectionTitle = title || texts.projects.title;
-  const sectionSubtitle = subtitle || texts.projects.subtitle;
+  // Use centralized texts as defaults, allow props to override
+  const {
+    title = texts.title,
+    subtitle = texts.subtitle,
+    projects = [
+      {
+        id: 1,
+        title: "Portfolio Website",
+        description: "A personal portfolio website to showcase my skills, projects, and experience.",
+        image: portfolioImage,
+        technologies: ["React", "TypeScript", "SCSS", "Vercel", "Github Copilot"],
+        github: personalConfig.projects.portfolio,
+        live: ""
+      },
+      {
+        id: 2,
+        title: "ErgoVR",
+        description: "A virtual reality application for analysis of motion sickness in VR environments from 2015.",
+        image: ergoVRImage,
+        technologies: ["Unity3D", "C#", "Oculus SDK"],
+        github: personalConfig.projects.ergoVR
+      },
+      {
+        id: 3,
+        title: "Icarace",
+        description: "Participated in the development of a web-platform for a fitness racing game for Icaros GmbH until 2018.",
+        image: icaraceImage,
+        technologies: ["Angular 4", "Typescript", "HTML", "CSS"],
+        github: personalConfig.projects.ergoVR
+      }
+    ]
+  } = props;
   return (
     <section id="projects" className="projects-section">
       <div className="projects-section__container">
         {/* Section Header */}
         <div className="projects-section__header">
           <h2 className="projects-section__title">
-            {sectionTitle}
+            {title}
           </h2>
           <p className="projects-section__subtitle">
-            {sectionSubtitle}
+            {subtitle}
           </p>
         </div>
 
@@ -82,7 +81,7 @@ export default function ProjectsSection({
                         className="projects-section__action-button projects-section__action-button--secondary"
                       >
                         <Github className="projects-section__action-icon" />
-                        {texts.projects.codeButtonText}
+                        {texts.codeButtonText}
                       </a>
                     )}
                     {project.live && (
@@ -93,7 +92,7 @@ export default function ProjectsSection({
                         className="projects-section__action-button projects-section__action-button--primary"
                       >
                         <ExternalLink className="projects-section__action-icon" />
-                        {texts.projects.liveButtonText}
+                        {texts.liveButtonText}
                       </a>
                     )}
                   </div>

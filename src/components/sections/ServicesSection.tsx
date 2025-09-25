@@ -1,4 +1,5 @@
-import { Code, Laptop, Lightbulb, Palette, Rocket, ShieldCheck } from "lucide-react";
+import { Eye, Lightbulb, Palette, Laptop, Rocket, ShieldCheck } from 'lucide-react';
+import { getTexts } from '../../config/texts';
 import type { Service } from '../../data/Service';
 
 interface ServicesSectionProps {
@@ -7,48 +8,52 @@ interface ServicesSectionProps {
   services?: Service[];
 }
 
-export default function ServicesSection({
-  title = "Services I Offer",
-  subtitle = "Solutions tailored to your needs",
-  services = [
-    {
-      icon: Code,
-      title: "Modern Framework Development",
-      description: "Building scalable, maintainable web applications using Angular and React frameworks with TypeScript and modern development practices.",
-      colorClass: "primary"
-    },
-    {
-      icon: Palette,
-      title: "Responsive Web Design", 
-      description: "Creating mobile-first, responsive interfaces that provide optimal viewing experiences across all devices and screen sizes.",
-      colorClass: "secondary"
-    },
-    {
-      icon: ShieldCheck,
-      title: "Cross-Browser Testing",
-      description: "Ensuring consistent functionality and appearance across all major browsers including Chrome, Firefox, Safari, and Edge.",
-      colorClass: "tertiary"
-    },
-    {
-      icon: Laptop,
-      title: "Frontend Architecture",
-      description: "Designing and implementing scalable frontend architectures with component-based development and modern tooling.",
-      colorClass: "quaternary"
-    },
-    {
-      icon: Lightbulb,
-      title: "Performance Optimization",
-      description: "Optimizing web applications for speed and efficiency through code splitting, lazy loading, and performance best practices.",
-      colorClass: "quinary"
-    },
-    {
-      icon: Rocket,
-      title: "Testing & Quality Assurance",
-      description: "Implementing comprehensive testing strategies using Cypress for end-to-end testing and ensuring code quality.",
-      colorClass: "senary"
-    }
-  ]
-}: ServicesSectionProps) {
+export default function ServicesSection(props: ServicesSectionProps = {}) {
+  const texts = getTexts().services;
+
+  // Use centralized texts as defaults, allow props to override  
+  const {
+    title = texts.title,
+    subtitle = texts.subtitle,
+    services = [
+      {
+        icon: Eye,
+        title: "Web Accessiblity",
+        description: "Building inclusive and accessible web applications by implementing Web Content Accessibility Guidelines, semantic HTML, and support for assistive technologies.",
+        colorClass: "primary"
+      },
+      {
+        icon: Palette,
+        title: "Responsive Web Design",
+        description: "Creating mobile-first, responsive interfaces that provide optimal viewing experiences across all devices and screen sizes.",
+        colorClass: "secondary"
+      },
+      {
+        icon: ShieldCheck,
+        title: "Cross-Browser Testing",
+        description: "Ensuring consistent functionality and appearance across all major browsers including Chrome, Firefox, Safari, and Edge.",
+        colorClass: "tertiary"
+      },
+      {
+        icon: Laptop,
+        title: "Frontend Architecture",
+        description: "Designing and implementing scalable frontend architectures with component-based development and modern tooling.",
+        colorClass: "quaternary"
+      },
+      {
+        icon: Lightbulb,
+        title: "Performance Optimization",
+        description: "Optimizing web applications for speed and efficiency through code splitting, lazy loading, and performance best practices.",
+        colorClass: "quinary"
+      },
+      {
+        icon: Rocket,
+        title: "Testing & Quality Assurance",
+        description: "Implementing comprehensive testing strategies using Cypress for end-to-end testing and ensuring code quality.",
+        colorClass: "senary"
+      }
+    ]
+  } = props;
   return (
     <section id="services" className="services-section">
       <div className="services-section__container">

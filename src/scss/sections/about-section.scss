@@ -156,7 +156,7 @@
     gap: 2rem;
 
     @include globals.desktop-only {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 
@@ -184,6 +184,10 @@
     &--tertiary {
       background: var(--feature-card-tertiary-bg);
     }
+
+    &--quaternary {
+      background: var(--feature-card-quaternary-bg);
+    }
   }
 
   &__feature-header {
@@ -206,6 +210,10 @@
     &--tertiary {
       color: var(--feature-icon-tertiary);
     }
+
+    &--quaternary {
+      color: var(--feature-icon-quaternary);
+    }
   }
 
   &__feature-title {
@@ -223,6 +231,10 @@
 
     &--tertiary {
       color: var(--feature-title-tertiary);
+    }
+
+    &--quaternary {
+      color: var(--feature-title-quaternary);
     }
   }
 
@@ -243,6 +255,10 @@
 
     &--tertiary {
       color: var(--feature-description-tertiary);
+    }
+
+    &--quaternary {
+      color: var(--feature-description-quaternary);
     }
   }
 }
