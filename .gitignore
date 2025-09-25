@@ -21,3 +21,5 @@ pnpm-debug.log*
 .idea/
 .DS_Store
 .vercel
+.env.example
+deploy.js
