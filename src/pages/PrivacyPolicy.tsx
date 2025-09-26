@@ -1,7 +1,25 @@
+import { useEffect } from 'react';
 import { getTexts } from '../config/texts';
 
 export default function PrivacyPolicy() {
   const texts = getTexts().privacyPolicy;
+
+  useEffect(() => {
+    // Prevent indexing of this page
+    const metaRobots = document.createElement('meta');
+    metaRobots.name = 'robots';
+    metaRobots.content = 'noindex, nofollow';
+    document.head.appendChild(metaRobots);
+
+    // Cleanup on unmount
+    return () => {
+      const existingMeta = document.querySelector('meta[name="robots"]');
+      if (existingMeta) {
+        document.head.removeChild(existingMeta);
+      }
+    };
+  }, []);
+
   return (
     <div className="privacy-policy" style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem' }}>
       <h1>{texts.title}</h1>

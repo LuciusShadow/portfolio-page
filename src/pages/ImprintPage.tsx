@@ -1,8 +1,26 @@
+import { useEffect } from 'react';
 import { personalConfig } from '../config/personal';
 import { getTexts } from '../config/texts';
 
 export default function ImprintPage() {
   const texts = getTexts().imprint;
+
+  useEffect(() => {
+    // Prevent indexing of this page
+    const metaRobots = document.createElement('meta');
+    metaRobots.name = 'robots';
+    metaRobots.content = 'noindex, nofollow';
+    document.head.appendChild(metaRobots);
+
+    // Cleanup on unmount
+    return () => {
+      const existingMeta = document.querySelector('meta[name="robots"]');
+      if (existingMeta) {
+        document.head.removeChild(existingMeta);
+      }
+    };
+  }, []);
+
   return (
     <section className="imprint-page">
       <div className="imprint-page__container">
