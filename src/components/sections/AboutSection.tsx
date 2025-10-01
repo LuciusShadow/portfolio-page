@@ -8,7 +8,7 @@ interface AboutSectionProps {
   name?: string;
   title?: string;
   subtitle?: string;
-  bio?: string;
+  bio?: string[];
   profileImage?: string;
   skillBadges?: SkillBadge[];
   featureCards?: Service[];
@@ -86,9 +86,11 @@ export default function AboutSection(props: AboutSectionProps = {}) {
               <h3 className="about-section__greeting">
                 Hi, I'm {name}!
               </h3>
-              <p className="about-section__bio-text">
-                {bio}
-              </p>
+              <div className="about-section__bio-text">
+                {bio.map((paragraph, index) => (
+                  <p key={index}>{paragraph}</p>
+                ))}
+              </div>
             </div>
 
             <div className="about-section__skill-badges">

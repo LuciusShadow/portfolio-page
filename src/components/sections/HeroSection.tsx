@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import type { StatItem } from '../../data/StatItem';
 import { scrollToProjects } from '../../utils/scrollUtils';
 import { getTexts } from '../../config/texts';
+import resumePDF from '../../assets/CV_Sascha_Bach.pdf';
 
 interface HeroSectionProps {
   title?: string;
@@ -31,8 +32,31 @@ export default function HeroSection(props: HeroSectionProps = {}) {
   };
 
   const handleDownloadResume = () => {
-    // Add your resume download logic here
-    console.log('Download resume clicked');
+    try {
+      // Create a temporary anchor element
+      const link = document.createElement('a');
+      link.href = resumePDF;
+      link.download = 'CV_Sascha_Bach.pdf'; // Specify the filename for download
+      link.target = '_blank'; // Optional: open in new tab as fallback
+
+      // Temporarily add to DOM and trigger click
+      document.body.appendChild(link);
+      link.click();
+
+      // Clean up
+      document.body.removeChild(link);
+
+      console.log('✅ Resume download initiated');
+    } catch (error) {
+      console.error('❌ Error downloading resume:', error);
+
+      // Fallback: open in new tab if download fails
+      try {
+        window.open(resumePDF, '_blank');
+      } catch (fallbackError) {
+        console.error('❌ Fallback method also failed:', fallbackError);
+      }
+    }
   };
   return (
     <section className="hero-section">
