@@ -10,6 +10,7 @@ interface HeroSectionProps {
   description?: string;
   primaryButtonText?: string;
   secondaryButtonText?: string;
+  tertiaryButtonText?: string;
   statItems?: StatItem[];
 }
 
@@ -22,6 +23,7 @@ export default function HeroSection(props: HeroSectionProps = {}) {
     description = texts.description,
     primaryButtonText = texts.primaryButtonText,
     secondaryButtonText = texts.secondaryButtonText,
+    tertiaryButtonText = texts.tertiaryButtonText,
     statItems = texts.statItems,
   } = props;
   const location = useLocation();
@@ -58,6 +60,17 @@ export default function HeroSection(props: HeroSectionProps = {}) {
       }
     }
   };
+
+  const handleGetInTouch = () => {
+    const contactSection = document.querySelector('.contact-section');
+    if (contactSection) {
+      contactSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   return (
     <section className="hero-section">
       <div className="hero-section__container">
@@ -78,6 +91,12 @@ export default function HeroSection(props: HeroSectionProps = {}) {
           >
             <Download className="hero-section__button-icon" />
             {secondaryButtonText}
+          </button>
+          <button
+            className="hero-section__button hero-section__button--tertiary"
+            onClick={handleGetInTouch}
+          >
+            {tertiaryButtonText}
           </button>
         </div>
         <div className="hero-section__stats">

@@ -28,6 +28,7 @@ export interface TextConfig {
     description: string;
     primaryButtonText: string;
     secondaryButtonText: string;
+    tertiaryButtonText: string;
     statItems: Array<{
       label: string;
       value: string;
@@ -215,11 +216,12 @@ export const defaultTexts: TextConfig = {
   },
 
   hero: {
-    title: 'Building Digital Experiences',
+    title: 'Everyone deserves a smooth online experience',
     description:
-      'Freelance software developer specializing in implementing the European Accessibility Act, modern web technologies and user experience.',
+      'I help you build accessible websites that make every visitor feel included, in line with the Accessibility Act.',
     primaryButtonText: 'View Projects',
-    secondaryButtonText: 'Get in Touch',
+    secondaryButtonText: 'Download CV',
+    tertiaryButtonText: 'Get in Touch',
     statItems: [
       { label: 'Years of Experience', value: '10+' },
       { label: 'Responsive Design', value: '100%' },

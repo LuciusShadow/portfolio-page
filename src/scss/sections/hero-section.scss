@@ -54,7 +54,8 @@
   &__button {
     @extend %hero-button-base;
 
-    &--primary {
+    &--primary,
+    &--tertiary {
       background: var(--gradient-primary);
       color: var(--color-background);
 
