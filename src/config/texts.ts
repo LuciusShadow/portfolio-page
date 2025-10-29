@@ -256,7 +256,7 @@ export const defaultTexts: TextConfig = {
 
   projects: {
     title: 'Featured Projects',
-    subtitle: 'A showcase of my recent work and personal projects',
+    subtitle: 'A showcase of my work and personal projects',
     codeButtonText: 'Code',
     liveButtonText: 'Live',
   },

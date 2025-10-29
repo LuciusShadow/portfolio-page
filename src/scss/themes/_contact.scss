@@ -1,38 +1,116 @@
-// Contact section theme definitions
+// Base color variables
+$indigo-primary: #4f46e5;
+$indigo-secondary: #3c0d9c;
+$indigo-light: #6366f1;
+$indigo-lighter: #a5b4fc;
+
+$purple-primary: #a855f7;
+$purple-secondary: #7c3aed;
+
+$blue-primary: #2563eb;
+$blue-secondary: #3730a3;
+$blue-light: #3b82f6;
+$blue-lighter: #60a5fa;
+$blue-dark: #1d4ed8;
+$blue-darker: #312e81;
+
+$orange-primary: #f59e0b;
+$orange-secondary: #d97706;
+$orange-light: #fbbf24;
+$orange-lighter: #fed7aa;
+$orange-lightest: #fef7ed;
+$orange-dark: #92400e;
+$orange-darker: #78350f;
+$orange-darkest: #451a03;
+
+$amber-primary: #fef3c7;
+$amber-secondary: #a16207;
+$amber-light: #ca8a04;
+
+$green-primary: #059669;
+$green-secondary: #047857;
+$green-light: #10b981;
+$green-lighter: #6ee7b7;
+$green-lightest: #d1fae5;
+
+$red-primary: #dc2626;
+$red-secondary: #b91c1c;
+$red-light: #f87171;
+$red-lighter: #fca5a5;
+$red-lightest: #fee2e2;
+
+$white: #ffffff;
+$black: #000000;
+
+// Background colors
+$contact-bg-light-start: #e0e7ef;
+$contact-bg-light-end: #91c5e0;
+
+// Alpha values
+$alpha-low: 0.15;
+$alpha-border-light: 0.2;
+$alpha-border-medium: 0.3;
+$alpha-border-heavy: 0.4;
+
+// Shadow values
+$shadow-light: 0 10px 15px -3px rgba($black, 0.1);
+$shadow-dark: 0 10px 15px -3px rgba($black, 0.3);
+
+// WCAG AAA compliant text colors
+$text-aaa-light: #111827; // Near black for AAA contrast on light backgrounds
+$text-aaa-dark: #ffffff; // Pure white for AAA contrast on dark backgrounds
 
 $contact-light-theme: (
   // Contact section background (light indigo/purple tones)
-  'contact-background': linear-gradient(135deg, #e0e7ef 0%, #91c5e0 100%),
+  'contact-background':
+    linear-gradient(
+      135deg,
+      $contact-bg-light-start 0%,
+      $contact-bg-light-end 100%
+    ),
   // Contact title gradient (indigo to purple)
-  'gradient-contact-title': linear-gradient(to right, #4f46e5, #7c3aed),
+  'gradient-contact-title':
+    linear-gradient(to right, $indigo-primary, $indigo-secondary),
   // Primary color for icons (indigo)
-  'color-contact-primary': #4f46e5,
+  'color-contact-primary': $indigo-primary,
 
   // Form styling - warm cream/peach to complement cool blue background
-  'contact-form-bg': linear-gradient(135deg, #fef7ed 0%, #fed7aa 100%),
-  'contact-form-border': rgba(251, 146, 60, 0.2),
-  'contact-form-shadow': 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+  'contact-form-bg':
+    linear-gradient(135deg, $orange-lightest 0%, $orange-lighter 100%),
+  'contact-form-border': rgba($orange-primary, $alpha-border-light),
+  'contact-form-shadow': $shadow-light,
+
   // Input styling - warm background to complement form
-  'contact-input-bg': #fef3c7,
-  'contact-input-border': rgba(251, 146, 60, 0.3),
-  'contact-input-focus-ring': rgba(251, 146, 60, 0.2),
+  'contact-input-bg': $amber-primary,
+  'contact-input-border': rgba($orange-primary, $alpha-border-medium),
+  'contact-input-focus-ring': rgba($orange-primary, $alpha-border-light),
+  'contact-input-text': $text-aaa-light,
+  // Added for AAA compliance
+  'contact-input-placeholder': #484c56,
+
+  // Added for form accessibility
   // Button styling - improved contrast and readability
-  'contact-button-bg': linear-gradient(135deg, #2563eb 0%, #3730a3 100%),
-  'contact-button-text': #ffffff,
-  'contact-button-hover-bg': linear-gradient(135deg, #1d4ed8 0%, #312e81 100%),
-  // Social button styling - warm peach background to complement section
-  'contact-social-bg': #fed7aa,
-  'contact-social-text': #92400e,
-  'contact-social-border': #f59e0b,
-  'contact-social-hover-bg': #fbbf24,
-  'contact-social-hover-border': #d97706,
+  'contact-button-bg':
+    linear-gradient(135deg, $blue-primary 0%, $blue-secondary 100%),
+  'contact-button-text': $text-aaa-dark,
+  // Changed to ensure AAA contrast
+  'contact-button-hover-bg':
+    linear-gradient(135deg, $blue-dark 0%, $blue-darker 100%),
+  // Social button styling - FIXED for AAA contrast
+  'contact-social-bg': $orange-lighter,
+  'contact-social-text': $text-aaa-light,
+  // Changed from $orange-dark for AAA contrast
+  'contact-social-border': $orange-primary,
+  'contact-social-hover-bg': $orange-light,
+  'contact-social-hover-border': $orange-secondary,
+
   // Status message styling (light theme) - improved readability
-  'contact-status-success-bg': #d1fae5,
-  'contact-status-success-border': #059669,
-  'contact-status-success-text': #047857,
-  'contact-status-error-bg': #fee2e2,
-  'contact-status-error-border': #dc2626,
-  'contact-status-error-text': #b91c1c
+  'contact-status-success-bg': $green-lightest,
+  'contact-status-success-border': $green-primary,
+  'contact-status-success-text': $green-secondary,
+  'contact-status-error-bg': $red-lightest,
+  'contact-status-error-border': $red-primary,
+  'contact-status-error-text': $red-secondary
 );
 
 $contact-dark-theme: (
@@ -40,37 +118,52 @@ $contact-dark-theme: (
   'contact-background':
     linear-gradient(
       135deg,
-      rgba(67, 56, 202, 0.2) 0%,
-      rgba(109, 40, 217, 0.2) 100%
+      rgba($indigo-light, $alpha-border-light) 0%,
+      rgba($purple-primary, $alpha-border-light) 100%
     ),
   // Contact title gradient (brighter indigo to purple for dark mode)
-  'gradient-contact-title': linear-gradient(to right, #6366f1, #a855f7),
+  'gradient-contact-title':
+    linear-gradient(to right, $indigo-light, $purple-primary),
   // Primary color for icons (lighter indigo)
-  'color-contact-primary': #6366f1,
+  'color-contact-primary': $indigo-light,
 
   // Form styling (dark theme) - warm dark tones to complement cool purple/indigo
-  'contact-form-bg': linear-gradient(135deg, #451a03 0%, #78350f 100%),
-  'contact-form-border': rgba(251, 146, 60, 0.3),
-  'contact-form-shadow': 0 10px 15px -3px rgba(0, 0, 0, 0.3),
-  // Input styling (dark theme) - warm dark background
-  'contact-input-bg': #92400e,
-  'contact-input-border': rgba(251, 146, 60, 0.4),
-  'contact-input-focus-ring': rgba(251, 146, 60, 0.3),
+  'contact-form-bg':
+    linear-gradient(135deg, $orange-darkest 0%, $orange-darker 100%),
+  'contact-form-border': rgba($orange-primary, $alpha-border-medium),
+  'contact-form-shadow': $shadow-dark,
+
+  // Input styling (dark theme) - FIXED for AAA contrast
+  'contact-input-bg': #374151,
+  // Changed to neutral dark gray
+  'contact-input-border': rgba($orange-primary, $alpha-border-heavy),
+  'contact-input-focus-ring': rgba($orange-primary, $alpha-border-medium),
+  'contact-input-text': $text-aaa-dark,
+  // White text for AAA contrast
+  'contact-input-placeholder': #9ca3af,
+
+  // Light gray for placeholder
   // Button styling (dark theme) - improved contrast
-  'contact-button-bg': linear-gradient(135deg, #3b82f6 0%, #2563eb 100%),
-  'contact-button-text': #ffffff,
-  'contact-button-hover-bg': linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%),
-  // Social button styling (dark theme) - warm brown/orange tones
-  'contact-social-bg': #a16207,
-  'contact-social-text': #fef3c7,
-  'contact-social-border': #d97706,
-  'contact-social-hover-bg': #ca8a04,
-  'contact-social-hover-border': #f59e0b,
+  'contact-button-bg':
+    linear-gradient(135deg, $blue-light 0%, $blue-primary 100%),
+  'contact-button-text': $text-aaa-dark,
+  'contact-button-hover-bg':
+    linear-gradient(135deg, $blue-lighter 0%, $blue-light 100%),
+  // Social button styling (dark theme) - FIXED for AAA contrast
+  'contact-social-bg': #1f2937,
+  // Changed to neutral dark background
+  'contact-social-text': $text-aaa-dark,
+  // White text for AAA contrast
+  'contact-social-border': $orange-secondary,
+  'contact-social-hover-bg': #374151,
+  // Slightly lighter on hover
+  'contact-social-hover-border': $orange-primary,
+
   // Status message styling (dark theme) - improved readability
-  'contact-status-success-bg': rgba(5, 150, 105, 0.15),
-  'contact-status-success-border': #10b981,
-  'contact-status-success-text': #6ee7b7,
-  'contact-status-error-bg': rgba(239, 68, 68, 0.15),
-  'contact-status-error-border': #f87171,
-  'contact-status-error-text': #fca5a5
+  'contact-status-success-bg': rgba($green-primary, $alpha-low),
+  'contact-status-success-border': $green-light,
+  'contact-status-success-text': $green-lighter,
+  'contact-status-error-bg': rgba($red-light, $alpha-low),
+  'contact-status-error-border': $red-light,
+  'contact-status-error-text': $red-lighter
 );

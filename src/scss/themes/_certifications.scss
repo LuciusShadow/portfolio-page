@@ -1,68 +1,123 @@
-// Certifications section theme definitions
+// Base color variables
+$purple-primary: #9333ea;
+$purple-secondary: #7e22ce;
+$purple-light: #a855f7;
+$purple-lighter: #d8b4fe;
+$purple-lightest: #f3e8ff;
+$purple-dark: #581c87;
+$purple-darker: #4c1d95;
+
+$pink-primary: #ec4899;
+$pink-secondary: #db2777;
+$pink-light: #f472b6;
+$pink-lighter: #fbcfe8;
+$pink-lightest: #fce7f3;
+$pink-dark: #9d174d;
+$pink-darker: #831843;
+
+$gray-50: #fafafa;
+$gray-100: #f5f5f5;
+$gray-800: #1f2937;
+$gray-900: #111827;
+
+$white: #ffffff;
+$black: #000000;
+
+// Background colors
+$cert-bg-light-start: #e0e7ef;
+$cert-bg-light-end: #91c5e0;
+$cert-bg-dark-start: #a78bfa;
+$cert-bg-dark-end: #dc2626;
+
+// Alpha values
+$alpha-overlay-light: 0.02;
+$alpha-overlay-dark: 0.05;
+$alpha-border-light: 0.2;
+$alpha-border-dark: 0.3;
+
+// Shadow values
+$shadow-card-light: 0 10px 15px -3px rgba($black, 0.1);
+$shadow-card-light-hover: 0 20px 25px -5px rgba($black, 0.1);
+$shadow-card-dark: 0 10px 15px -3px rgba($black, 0.3);
+$shadow-card-dark-hover: 0 20px 25px -5px rgba($black, 0.4);
+
+// WCAG AAA compliant text colors
+$text-aaa-light: #111827; // Near black for AAA contrast on light backgrounds
+$text-aaa-dark: #ffffff; // Pure white for AAA contrast on dark backgrounds
 
 $certifications-light-theme: (
   // Certifications section background
-  'certifications-background': linear-gradient(
-      135deg,
-      #e0e7ef 0%,
-      #91c5e0 100%
-    ),
-  'gradient-certifications-title': linear-gradient(to right, #9333ea, #ec4899),
-  'color-certifications-primary': #9333ea,
+  'certifications-background':
+    linear-gradient(135deg, $cert-bg-light-start 0%, $cert-bg-light-end 100%),
+  'gradient-certifications-title':
+    linear-gradient(to right, $purple-primary, $pink-primary),
+  'color-certifications-primary': $purple-primary,
 
   // Card styling
   'certifications-card-background':
-    linear-gradient(135deg, #ffffff 0%, #fafafa 100%),
-  'certifications-card-shadow': 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-  'certifications-card-shadow-hover': 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    linear-gradient(135deg, $white 0%, $gray-50 100%),
+  'certifications-card-shadow': $shadow-card-light,
+  'certifications-card-shadow-hover': $shadow-card-light-hover,
   'certifications-card-overlay':
     linear-gradient(
       135deg,
-      rgba(147, 51, 234, 0.02) 0%,
-      rgba(236, 72, 153, 0.02) 100%
+      rgba($purple-primary, $alpha-overlay-light) 0%,
+      rgba($pink-primary, $alpha-overlay-light) 100%
     ),
-  // Badge styling (purple/pink theme)
-  'certifications-badge-background': linear-gradient(
-      to right,
-      #f3e8ff,
-      #fce7f3
-    ),
-  'certifications-badge-border': rgba(147, 51, 234, 0.2),
-  'color-certifications-badge-text': #7e22ce
+  // Badge styling - FIXED for AAA contrast
+  'certifications-badge-background':
+    linear-gradient(to right, $purple-lightest, $pink-lightest),
+  'certifications-badge-border': rgba($purple-primary, $alpha-border-light),
+  'color-certifications-badge-text': $text-aaa-light,
+
+  // Changed from $purple-secondary for AAA contrast
+  // Text styling for AAA compliance
+  'certifications-card-title': $text-aaa-light,
+  'certifications-card-description': $text-aaa-light,
+  'certifications-card-date': $text-aaa-light,
+  // Medium gray for secondary text
 );
 
 $certifications-dark-theme: (
   // Certifications section background (dark purple/pink gradient)
-  'certifications-background': linear-gradient(
-      135deg,
-      #a78bfa 0%,
-      #dc2626 100%
-    ),
+  'certifications-background':
+    linear-gradient(135deg, $cert-bg-dark-start 0%, $cert-bg-dark-end 100%),
   // Certifications title gradient (brighter purple to pink for dark mode)
-  'gradient-certifications-title': linear-gradient(to right, #a855f7, #f472b6),
+  'gradient-certifications-title':
+    linear-gradient(to right, $purple-light, $pink-light),
   // Primary color for icons (lighter purple)
-  'color-certifications-primary': #a855f7,
+  'color-certifications-primary': $purple-light,
 
   // Card styling (dark theme)
   'certifications-card-background':
-    linear-gradient(135deg, #111827 0%, #1f2937 100%),
-  'certifications-card-shadow': 0 10px 15px -3px rgba(0, 0, 0, 0.3),
-  'certifications-card-shadow-hover': 0 20px 25px -5px rgba(0, 0, 0, 0.4),
+    linear-gradient(135deg, $gray-900 0%, $gray-800 100%),
+  'certifications-card-shadow': $shadow-card-dark,
+  'certifications-card-shadow-hover': $shadow-card-dark-hover,
   'certifications-card-overlay':
     linear-gradient(
       135deg,
-      rgba(168, 85, 247, 0.05) 0%,
-      rgba(244, 114, 182, 0.05) 100%
+      rgba($purple-light, $alpha-overlay-dark) 0%,
+      rgba($pink-light, $alpha-overlay-dark) 100%
     ),
-  // Badge styling (dark theme with purple/pink)
+  // Badge styling (dark theme) - FIXED for AAA contrast
   'certifications-badge-background':
-    linear-gradient(to right, rgba(88, 28, 135, 0.3), rgba(157, 23, 77, 0.3)),
-  'certifications-badge-border': rgba(168, 85, 247, 0.3),
-  'color-certifications-badge-text': #d8b4fe
+    linear-gradient(
+      to right,
+      rgba($purple-dark, $alpha-border-dark),
+      rgba($pink-dark, $alpha-border-dark)
+    ),
+  'certifications-badge-border': rgba($purple-light, $alpha-border-dark),
+  'color-certifications-badge-text': $text-aaa-dark,
+
+  // Changed from $purple-lighter for AAA contrast
+  // Text styling for AAA compliance
+  'certifications-card-title': $text-aaa-dark,
+  'certifications-card-description': $text-aaa-dark,
+  'certifications-card-date': #d1d5db,
+  // Light gray for secondary text in dark mode
 );
 
-// Add to your certifications section SCSS file
-
+// Card layout styling
 .certifications-section__card {
   display: flex;
   flex-direction: column;

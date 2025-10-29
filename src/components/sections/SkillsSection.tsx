@@ -46,9 +46,9 @@ export default function SkillsSection(props: SkillsSectionProps = {}) {
       {
         title: "Styling & Design",
         skills: [
+          { skill: "Accessibility (a11y) Standards", value: 90 },
           { skill: "SCSS/Sass", value: 95 },
           { skill: "CSS3", value: 90 },
-          { skill: "Accessibility (a11y) Standards", value: 45 },
           { skill: "Bootstrap", value: 65 }
         ]
       },
@@ -124,7 +124,7 @@ export default function SkillsSection(props: SkillsSectionProps = {}) {
                           <span className="skills-section__skill-level">
                             {displayLevel}
                           </span>
-                          <span className="skills-section__skill-percentage">
+                          <span className="skills-section__skill-percentage" aria-hidden="true">
                             {skillItem.value}%
                           </span>
                         </div>

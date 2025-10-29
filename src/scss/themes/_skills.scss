@@ -1,158 +1,296 @@
+// Base color variables
+$blue-primary: #3b82f6;
+$blue-secondary: #1d4ed8;
+$blue-tertiary: #18338c;
+$blue-light: #60a5fa;
+
+$green-primary: #10b981;
+$green-secondary: #047857;
+$green-tertiary: #065f46;
+$green-light: #34d399;
+
+$purple-primary: #8b5cf6;
+$purple-secondary: #7c3aed;
+$purple-tertiary: #3c0d9c;
+$purple-light: #a78bfa;
+
+$teal-primary: #06b6d4;
+$teal-secondary: #0891b2;
+$teal-tertiary: #0e7490;
+$teal-light: #22d3ee;
+
+$orange-primary: #f59e0b;
+$orange-secondary: #d97706;
+$orange-tertiary: #b45309;
+$orange-light: #fbbf24;
+
+$indigo-primary: #6366f1;
+$indigo-secondary: #4f46e5;
+$indigo-tertiary: #4338ca;
+$indigo-light: #818cf8;
+
+// Neutral colors
+$slate-50: #f8fafc;
+$slate-100: #f1f5f9;
+$slate-200: #e2e8f0;
+$slate-300: #cbd5e1;
+$slate-400: #94a3b8;
+$slate-500: #64748b;
+$slate-600: #475569;
+$slate-700: #334155;
+$slate-800: #1e293b;
+$slate-900: #0f172a;
+
+// Alpha values
+$alpha-light: 0.1;
+$alpha-medium: 0.2;
+$alpha-heavy: 0.3;
+$alpha-bg: 0.7;
+$alpha-bg-card: 0.8;
+$alpha-bg-card-alt: 0.9;
+$alpha-bg-card-strong: 0.95;
+
 $skills-light-theme: (
   // Skills section colors
   skills-background: linear-gradient(135deg, #e0e7ef 0%, #bae6fd 100%),
   skills-background-pattern:
-    radial-gradient(circle at 25% 25%, #3b82f6, transparent 50%),
-  gradient-skills-title: linear-gradient(90deg, #1e40af, #3b82f6, #10b981),
-  skills-category-bg: rgba(255, 255, 255, 0.7),
-  skills-category-border: rgba(148, 163, 184, 0.2),
-  skills-category-title-color: #1e293b,
-  skills-skill-name-color: #334155,
-  skills-skill-level-color: #64748b,
-  skills-skill-percentage-color: #475569,
-  skills-progress-bg: rgba(226, 232, 240, 0.8),
-  // Card 1 - Web Frameworks (Blue theme - matching hero)
+    radial-gradient(circle at 25% 25%, $blue-primary, transparent 50%),
+  gradient-skills-title:
+    linear-gradient(90deg, $blue-tertiary, $blue-primary, $green-primary),
+  skills-category-bg: rgba($slate-50, $alpha-bg),
+  skills-category-border: rgba($slate-400, $alpha-medium),
+  skills-category-title-color: $slate-800,
+  skills-skill-name-color: $slate-700,
+  skills-skill-level-color: $slate-900,
+  skills-skill-percentage-color: $slate-600,
+  skills-progress-bg: rgba($slate-200, $alpha-bg-card),
+  // Card 1 - Web Frameworks (Blue theme)
   skills-category-bg-primary:
     linear-gradient(
       135deg,
-      rgba(239, 246, 255, 0.9),
-      rgba(219, 234, 254, 0.95)
+      rgba(239, 246, 255, $alpha-bg-card-alt),
+      rgba(219, 234, 254, $alpha-bg-card-strong)
     ),
-  skills-category-border-primary: rgba(59, 130, 246, 0.2),
+  skills-category-border-primary: rgba($blue-primary, $alpha-medium),
   skills-gradient-primary:
-    linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(37, 99, 235, 0.05)),
-  skills-accent-primary: #3b82f6,
+    linear-gradient(
+      135deg,
+      rgba($blue-primary, $alpha-light),
+      rgba($blue-secondary, 0.05)
+    ),
+  skills-accent-primary: $blue-primary,
 
-  // Card 2 - Styling & Design (Green theme - matching about)
+  // Card 2 - Styling & Design (Green theme)
   skills-category-bg-secondary:
     linear-gradient(
       135deg,
-      rgba(236, 253, 245, 0.9),
-      rgba(209, 250, 229, 0.95)
+      rgba(236, 253, 245, $alpha-bg-card-alt),
+      rgba(209, 250, 229, $alpha-bg-card-strong)
     ),
-  skills-category-border-secondary: rgba(16, 185, 129, 0.2),
+  skills-category-border-secondary: rgba($green-primary, $alpha-medium),
   skills-gradient-secondary:
-    linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.05)),
-  skills-accent-secondary: #10b981,
+    linear-gradient(
+      135deg,
+      rgba($green-primary, $alpha-light),
+      rgba($green-secondary, 0.05)
+    ),
+  skills-accent-secondary: $green-primary,
 
   // Card 3 - Backend Development (Purple theme)
   skills-category-bg-tertiary:
     linear-gradient(
       135deg,
-      rgba(245, 243, 255, 0.9),
-      rgba(237, 233, 254, 0.95)
+      rgba(245, 243, 255, $alpha-bg-card-alt),
+      rgba(237, 233, 254, $alpha-bg-card-strong)
     ),
-  skills-category-border-tertiary: rgba(139, 92, 246, 0.2),
+  skills-category-border-tertiary: rgba($purple-primary, $alpha-medium),
   skills-gradient-tertiary:
-    linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(124, 58, 237, 0.05)),
-  skills-accent-tertiary: #8b5cf6,
+    linear-gradient(
+      135deg,
+      rgba($purple-primary, $alpha-light),
+      rgba($purple-secondary, 0.05)
+    ),
+  skills-accent-tertiary: $purple-primary,
 
   // Card 4 - Development Tools (Teal theme)
   skills-category-bg-quaternary:
     linear-gradient(
       135deg,
-      rgba(240, 253, 250, 0.9),
-      rgba(204, 251, 241, 0.95)
+      rgba(240, 253, 250, $alpha-bg-card-alt),
+      rgba(204, 251, 241, $alpha-bg-card-strong)
     ),
-  skills-category-border-quaternary: rgba(6, 182, 212, 0.2),
+  skills-category-border-quaternary: rgba($teal-primary, $alpha-medium),
   skills-gradient-quaternary:
-    linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(8, 145, 178, 0.05)),
-  skills-accent-quaternary: #06b6d4,
+    linear-gradient(
+      135deg,
+      rgba($teal-primary, $alpha-light),
+      rgba($teal-secondary, 0.05)
+    ),
+  skills-accent-quaternary: $teal-primary,
 
   // Card 5 - Testing & Quality (Orange theme)
   skills-category-bg-quinary:
     linear-gradient(
       135deg,
-      rgba(255, 251, 235, 0.9),
-      rgba(254, 243, 199, 0.95)
+      rgba(255, 251, 235, $alpha-bg-card-alt),
+      rgba(254, 243, 199, $alpha-bg-card-strong)
     ),
-  skills-category-border-quinary: rgba(245, 158, 11, 0.2),
+  skills-category-border-quinary: rgba($orange-primary, $alpha-medium),
   skills-gradient-quinary:
-    linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(217, 119, 6, 0.05)),
-  skills-accent-quinary: #f59e0b,
+    linear-gradient(
+      135deg,
+      rgba($orange-primary, $alpha-light),
+      rgba($orange-secondary, 0.05)
+    ),
+  skills-accent-quinary: $orange-primary,
 
   // Card 6 - AI-Tools (Indigo theme)
   skills-category-bg-senary:
     linear-gradient(
       135deg,
-      rgba(238, 242, 255, 0.9),
-      rgba(224, 231, 255, 0.95)
+      rgba(238, 242, 255, $alpha-bg-card-alt),
+      rgba(224, 231, 255, $alpha-bg-card-strong)
     ),
-  skills-category-border-senary: rgba(99, 102, 241, 0.2),
+  skills-category-border-senary: rgba($indigo-primary, $alpha-medium),
   skills-gradient-senary:
-    linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(79, 70, 229, 0.05)),
-  skills-accent-senary: #6366f1,
+    linear-gradient(
+      135deg,
+      rgba($indigo-primary, $alpha-light),
+      rgba($indigo-secondary, 0.05)
+    ),
+  skills-accent-senary: $indigo-primary,
 
-  // Enhanced progress bar colors
-  skills-progress-primary: linear-gradient(90deg, #3b82f6, #1d4ed8, #1e40af),
-  skills-progress-secondary: linear-gradient(90deg, #10b981, #047857, #065f46),
-  skills-progress-tertiary: linear-gradient(90deg, #8b5cf6, #7c3aed, #6d28d9),
-  skills-progress-quaternary: linear-gradient(90deg, #06b6d4, #0891b2, #0e7490),
-  skills-progress-quinary: linear-gradient(90deg, #f59e0b, #d97706, #b45309),
-  skills-progress-senary: linear-gradient(90deg, #6366f1, #4f46e5, #4338ca)
+  // Progress bar gradients
+  skills-progress-primary:
+    linear-gradient(90deg, $blue-primary, $blue-secondary, $blue-tertiary),
+  skills-progress-secondary:
+    linear-gradient(90deg, $green-primary, $green-secondary, $green-tertiary),
+  skills-progress-tertiary:
+    linear-gradient(90deg, $purple-primary, $purple-tertiary, $purple-secondary),
+  skills-progress-quaternary:
+    linear-gradient(90deg, $teal-primary, $teal-secondary, $teal-tertiary),
+  skills-progress-quinary:
+    linear-gradient(90deg, $orange-primary, $orange-secondary, $orange-tertiary),
+  skills-progress-senary:
+    linear-gradient(90deg, $indigo-primary, $indigo-secondary, $indigo-tertiary)
 );
 
 $skills-dark-theme: (
   // Skills section colors
-  skills-background: linear-gradient(135deg, #1e293b 0%, #0ea5e9 100%),
+  skills-background: linear-gradient(135deg, $slate-800 0%, #0ea5e9 100%),
   skills-background-pattern:
-    radial-gradient(circle at 25% 25%, #1e40af, transparent 50%),
-  gradient-skills-title: linear-gradient(90deg, #60a5fa, #34d399, #a78bfa),
-  skills-category-bg: rgba(30, 41, 55, 0.8),
-  skills-category-border: rgba(71, 85, 105, 0.3),
-  skills-category-title-color: #f1f5f9,
-  skills-skill-name-color: #cbd5e1,
-  skills-skill-level-color: #94a3b8,
-  skills-skill-percentage-color: #e2e8f0,
-  skills-progress-bg: rgba(51, 65, 85, 0.8),
+    radial-gradient(circle at 25% 25%, $blue-tertiary, transparent 50%),
+  gradient-skills-title:
+    linear-gradient(90deg, $blue-light, $green-light, $purple-light),
+  skills-category-bg: rgba($slate-800, $alpha-bg-card),
+  skills-category-border: rgba($slate-600, $alpha-heavy),
+  skills-category-title-color: $slate-100,
+  skills-skill-name-color: $slate-300,
+  skills-skill-level-color: $slate-400,
+  skills-skill-percentage-color: $slate-200,
+  skills-progress-bg: rgba($slate-700, $alpha-bg-card),
   // Dark theme card backgrounds
   skills-category-bg-primary:
-    linear-gradient(135deg, rgba(30, 58, 138, 0.4), rgba(29, 78, 216, 0.3)),
-  skills-category-border-primary: rgba(96, 165, 250, 0.3),
+    linear-gradient(
+      135deg,
+      rgba(30, 58, 138, 0.4),
+      rgba(29, 78, 216, $alpha-heavy)
+    ),
+  skills-category-border-primary: rgba($blue-light, $alpha-heavy),
   skills-gradient-primary:
-    linear-gradient(135deg, rgba(96, 165, 250, 0.1), rgba(59, 130, 246, 0.05)),
-  skills-accent-primary: #60a5fa,
+    linear-gradient(
+      135deg,
+      rgba($blue-light, $alpha-light),
+      rgba($blue-primary, 0.05)
+    ),
+  skills-accent-primary: $blue-light,
 
   skills-category-bg-secondary:
-    linear-gradient(135deg, rgba(6, 95, 70, 0.4), rgba(4, 120, 87, 0.3)),
-  skills-category-border-secondary: rgba(52, 211, 153, 0.3),
+    linear-gradient(
+      135deg,
+      rgba(6, 95, 70, 0.4),
+      rgba(4, 120, 87, $alpha-heavy)
+    ),
+  skills-category-border-secondary: rgba($green-light, $alpha-heavy),
   skills-gradient-secondary:
-    linear-gradient(135deg, rgba(52, 211, 153, 0.1), rgba(16, 185, 129, 0.05)),
-  skills-accent-secondary: #34d399,
+    linear-gradient(
+      135deg,
+      rgba($green-light, $alpha-light),
+      rgba($green-primary, 0.05)
+    ),
+  skills-accent-secondary: $green-light,
 
   skills-category-bg-tertiary:
-    linear-gradient(135deg, rgba(88, 28, 135, 0.4), rgba(109, 40, 217, 0.3)),
-  skills-category-border-tertiary: rgba(167, 139, 250, 0.3),
+    linear-gradient(
+      135deg,
+      rgba(88, 28, 135, 0.4),
+      rgba(109, 40, 217, $alpha-heavy)
+    ),
+  skills-category-border-tertiary: rgba($purple-light, $alpha-heavy),
   skills-gradient-tertiary:
-    linear-gradient(135deg, rgba(167, 139, 250, 0.1), rgba(139, 92, 246, 0.05)),
-  skills-accent-tertiary: #a78bfa,
+    linear-gradient(
+      135deg,
+      rgba($purple-light, $alpha-light),
+      rgba($purple-primary, 0.05)
+    ),
+  skills-accent-tertiary: $purple-light,
 
   skills-category-bg-quaternary:
-    linear-gradient(135deg, rgba(15, 118, 110, 0.4), rgba(17, 94, 89, 0.3)),
-  skills-category-border-quaternary: rgba(34, 211, 238, 0.3),
+    linear-gradient(
+      135deg,
+      rgba(15, 118, 110, 0.4),
+      rgba(17, 94, 89, $alpha-heavy)
+    ),
+  skills-category-border-quaternary: rgba($teal-light, $alpha-heavy),
   skills-gradient-quaternary:
-    linear-gradient(135deg, rgba(34, 211, 238, 0.1), rgba(6, 182, 212, 0.05)),
-  skills-accent-quaternary: #22d3ee,
+    linear-gradient(
+      135deg,
+      rgba($teal-light, $alpha-light),
+      rgba($teal-primary, 0.05)
+    ),
+  skills-accent-quaternary: $teal-light,
 
   skills-category-bg-quinary:
-    linear-gradient(135deg, rgba(180, 83, 9, 0.4), rgba(217, 119, 6, 0.3)),
-  skills-category-border-quinary: rgba(251, 191, 36, 0.3),
+    linear-gradient(
+      135deg,
+      rgba(180, 83, 9, 0.4),
+      rgba(217, 119, 6, $alpha-heavy)
+    ),
+  skills-category-border-quinary: rgba($orange-light, $alpha-heavy),
   skills-gradient-quinary:
-    linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(245, 158, 11, 0.05)),
-  skills-accent-quinary: #fbbf24,
+    linear-gradient(
+      135deg,
+      rgba($orange-light, $alpha-light),
+      rgba($orange-primary, 0.05)
+    ),
+  skills-accent-quinary: $orange-light,
 
   skills-category-bg-senary:
-    linear-gradient(135deg, rgba(67, 56, 202, 0.4), rgba(79, 70, 229, 0.3)),
-  skills-category-border-senary: rgba(129, 140, 248, 0.3),
+    linear-gradient(
+      135deg,
+      rgba(67, 56, 202, 0.4),
+      rgba(79, 70, 229, $alpha-heavy)
+    ),
+  skills-category-border-senary: rgba($indigo-light, $alpha-heavy),
   skills-gradient-senary:
-    linear-gradient(135deg, rgba(129, 140, 248, 0.1), rgba(99, 102, 241, 0.05)),
-  skills-accent-senary: #818cf8,
+    linear-gradient(
+      135deg,
+      rgba($indigo-light, $alpha-light),
+      rgba($indigo-primary, 0.05)
+    ),
+  skills-accent-senary: $indigo-light,
 
-  // Enhanced progress bars for dark theme
-  skills-progress-primary: linear-gradient(90deg, #60a5fa, #3b82f6, #2563eb),
-  skills-progress-secondary: linear-gradient(90deg, #34d399, #10b981, #059669),
-  skills-progress-tertiary: linear-gradient(90deg, #a78bfa, #8b5cf6, #7c3aed),
-  skills-progress-quaternary: linear-gradient(90deg, #22d3ee, #06b6d4, #0891b2),
-  skills-progress-quinary: linear-gradient(90deg, #fbbf24, #f59e0b, #d97706),
-  skills-progress-senary: linear-gradient(90deg, #818cf8, #6366f1, #4f46e5)
+  // Progress bars for dark theme
+  skills-progress-primary:
+    linear-gradient(90deg, $blue-light, $blue-primary, $blue-secondary),
+  skills-progress-secondary:
+    linear-gradient(90deg, $green-light, $green-primary, $green-secondary),
+  skills-progress-tertiary:
+    linear-gradient(90deg, $purple-light, $purple-primary, $purple-tertiary),
+  skills-progress-quaternary:
+    linear-gradient(90deg, $teal-light, $teal-primary, $teal-secondary),
+  skills-progress-quinary:
+    linear-gradient(90deg, $orange-light, $orange-primary, $orange-secondary),
+  skills-progress-senary:
+    linear-gradient(90deg, $indigo-light, $indigo-primary, $indigo-secondary)
 );

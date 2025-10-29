@@ -3,12 +3,12 @@
 
 // Base colors and variables that are used across sections
 $base-light-theme: (
-  primary: #000000,
+  primary: red,
   background: #ffffff,
   text: #000000,
-  text-muted: #6b7280,
-  active-box-shadow: rgba(0, 0, 0, 0.1),
-  hover-box-shadow: rgba(0, 0, 0, 0.15),
+  text-muted: #2b2b2b,
+  active-box-shadow: rgba(0, 0, 0, 0.6),
+  hover-box-shadow: rgba(0, 0, 0, 0.9),
   gradient-primary: $gradient-primary,
   gradient-text: $gradient-text,
 
@@ -38,7 +38,7 @@ $base-light-theme: (
   form-background: #ffffff,
   form-border: #e5e7eb,
   text-primary: #111827,
-  text-secondary: #6b7280,
+  text-secondary: #484c56,
   primary-color: #9333ea,
 
   // Contact status colors (light theme)

@@ -1,72 +1,182 @@
+// Base color variables
+$blue-primary: #2563eb;
+$blue-secondary: #1d4ed8;
+$blue-tertiary: #18338c;
+$blue-light: #3b82f6;
+$blue-lighter: #93c5fd;
+$blue-lightest: #dbeafe;
+$blue-ultralight: #bfdbfe;
+$blue-dark: #1e3a8a;
+$blue-darker: #1e40af;
+
+$green-primary: #059669;
+$green-secondary: #047857;
+$green-tertiary: #13582e;
+$green-light: #10b981;
+$green-lighter: #34d399;
+$green-lightest: #86efac;
+$green-ultralight: #dcfce7;
+$green-dark: #14532d;
+$green-darker: #166534;
+
+$teal-primary: #0d9488;
+$teal-secondary: #14b8a6;
+$teal-tertiary: #073c39;
+$teal-light: #5eead4;
+$teal-lighter: #99f6e4;
+$teal-lightest: #ccfbf1;
+$teal-dark: #115e59;
+$teal-darker: #134e4a;
+
+$purple-primary: #9333ea;
+$purple-secondary: #551fad;
+$purple-tertiary: #3c0d9c;
+$purple-light: #a855f7;
+$purple-lighter: #c4b5fd;
+$purple-lightest: #e9d5ff;
+$purple-ultralight: #ddd6fe;
+$purple-dark: #581c87;
+$purple-darker: #6b21a8;
+
+$orange-primary: #ea580c;
+$orange-secondary: #9a3412;
+$orange-tertiary: #7c2d12;
+$orange-light: #fdba74;
+$orange-lighter: #fed7aa;
+$orange-dark: #9a3412;
+$orange-darker: #7c2d12;
+
+$slate-primary: #1e293b;
+$slate-secondary: #334155;
+
+// Background colors
+$about-bg-light-start: #e0e7ef;
+$about-bg-light-end: #bae6fd;
+$about-bg-dark-start: #13582e;
+$about-bg-dark-end: #1e293b;
+
+// Alpha values
+$alpha-overlay: 0.2;
+$alpha-bg-low: 0.3;
+
+// WCAG AAA compliant text colors
+$text-aaa-light: #111827; // Near black for AAA contrast on light backgrounds
+$text-aaa-dark: #ffffff; // Pure white for AAA contrast on dark backgrounds
+
 $about-light-theme: (
   // About section colors
-  about-background: linear-gradient(135deg, #e0e7ef 0%, #bae6fd 100%),
-  // soft green to blue dbeafe
-  gradient-about-title: linear-gradient(90deg, #059669, #0d9488),
-  about-greeting-color: #047857,
+  about-background:
+    linear-gradient(135deg, $about-bg-light-start 0%, $about-bg-light-end 100%),
+  gradient-about-title: linear-gradient(90deg, $green-primary, $teal-primary),
+  about-greeting-color: $green-secondary,
   gradient-image-overlay:
-    linear-gradient(45deg, rgba(59, 130, 246, 0.2), rgba(147, 51, 234, 0.2)),
-  // Skill badge colors using visual hierarchy
-  skill-badge-primary-bg: #dbeafe,
-  skill-badge-primary-text: #1e40af,
-  skill-badge-secondary-bg: #dcfce7,
-  skill-badge-secondary-text: #166534,
-  skill-badge-tertiary-bg: #e9d5ff,
-  skill-badge-tertiary-text: #7c2d12,
-  skill-badge-quaternary-bg: #fed7aa,
-  skill-badge-quaternary-text: #9a3412,
+    linear-gradient(
+      45deg,
+      rgba($blue-primary, $alpha-overlay),
+      rgba($purple-primary, $alpha-overlay)
+    ),
+  // Skill badge colors - FIXED for AAA contrast
+  skill-badge-primary-bg: $blue-lightest,
+  skill-badge-primary-text: $text-aaa-light,
+  // Changed from $blue-tertiary for AAA contrast
+  skill-badge-secondary-bg: $green-ultralight,
+  skill-badge-secondary-text: $text-aaa-light,
+  // Changed from $green-tertiary for AAA contrast
+  skill-badge-tertiary-bg: $purple-lightest,
+  skill-badge-tertiary-text: $text-aaa-light,
+  // Changed from $orange-tertiary for AAA contrast
+  skill-badge-quaternary-bg: $orange-lighter,
+  skill-badge-quaternary-text: $text-aaa-light,
 
-  // Feature card colors using visual hierarchy
-  feature-card-primary-bg: linear-gradient(135deg, #dbeafe, #bfdbfe),
-  feature-card-secondary-bg: linear-gradient(135deg, #e9d5ff, #ddd6fe),
-  feature-card-tertiary-bg: linear-gradient(135deg, #ccfbf1, #99f6e4),
-  feature-icon-primary: #2563eb,
-  feature-icon-secondary: #9333ea,
-  feature-icon-tertiary: #0d9488,
+  // Changed from $orange-secondary for AAA contrast
+  // Feature card colors - FIXED for AAA contrast
+  feature-card-primary-bg:
+    linear-gradient(135deg, $blue-lightest, $blue-ultralight),
+  feature-card-secondary-bg:
+    linear-gradient(135deg, $purple-lightest, $purple-ultralight),
+  feature-card-tertiary-bg:
+    linear-gradient(135deg, $teal-lightest, $teal-lighter),
+  feature-icon-primary: $blue-primary,
+  feature-icon-secondary: $purple-primary,
+  feature-icon-tertiary: $teal-primary,
 
-  feature-title-primary: #1e40af,
-  feature-title-secondary: #7c3aed,
-  feature-title-tertiary: #0f766e,
+  // Text colors - FIXED for AAA contrast
+  feature-title-primary: $text-aaa-light,
+  // Changed from $blue-tertiary for AAA contrast
+  feature-title-secondary: $text-aaa-light,
+  // Changed from $purple-tertiary for AAA contrast
+  feature-title-tertiary: $text-aaa-light,
 
-  feature-description-primary: #1d4ed8,
-  feature-description-secondary: #6d28d9,
-  feature-description-tertiary: #115e59
+  // Changed from $teal-tertiary for AAA contrast
+  feature-description-primary: $text-aaa-light,
+  // Changed from $blue-secondary for AAA contrast
+  feature-description-secondary: $text-aaa-light,
+  // Changed from $purple-secondary for AAA contrast
+  feature-description-tertiary: $text-aaa-light
+    // Changed from $teal-dark for AAA contrast
 );
 
 $about-dark-theme: (
   // About section colors
-  about-background: linear-gradient(135deg, #166534 0%, #1e293b 100%),
-  // deep green to blue
-  gradient-about-title: linear-gradient(90deg, #10b981, #14b8a6),
-  about-greeting-color: #34d399,
+  about-background:
+    linear-gradient(135deg, $about-bg-dark-start 0%, $about-bg-dark-end 100%),
+  gradient-about-title: linear-gradient(90deg, $green-light, $teal-secondary),
+  about-greeting-color: $green-lighter,
   gradient-image-overlay:
-    linear-gradient(45deg, rgba(59, 130, 246, 0.2), rgba(147, 51, 234, 0.2)),
-  // Skill badge colors using visual hierarchy
-  skill-badge-primary-bg: rgba(30, 58, 138, 0.3),
-  skill-badge-primary-text: #93c5fd,
-  skill-badge-secondary-bg: rgba(20, 83, 45, 0.3),
-  skill-badge-secondary-text: #86efac,
-  skill-badge-tertiary-bg: rgba(88, 28, 135, 0.3),
-  skill-badge-tertiary-text: #c4b5fd,
-  skill-badge-quaternary-bg: rgba(154, 52, 18, 0.3),
-  skill-badge-quaternary-text: #fdba74,
+    linear-gradient(
+      45deg,
+      rgba($blue-primary, $alpha-overlay),
+      rgba($purple-primary, $alpha-overlay)
+    ),
+  // Skill badge colors - FIXED for AAA contrast
+  skill-badge-primary-bg: rgba($blue-dark, $alpha-bg-low),
+  skill-badge-primary-text: $text-aaa-dark,
+  // Changed from $blue-lighter for AAA contrast
+  skill-badge-secondary-bg: rgba($green-dark, $alpha-bg-low),
+  skill-badge-secondary-text: $text-aaa-dark,
+  // Changed from $green-lightest for AAA contrast
+  skill-badge-tertiary-bg: rgba($purple-dark, $alpha-bg-low),
+  skill-badge-tertiary-text: $text-aaa-dark,
+  // Changed from $purple-lighter for AAA contrast
+  skill-badge-quaternary-bg: rgba($orange-darker, $alpha-bg-low),
+  skill-badge-quaternary-text: $text-aaa-dark,
 
-  // Feature card colors using visual hierarchy
+  // Changed from $orange-light for AAA contrast
+  // Feature card colors - Enhanced for better contrast
   feature-card-primary-bg:
-    linear-gradient(135deg, rgba(30, 58, 138, 0.3), rgba(30, 64, 175, 0.3)),
+    linear-gradient(
+      135deg,
+      rgba($blue-dark, $alpha-bg-low),
+      rgba($blue-darker, $alpha-bg-low)
+    ),
   feature-card-secondary-bg:
-    linear-gradient(135deg, rgba(88, 28, 135, 0.3), rgba(107, 33, 168, 0.3)),
+    linear-gradient(
+      135deg,
+      rgba($purple-dark, $alpha-bg-low),
+      rgba($purple-darker, $alpha-bg-low)
+    ),
   feature-card-tertiary-bg:
-    linear-gradient(135deg, rgba(19, 78, 74, 0.3), rgba(17, 94, 89, 0.3)),
-  feature-icon-primary: #3b82f6,
-  feature-icon-secondary: #a855f7,
-  feature-icon-tertiary: #14b8a6,
+    linear-gradient(
+      135deg,
+      rgba($teal-dark, $alpha-bg-low),
+      rgba($teal-darker, $alpha-bg-low)
+    ),
+  feature-icon-primary: $blue-light,
+  feature-icon-secondary: $purple-light,
+  feature-icon-tertiary: $teal-secondary,
 
-  feature-title-primary: #93c5fd,
-  feature-title-secondary: #c4b5fd,
-  feature-title-tertiary: #5eead4,
+  // Text colors - FIXED for AAA contrast
+  feature-title-primary: $text-aaa-dark,
+  // Changed from $blue-lighter for AAA contrast
+  feature-title-secondary: $text-aaa-dark,
+  // Changed from $purple-lighter for AAA contrast
+  feature-title-tertiary: $text-aaa-dark,
 
-  feature-description-primary: #dbeafe,
-  feature-description-secondary: #e9d5ff,
-  feature-description-tertiary: #ccfbf1
+  // Changed from $teal-light for AAA contrast
+  feature-description-primary: $text-aaa-dark,
+  // Changed from $blue-lightest for AAA contrast
+  feature-description-secondary: $text-aaa-dark,
+  // Changed from $purple-lightest for AAA contrast
+  feature-description-tertiary: $text-aaa-dark
+    // Changed from $teal-lightest for AAA contrast
 );

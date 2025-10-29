@@ -1,51 +1,132 @@
 @use '../variables' as *;
 
+// Base color variables
+$blue-primary: #2563eb;
+$blue-secondary: #1d4ed8;
+$blue-light: #93c5fd;
+$blue-lighter: #dbeafe;
+$blue-lightest: #bfdbfe;
+$blue-dark: #1e3a8a;
+$blue-darker: #1e40af;
+
+$green-primary: #16a34a;
+$green-secondary: #15803d;
+$green-light: #86efac;
+$green-lighter: #dcfce7;
+$green-lightest: #bbf7d0;
+$green-dark: #14532d;
+$green-darker: #166534;
+
+$teal-primary: #0d9488;
+$teal-secondary: #073c39;
+$teal-light: #5eead4;
+$teal-lighter: #ccfbf1;
+$teal-lightest: #99f6e4;
+$teal-dark: #134e4a;
+$teal-darker: #115e59;
+
+$purple-primary: #9333ea;
+$purple-secondary: #3c0d9c;
+$purple-light: #c4b5fd;
+$purple-lighter: #e9d5ff;
+$purple-lightest: #ddd6fe;
+$purple-dark: #581c87;
+$purple-darker: #6b21a8;
+
+// Background colors
+$hero-bg-light-start: #e0e7ef;
+$hero-bg-light-end: #91c5e0;
+
+// Alpha values
+$alpha-bg-low: 0.3;
+
+// WCAG AAA compliant text colors
+$text-aaa-light: #111827; // Near black for AAA contrast on light backgrounds
+$text-aaa-dark: #ffffff; // Pure white for AAA contrast on dark backgrounds
+
 $hero-light-theme: (
-  hero-background: linear-gradient(135deg, #e0e7ef 0%, #91c5e0 100%),
-  // Stat colors using visual hierarchy
-  stat-primary-bg: linear-gradient(135deg, #dbeafe, #bfdbfe),
-  stat-primary-value: #2563eb,
-  stat-primary-label: #1d4ed8,
+  hero-background:
+    linear-gradient(135deg, $hero-bg-light-start 0%, $hero-bg-light-end 100%),
+  // Stat colors - FIXED for AAA contrast
+  stat-primary-bg: linear-gradient(135deg, $blue-lighter, $blue-lightest),
+  stat-primary-value: $text-aaa-light,
+  // Changed from $blue-primary for AAA contrast
+  stat-primary-label: $text-aaa-light,
 
-  stat-secondary-bg: linear-gradient(135deg, #dcfce7, #bbf7d0),
-  stat-secondary-value: #16a34a,
-  stat-secondary-label: #15803d,
+  // Changed from $blue-secondary for AAA contrast
+  stat-secondary-bg: linear-gradient(135deg, $green-lighter, $green-lightest),
+  stat-secondary-value: $text-aaa-light,
+  // Changed from $green-primary for AAA contrast
+  stat-secondary-label: $text-aaa-light,
 
-  stat-tertiary-bg: linear-gradient(135deg, #ccfbf1, #99f6e4),
-  stat-tertiary-value: #0d9488,
-  stat-tertiary-label: #0f766e,
+  // Changed from $green-secondary for AAA contrast
+  stat-tertiary-bg: linear-gradient(135deg, $teal-lighter, $teal-lightest),
+  stat-tertiary-value: $text-aaa-light,
+  // Changed from $teal-primary for AAA contrast
+  stat-tertiary-label: $text-aaa-light,
 
-  stat-quaternary-bg: linear-gradient(135deg, #e9d5ff, #ddd6fe),
-  stat-quaternary-value: #9333ea,
-  stat-quaternary-label: #7c3aed,
+  // Changed from $teal-secondary for AAA contrast
+  stat-quaternary-bg: linear-gradient(
+      135deg,
+      $purple-lighter,
+      $purple-lightest
+    ),
+  stat-quaternary-value: $text-aaa-light,
+  // Changed from $purple-primary for AAA contrast
+  stat-quaternary-label: $text-aaa-light,
+  // Changed from $purple-secondary for AAA contrast
 );
 
 $hero-dark-theme: (
   hero-background:
     linear-gradient(
       135deg,
-      rgba(30, 58, 138, 0.3) 0%,
-      rgba(55, 48, 163, 0.3) 50%,
-      rgba(88, 28, 135, 0.3) 100%
+      rgba($blue-dark, $alpha-bg-low) 0%,
+      rgba($purple-dark, $alpha-bg-low) 50%,
+      rgba($purple-darker, $alpha-bg-low) 100%
     ),
-  // Stat colors using visual hierarchy
+  // Stat colors - Enhanced contrast for AAA compliance
   stat-primary-bg:
-    linear-gradient(135deg, rgba(30, 58, 138, 0.3), rgba(30, 64, 175, 0.3)),
-  stat-primary-value: #2563eb,
-  stat-primary-label: #93c5fd,
+    linear-gradient(
+      135deg,
+      rgba($blue-dark, $alpha-bg-low),
+      rgba($blue-darker, $alpha-bg-low)
+    ),
+  stat-primary-value: $text-aaa-dark,
+  // Changed from $blue-primary to white for AAA contrast
+  stat-primary-label: $text-aaa-dark,
 
+  // Changed from $blue-light to white for better contrast
   stat-secondary-bg:
-    linear-gradient(135deg, rgba(20, 83, 45, 0.3), rgba(22, 101, 52, 0.3)),
-  stat-secondary-value: #16a34a,
-  stat-secondary-label: #86efac,
+    linear-gradient(
+      135deg,
+      rgba($green-dark, $alpha-bg-low),
+      rgba($green-darker, $alpha-bg-low)
+    ),
+  stat-secondary-value: $text-aaa-dark,
+  // Changed from $green-primary to white for AAA contrast
+  stat-secondary-label: $text-aaa-dark,
 
+  // Changed from $green-light to white for better contrast
   stat-tertiary-bg:
-    linear-gradient(135deg, rgba(19, 78, 74, 0.3), rgba(17, 94, 89, 0.3)),
-  stat-tertiary-value: #0d9488,
-  stat-tertiary-label: #5eead4,
+    linear-gradient(
+      135deg,
+      rgba($teal-dark, $alpha-bg-low),
+      rgba($teal-darker, $alpha-bg-low)
+    ),
+  stat-tertiary-value: $text-aaa-dark,
+  // Changed from $teal-primary to white for AAA contrast
+  stat-tertiary-label: $text-aaa-dark,
 
+  // Changed from $teal-light to white for better contrast
   stat-quaternary-bg:
-    linear-gradient(135deg, rgba(88, 28, 135, 0.3), rgba(107, 33, 168, 0.3)),
-  stat-quaternary-value: #9333ea,
-  stat-quaternary-label: #c4b5fd,
+    linear-gradient(
+      135deg,
+      rgba($purple-dark, $alpha-bg-low),
+      rgba($purple-darker, $alpha-bg-low)
+    ),
+  stat-quaternary-value: $text-aaa-dark,
+  // Changed from $purple-primary to white for AAA contrast
+  stat-quaternary-label: $text-aaa-dark,
+  // Changed from $purple-light to white for better contrast
 );

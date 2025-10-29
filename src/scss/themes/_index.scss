@@ -351,7 +351,6 @@ $dark-theme: map.merge(
   --contact-status-error-text: #{map.get($theme, contact-status-error-text)};
 
   // Additional variables
-  --box-shadow-hover: #{map.get($theme, box-shadow-hover)};
   --bg-primary: #{map.get($theme, bg-primary)};
   --bg-secondary: #{map.get($theme, bg-secondary)};
   --border-color: #{map.get($theme, border-color)};

@@ -6,6 +6,11 @@
   background: var(--skills-background);
   position: relative;
 
+  // Mobile responsiveness
+  @include globals.mobile-only {
+    padding: 3rem 0;
+  }
+
   // Add decorative background elements
   &::before {
     content: '';
@@ -392,12 +397,5 @@
   100% {
     transform: translateX(100%);
     opacity: 0;
-  }
-}
-
-// Mobile responsiveness
-@include globals.mobile-only {
-  .skills-section {
-    padding: 3rem 0;
   }
 }

@@ -10,7 +10,6 @@ interface AboutSectionProps {
   subtitle?: string;
   bio?: string[];
   profileImage?: string;
-  skillBadges?: SkillBadge[];
   featureCards?: Service[];
 }
 
@@ -24,12 +23,6 @@ export default function AboutSection(props: AboutSectionProps = {}) {
     subtitle = texts.subtitle,
     bio = texts.bio,
     profileImage = saschaImage,
-    skillBadges = [
-      { text: "Angular & React Developer", colorClass: "primary" },
-      { text: "Responsive Design Expert", colorClass: "secondary" },
-      { text: "Cross-Browser Compatible", colorClass: "tertiary" },
-      { text: "Continuous Learner", colorClass: "quaternary" }
-    ],
     featureCards = [
       {
         icon: Code,
@@ -78,7 +71,7 @@ export default function AboutSection(props: AboutSectionProps = {}) {
               alt={`${name} - Web Developer`}
               className="about-section__image"
             />
-            <div className="about-section__image-overlay"></div>
+            <div className="about-section__image-overlay" aria-label={`${name}`}></div>
           </div>
 
           <div className="about-section__bio-section">
@@ -91,17 +84,6 @@ export default function AboutSection(props: AboutSectionProps = {}) {
                   <p key={index}>{paragraph}</p>
                 ))}
               </div>
-            </div>
-
-            <div className="about-section__skill-badges">
-              {skillBadges.map((badge, index) => (
-                <span
-                  key={index}
-                  className={`about-section__skill-badge about-section__skill-badge--${badge.colorClass}`}
-                >
-                  {badge.text}
-                </span>
-              ))}
             </div>
           </div>
         </div>

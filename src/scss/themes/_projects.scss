@@ -1,71 +1,132 @@
-// Projects section theme definitions
+// Base color variables
+$orange-primary: #ea580c;
+$orange-secondary: #fb923c;
+$orange-light: #fed7aa;
+$orange-dark: #6f2406;
+$orange-darker: #431407; // Darker than $orange-dark for better contrast
+
+$red-primary: #dc2626;
+$red-secondary: #b91c1c;
+$red-light: #f87171;
+$red-lighter: #fecaca;
+$red-darker: #7f1d1d; // Darker red variant
+
+$gray-50: #f9fafb;
+$gray-100: #f3f4f6;
+$gray-200: #e5e7eb;
+$gray-300: #d1d5db;
+$gray-400: #9ca3af;
+$gray-500: #6b7280;
+$gray-600: #4b5563;
+$gray-700: #374151;
+$gray-800: #1f2937;
+$gray-900: #111827;
+
+$white: #ffffff;
+$black: #000000;
+
+// Background colors
+$bg-light-start: #e0e7ef;
+$bg-light-end: #bae6fd;
+$card-light-start: #ffffff;
+$card-light-end: #fefefe;
+
+// Dark theme specific colors - extracted from hardcoded values
+$brown-primary: #7c2d12; // rgba(124, 45, 18, 1) converted to hex
+$brown-secondary: #991b1b; // rgba(127, 29, 29, 1) converted to hex
+
+// Alpha values
+$alpha-overlay-light: 0.6;
+$alpha-overlay-dark: 0.7;
+$alpha-border-light: 0.1;
+$alpha-border-medium: 0.2;
+$alpha-border-heavy: 0.3;
+$alpha-bg-light: 0.9;
+$alpha-bg-medium: 0.3;
+$alpha-bg-high: 0.8; // Added for tech badges
+
+// Shadow values
+$shadow-light: 0 4px 6px -1px rgba($black, 0.1);
+$shadow-light-hover: 0 20px 25px -5px rgba($black, 0.1);
+$shadow-dark: 0 4px 6px -1px rgba($black, 0.3);
+$shadow-dark-hover: 0 20px 25px -5px rgba($black, 0.4);
+
+// WCAG AAA compliant text colors
+$text-aaa-light: $gray-900; // #111827 - ensures AAA contrast on light backgrounds
+$text-aaa-dark: $white; // #ffffff - ensures AAA contrast on dark backgrounds
 
 $projects-light-theme: (
-  // Projects section background (light orange/red tones)
-  'projects-background': linear-gradient(135deg, #e0e7ef 0%, #bae6fd 100%),
-  // Projects title gradient (orange to red)
-  'gradient-projects-title': linear-gradient(to right, #ea580c, #dc2626),
+  // Projects section background
+  'projects-background':
+    linear-gradient(135deg, $bg-light-start 0%, $bg-light-end 100%),
+  // Projects title gradient
+  'gradient-projects-title':
+    linear-gradient(to right, $orange-primary, $red-primary),
   // Card styling
-  'projects-card-background': linear-gradient(135deg, #ffffff 0%, #fefefe 100%),
-  'projects-card-border': rgba(234, 88, 12, 0.1),
-  'projects-card-shadow': 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-  'projects-card-shadow-hover': 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+  'projects-card-background':
+    linear-gradient(135deg, $card-light-start 0%, $card-light-end 100%),
+  'projects-card-border': rgba($orange-primary, $alpha-border-light),
+  'projects-card-shadow': $shadow-light,
+  'projects-card-shadow-hover': $shadow-light-hover,
   // Overlay styling
-  'projects-overlay-background': rgba(0, 0, 0, 0.6),
+  'projects-overlay-background': rgba($black, $alpha-overlay-light),
   // Button styling
   'projects-button-primary-bg':
-    linear-gradient(135deg, #ea580c 0%, #dc2626 100%),
-  'projects-button-primary-text': #ffffff,
-  'projects-button-primary-border': rgba(234, 88, 12, 0.3),
+    linear-gradient(135deg, $orange-primary 0%, $red-primary 100%),
+  'projects-button-primary-text': $text-aaa-dark,
+  // Changed to ensure AAA contrast
+  'projects-button-primary-border': rgba($orange-primary, $alpha-border-heavy),
   'projects-button-primary-hover-bg':
-    linear-gradient(135deg, #dc2626 0%, #b91c1c 100%),
-  'projects-button-secondary-bg': rgba(255, 255, 255, 0.9),
-  'projects-button-secondary-text': #374151,
-  'projects-button-secondary-border': rgba(255, 255, 255, 0.2),
-  'projects-button-secondary-hover-bg': #ffffff,
-
-  // Tech badge styling
-  'projects-tech-badge-bg': linear-gradient(135deg, #fed7aa 0%, #fecaca 100%),
-  'projects-tech-badge-text': #c2410c,
-  'projects-tech-badge-border': rgba(234, 88, 12, 0.2)
+    linear-gradient(135deg, $red-primary 0%, $red-secondary 100%),
+  'projects-button-secondary-bg': $white,
+  'projects-button-secondary-text': $text-aaa-light,
+  // Changed from $gray-800 for AAA compliance
+  'projects-button-secondary-border': rgba($gray-300, $alpha-border-medium),
+  'projects-button-secondary-hover-bg': $gray-50,
+  // Changed from $white for subtle hover effect
+  // Tech badge styling - FIXED for AAA contrast
+  'projects-tech-badge-bg': $gray-100,
+  // Changed to solid light gray instead of gradient
+  'projects-tech-badge-text': $text-aaa-light,
+  // Changed to dark text for AAA contrast
+  'projects-tech-badge-border': rgba($orange-primary, $alpha-border-medium)
 );
 
 $projects-dark-theme: (
-  // Projects section background (dark orange/red tones)
+  // Projects section background - using variables instead of hardcoded rgba
   'projects-background':
     linear-gradient(
       135deg,
-      rgba(124, 45, 18, 0.2) 0%,
-      rgba(127, 29, 29, 0.2) 100%
+      rgba($brown-primary, $alpha-border-medium) 0%,
+      rgba($brown-secondary, $alpha-border-medium) 100%
     ),
-  // Projects title gradient (brighter orange to red for dark mode)
-  'gradient-projects-title': linear-gradient(to right, #fb923c, #f87171),
-  // Card styling (dark theme)
-  'projects-card-background': linear-gradient(135deg, #111827 0%, #1f2937 100%),
-  'projects-card-border': rgba(251, 146, 60, 0.2),
-  'projects-card-shadow': 0 4px 6px -1px rgba(0, 0, 0, 0.3),
-  'projects-card-shadow-hover': 0 20px 25px -5px rgba(0, 0, 0, 0.4),
+  // Projects title gradient
+  'gradient-projects-title':
+    linear-gradient(to right, $orange-secondary, $red-light),
+  // Card styling
+  'projects-card-background':
+    linear-gradient(135deg, $gray-900 0%, $gray-800 100%),
+  'projects-card-border': rgba($orange-secondary, $alpha-border-medium),
+  'projects-card-shadow': $shadow-dark,
+  'projects-card-shadow-hover': $shadow-dark-hover,
   // Overlay styling
-  'projects-overlay-background': rgba(0, 0, 0, 0.7),
-  // Button styling (dark theme)
+  'projects-overlay-background': rgba($black, $alpha-overlay-dark),
+  // Button styling
   'projects-button-primary-bg':
-    linear-gradient(135deg, #ea580c 0%, #dc2626 100%),
-  'projects-button-primary-text': #ffffff,
-  'projects-button-primary-border': rgba(234, 88, 12, 0.3),
+    linear-gradient(135deg, $orange-primary 0%, $red-primary 100%),
+  'projects-button-primary-text': $text-aaa-dark,
+  'projects-button-primary-border': rgba($orange-primary, $alpha-border-heavy),
   'projects-button-primary-hover-bg':
-    linear-gradient(135deg, #fb923c 0%, #f87171 100%),
-  'projects-button-secondary-bg': rgba(31, 41, 55, 0.9),
-  'projects-button-secondary-text': #e5e7eb,
-  'projects-button-secondary-border': rgba(75, 85, 99, 0.3),
-  'projects-button-secondary-hover-bg': #374151,
-
-  // Tech badge styling (dark theme)
-  'projects-tech-badge-bg':
-    linear-gradient(
-      135deg,
-      rgba(124, 45, 18, 0.3) 0%,
-      rgba(127, 29, 29, 0.3) 100%
-    ),
-  'projects-tech-badge-text': #fed7aa,
-  'projects-tech-badge-border': rgba(251, 146, 60, 0.3)
+    linear-gradient(135deg, $orange-secondary 0%, $red-light 100%),
+  'projects-button-secondary-bg': rgba($gray-800, $alpha-bg-light),
+  'projects-button-secondary-text': $text-aaa-dark,
+  // Changed from $gray-200 for AAA compliance
+  'projects-button-secondary-border': rgba($gray-600, $alpha-border-heavy),
+  'projects-button-secondary-hover-bg': $gray-700,
+  // Tech badge styling - FIXED for AAA contrast
+  'projects-tech-badge-bg': $gray-800,
+  // Changed to solid dark background
+  'projects-tech-badge-text': $text-aaa-dark,
+  // White text for AAA contrast
+  'projects-tech-badge-border': rgba($orange-secondary, $alpha-border-heavy)
 );

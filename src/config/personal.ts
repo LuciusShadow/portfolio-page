@@ -22,8 +22,12 @@ export const personalConfig = {
     },
   },
 
+  projectsUrls: {
+    portfolio: 'https://www.sascha-bach.de',
+  },
+
   // Project Repository
-  projects: {
+  gitProjects: {
     portfolio: 'https://github.com/LuciusShadow/portfolio-page',
     ergoVR: 'https://github.com/LuciusShadow/ErgoVR',
   },

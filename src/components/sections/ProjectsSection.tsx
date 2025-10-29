@@ -27,8 +27,8 @@ export default function ProjectsSection(props: ProjectsSectionProps = {}) {
         description: "A personal portfolio website to showcase my skills, projects, and experience.",
         image: portfolioImage,
         technologies: ["React", "TypeScript", "SCSS", "Vercel", "Github Copilot"],
-        github: personalConfig.projects.portfolio,
-        live: ""
+        github: personalConfig.gitProjects.portfolio,
+        live: personalConfig.projectsUrls.portfolio
       },
       {
         id: 2,
@@ -36,7 +36,7 @@ export default function ProjectsSection(props: ProjectsSectionProps = {}) {
         description: "A virtual reality application for analysis of motion sickness in VR environments from 2015.",
         image: ergoVRImage,
         technologies: ["Unity3D", "C#", "Oculus SDK"],
-        github: personalConfig.projects.ergoVR
+        github: personalConfig.gitProjects.ergoVR
       },
       {
         id: 3,
@@ -44,7 +44,7 @@ export default function ProjectsSection(props: ProjectsSectionProps = {}) {
         description: "Participated in the development of a web-platform for a fitness racing game for Icaros GmbH until 2018.",
         image: icaraceImage,
         technologies: ["Angular 4", "Typescript", "HTML", "CSS"],
-        github: personalConfig.projects.ergoVR
+        github: personalConfig.gitProjects.ergoVR
       }
     ]
   } = props;
