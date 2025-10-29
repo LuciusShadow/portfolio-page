@@ -1,6 +1,5 @@
 import { Code, Palette, ShieldCheck, Eye } from 'lucide-react';
 import { getTexts } from '../../config/texts';
-import type { SkillBadge } from '../../data/SkillBadge';
 import type { Service } from '../../data/Service';
 import saschaImage from '../../assets/sascha.png';
 
