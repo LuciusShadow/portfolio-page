@@ -15,7 +15,7 @@ export default function PrivacyPolicy() {
     return () => {
       const existingMeta = document.querySelector('meta[name="robots"]');
       if (existingMeta) {
-        document.head.removeChild(existingMeta);
+        existingMeta.remove();
       }
     };
   }, []);
@@ -28,8 +28,8 @@ export default function PrivacyPolicy() {
       <h2>{texts.dataCollectionTitle}</h2>
       <p>{texts.dataCollectionText}</p>
       <ul>
-        {texts.dataCollectionList.map((item, index) => (
-          <li key={index}>{item}</li>
+        {texts.dataCollectionList.map((item) => (
+          <li key={item}>{item}</li>
         ))}
       </ul>
 
@@ -45,8 +45,8 @@ export default function PrivacyPolicy() {
       <h2>{texts.rightsTitle}</h2>
       <p>{texts.rightsText}</p>
       <ul>
-        {texts.rightsList.map((right, index) => (
-          <li key={index}>{right}</li>
+        {texts.rightsList.map((right) => (
+          <li key={right}>{right}</li>
         ))}
       </ul>
 

@@ -16,7 +16,7 @@ export default function ImprintPage() {
     return () => {
       const existingMeta = document.querySelector('meta[name="robots"]');
       if (existingMeta) {
-        document.head.removeChild(existingMeta);
+        existingMeta.remove();
       }
     };
   }, []);
@@ -63,8 +63,8 @@ export default function ImprintPage() {
 
             <div className="imprint-page__subsection">
               <h3 className="imprint-page__subsection-title">{texts.contentLiabilityTitle}</h3>
-              {texts.contentLiabilityText.map((text, index) => (
-                <p key={index} className="imprint-page__text">
+              {texts.contentLiabilityText.map((text) => (
+                <p key={text.substring(0, 50)} className="imprint-page__text">
                   {text}
                 </p>
               ))}
@@ -72,8 +72,8 @@ export default function ImprintPage() {
 
             <div className="imprint-page__subsection">
               <h3 className="imprint-page__subsection-title">{texts.copyrightTitle}</h3>
-              {texts.copyrightText.map((text, index) => (
-                <p key={index} className="imprint-page__text">
+              {texts.copyrightText.map((text) => (
+                <p key={text.substring(0, 50)} className="imprint-page__text">
                   {text}
                 </p>
               ))}
@@ -101,8 +101,8 @@ export default function ImprintPage() {
                 <h3 className="imprint-page__privacy-subtitle">{texts.detailedPrivacyPolicy.responsibleTitle}</h3>
                 <p className="imprint-page__privacy-text">{texts.detailedPrivacyPolicy.responsibleText}</p>
                 <div className="imprint-page__contact-info">
-                  {texts.detailedPrivacyPolicy.responsibleContact.split('\n').map((line, index) => (
-                    <p key={index} className="imprint-page__contact-line">{line}</p>
+                  {texts.detailedPrivacyPolicy.responsibleContact.split('\n').map((line) => (
+                    <p key={line.trim() || 'empty-line'} className="imprint-page__contact-line">{line}</p>
                   ))}
                 </div>
               </div>
@@ -118,8 +118,8 @@ export default function ImprintPage() {
                 <h3 className="imprint-page__privacy-subtitle">{texts.detailedPrivacyPolicy.rightsTitle}</h3>
                 <p className="imprint-page__privacy-text">{texts.detailedPrivacyPolicy.rightsIntro}</p>
                 <ul className="imprint-page__rights-list">
-                  {texts.detailedPrivacyPolicy.rights.map((right, index) => (
-                    <li key={index} className="imprint-page__rights-item">
+                  {texts.detailedPrivacyPolicy.rights.map((right) => (
+                    <li key={right.title} className="imprint-page__rights-item">
                       <strong>{right.title}:</strong> {right.text}
                     </li>
                   ))}
@@ -139,8 +139,8 @@ export default function ImprintPage() {
                 <h3 className="imprint-page__privacy-subtitle">{texts.detailedPrivacyPolicy.dataDeletionTitle}</h3>
                 <p className="imprint-page__privacy-text">{texts.detailedPrivacyPolicy.dataDeletionIntro}</p>
                 <ul className="imprint-page__deletion-list">
-                  {texts.detailedPrivacyPolicy.dataDeletionReasons.map((reason, index) => (
-                    <li key={index} className="imprint-page__deletion-item">{reason}</li>
+                  {texts.detailedPrivacyPolicy.dataDeletionReasons.map((reason) => (
+                    <li key={reason.substring(0, 50)} className="imprint-page__deletion-item">{reason}</li>
                   ))}
                 </ul>
                 <p className="imprint-page__privacy-text">{texts.detailedPrivacyPolicy.retentionText}</p>
@@ -153,8 +153,8 @@ export default function ImprintPage() {
                   {texts.detailedPrivacyPolicy.webhostingText}
                 </p>
                 <ul className="imprint-page__webhosting-list">
-                  {texts.detailedPrivacyPolicy.webhostingDataTypes.map((dataType, index) => (
-                    <li key={index} className="imprint-page__webhosting-item">{dataType}</li>
+                  {texts.detailedPrivacyPolicy.webhostingDataTypes.map((dataType) => (
+                    <li key={dataType} className="imprint-page__webhosting-item">{dataType}</li>
                   ))}
                 </ul>
                 <p className="imprint-page__privacy-text">{texts.detailedPrivacyPolicy.webhostingPurpose}</p>
@@ -164,8 +164,8 @@ export default function ImprintPage() {
                     <strong>{texts.detailedPrivacyPolicy.webhostingDataCategories.affectedData}</strong>
                   </p>
                   <ul className="imprint-page__category-list">
-                    {texts.detailedPrivacyPolicy.webhostingDataCategories.affectedDataList.map((item, index) => (
-                      <li key={index}>{item}</li>
+                    {texts.detailedPrivacyPolicy.webhostingDataCategories.affectedDataList.map((item) => (
+                      <li key={item}>{item}</li>
                     ))}
                   </ul>
                   <p><strong>{texts.detailedPrivacyPolicy.webhostingDataCategories.affectedPersons}</strong></p>
@@ -199,8 +199,8 @@ export default function ImprintPage() {
                 <div className="imprint-page__data-categories">
                   <p className="imprint-page__category-title"><strong>Betroffene Daten:</strong></p>
                   <ul className="imprint-page__category-list">
-                    {texts.detailedPrivacyPolicy.contactDataCategories.affectedData.map((item, index) => (
-                      <li key={index}>{item}</li>
+                    {texts.detailedPrivacyPolicy.contactDataCategories.affectedData.map((item) => (
+                      <li key={item}>{item}</li>
                     ))}
                   </ul>
                   <p><strong>Betroffene Personen: </strong>{texts.detailedPrivacyPolicy.contactDataCategories.affectedPersons}</p>

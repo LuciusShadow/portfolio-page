@@ -20,14 +20,14 @@ function AppRouter() {
 
   useEffect(() => {
     // Apply theme to document and save preference
-    document.documentElement.setAttribute('data-theme', theme);
+    document.documentElement.dataset.theme = theme;
     localStorage.setItem('theme', theme);
   }, [theme]);
 
   useEffect(() => {
     // Handle hash-based navigation for sections
     const handleHashChange = () => {
-      const hash = window.location.hash.substring(1);
+      const hash = globalThis.location.hash.substring(1);
       if (hash) {
         setTimeout(() => {
           const element = document.getElementById(hash);
@@ -42,10 +42,10 @@ function AppRouter() {
     handleHashChange();
 
     // Listen for hash changes
-    window.addEventListener('hashchange', handleHashChange);
+    globalThis.addEventListener('hashchange', handleHashChange);
 
     return () => {
-      window.removeEventListener('hashchange', handleHashChange);
+      globalThis.removeEventListener('hashchange', handleHashChange);
     };
   }, []);
 

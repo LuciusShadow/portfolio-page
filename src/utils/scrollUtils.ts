@@ -16,7 +16,7 @@ export function scrollToSection(
     navigate(`/#${sectionId}`);
   } else {
     // Fallback: direct navigation without router
-    window.location.href = `/#${sectionId}`;
+    globalThis.location.href = `/#${sectionId}`;
   }
 }
 

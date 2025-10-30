@@ -1,9 +1,9 @@
 import { useEffect, useRef } from 'react';
 
 type Props = {
-  menuItems: string[];
-  isOpen: boolean;
-  onItemClick: (section: string) => void;
+  readonly menuItems: string[];
+  readonly isOpen: boolean;
+  readonly onItemClick: (section: string) => void;
 };
 
 export default function MobileMenu({ menuItems, isOpen, onItemClick }: Props) {

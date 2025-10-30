@@ -1,10 +1,10 @@
 import React from 'react';
 import { getTexts } from '../config/texts';
 
-type Props = {
+type Props = Readonly<{
   theme: 'light' | 'dark';
   setTheme: React.Dispatch<React.SetStateAction<'light' | 'dark'>>;
-};
+}>;
 
 export default function ThemeToggle({
   theme,
