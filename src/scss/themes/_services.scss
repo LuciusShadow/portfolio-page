@@ -2,16 +2,16 @@
 // Color Variables - Change once, use everywhere
 // ================================
 
-// Light theme colors
-$light-primary-color: #0f172a; // Much darker blue (was #18338c)
-$light-secondary-color: #0f2419; // Much darker green (was #13582e)
-$light-tertiary-color: #2d1b69; // Much darker purple (was #551fad)
-$light-quaternary-color: #042f2e; // Much darker teal (was #073c39)
-$light-quinary-color: #451a01; // Much darker orange (was #6f2406)
-$light-senary-color: #7f1d1d; // Much darker red (was #b91c1c)
+// Light theme colors - Darker for AAA compliance against colorful backgrounds
+$light-primary-color: #0c4a6e; // Dark blue for blue gradient
+$light-secondary-color: #064e3b; // Dark green for green gradient
+$light-tertiary-color: #581c87; // Dark purple for purple gradient
+$light-quaternary-color: #134e4a; // Dark teal for teal gradient
+$light-quinary-color: #9a3412; // Dark orange for orange gradient
+$light-senary-color: #991b1b; // Dark red for red gradient
 
-// Alternative: Use neutral dark colors for guaranteed AAA compliance
-$light-text-primary: #111827; // Near black
+// Alternative: Use universal dark colors for guaranteed AAA compliance
+$light-text-primary: #111827; // Near black - universal fallback
 $light-text-secondary: #1f2937; // Dark gray
 $light-text-tertiary: #374151; // Medium dark gray
 
@@ -30,57 +30,118 @@ $dark-quaternary-title: #5eead4;
 $dark-quinary-title: #fdba74;
 $dark-senary-title: #fca5a5;
 
-$dark-description-color: #ffffff; // Pure white instead of #f1f5f9 // Universal description color for dark theme
+// Background gradients - Enhanced for visual appeal
+$light-services-bg: linear-gradient(
+  135deg,
+  #f8fafc 0%,
+  #e2e8f0 50%,
+  #cbd5e1 100%
+);
+$dark-services-bg: linear-gradient(
+  135deg,
+  #0f172a 0%,
+  #1e293b 50%,
+  #334155 100%
+);
 
-// Background gradients
-$light-services-bg: linear-gradient(135deg, #e0e7ef 0%, #91c5e0 100%);
-$dark-services-bg: linear-gradient(135deg, #78350f 0%, #a78bfa 100%);
+$light-title-gradient: linear-gradient(90deg, #0c4a6e, #1e40af, #3b82f6);
+$dark-title-gradient: linear-gradient(90deg, #60a5fa, #3b82f6, #2563eb);
 
-$light-title-gradient: linear-gradient(90deg, #0f172a, #1e293b, #334155);
-$dark-title-gradient: linear-gradient(90deg, #f1f5f9, #e2e8f0, #cbd5e1);
-
-// Card background gradients
+// Card background gradients - Vibrant and diverse with AAA compliance
 $light-card-primary-bg: linear-gradient(
   135deg,
-  #f8fafc,
-  #f1f5f9
-); // Lighter backgrounds
-$light-card-secondary-bg: linear-gradient(135deg, #f9fafb, #f3f4f6);
-$light-card-tertiary-bg: linear-gradient(135deg, #faf9ff, #f5f3ff);
-$light-card-quaternary-bg: linear-gradient(135deg, #f0fdfa, #ecfdf5);
-$light-card-quinary-bg: linear-gradient(135deg, #fffbeb, #fef3c7);
-$light-card-senary-bg: linear-gradient(135deg, #fef2f2, #fee2e2);
+  #dbeafe 0%,
+  #bfdbfe 50%,
+  #93c5fd 100%
+); // Ocean Blue gradient
+$light-card-secondary-bg: linear-gradient(
+  135deg,
+  #d1fae5 0%,
+  #a7f3d0 50%,
+  #6ee7b7 100%
+); // Emerald Green gradient
+$light-card-tertiary-bg: linear-gradient(
+  135deg,
+  #e9d5ff 0%,
+  #ddd6fe 50%,
+  #c4b5fd 100%
+); // Purple Violet gradient
+$light-card-quaternary-bg: linear-gradient(
+  135deg,
+  #ccfbf1 0%,
+  #99f6e4 50%,
+  #5eead4 100%
+); // Teal Cyan gradient
+$light-card-quinary-bg: linear-gradient(
+  135deg,
+  #fed7aa 0%,
+  #fdba74 50%,
+  #fb923c 100%
+); // Warm Orange gradient
+$light-card-senary-bg: linear-gradient(
+  135deg,
+  #fecaca 0%,
+  #fca5a5 50%,
+  #f87171 100%
+); // Coral Red gradient
 
+// Dark theme card gradients - Rich and atmospheric
 $dark-card-primary-bg: linear-gradient(
   135deg,
-  rgba(30, 58, 138, 0.6),
-  rgba(37, 99, 235, 0.5)
-);
+  rgba(30, 58, 138, 0.8) 0%,
+  rgba(37, 99, 235, 0.7) 50%,
+  rgba(59, 130, 246, 0.6) 100%
+); // Deep Ocean Blue
 $dark-card-secondary-bg: linear-gradient(
   135deg,
-  rgba(22, 101, 52, 0.6),
-  rgba(34, 197, 94, 0.5)
-);
+  rgba(22, 101, 52, 0.8) 0%,
+  rgba(34, 197, 94, 0.7) 50%,
+  rgba(74, 222, 128, 0.6) 100%
+); // Forest Emerald
 $dark-card-tertiary-bg: linear-gradient(
   135deg,
-  rgba(91, 33, 182, 0.6),
-  rgba(124, 58, 237, 0.5)
-);
+  rgba(91, 33, 182, 0.8) 0%,
+  rgba(124, 58, 237, 0.7) 50%,
+  rgba(147, 51, 234, 0.6) 100%
+); // Royal Purple
 $dark-card-quaternary-bg: linear-gradient(
   135deg,
-  rgba(17, 94, 89, 0.6),
-  rgba(20, 184, 166, 0.5)
-);
+  rgba(17, 94, 89, 0.8) 0%,
+  rgba(20, 184, 166, 0.7) 50%,
+  rgba(45, 212, 191, 0.6) 100%
+); // Mystic Teal
 $dark-card-quinary-bg: linear-gradient(
   135deg,
-  rgba(154, 52, 18, 0.6),
-  rgba(249, 115, 22, 0.5)
-);
+  rgba(154, 52, 18, 0.8) 0%,
+  rgba(249, 115, 22, 0.7) 50%,
+  rgba(251, 146, 60, 0.6) 100%
+); // Sunset Orange
 $dark-card-senary-bg: linear-gradient(
   135deg,
-  rgba(153, 27, 27, 0.6),
-  rgba(239, 68, 68, 0.5)
-);
+  rgba(153, 27, 27, 0.8) 0%,
+  rgba(239, 68, 68, 0.7) 50%,
+  rgba(248, 113, 113, 0.6) 100%
+); // Crimson Fire
+
+// ================================
+// Additional variables needed for theme maps
+// ================================
+
+// Dark theme icon colors (brighter for better contrast)
+$dark-primary-icon: #60a5fa; // Light blue
+$dark-secondary-icon: #34d399; // Light green
+$dark-tertiary-icon: #a78bfa; // Light purple
+$dark-quaternary-icon: #5eead4; // Light teal
+$dark-quinary-icon: #fbbf24; // Light orange
+$dark-senary-icon: #f87171; // Light red
+
+// Dark theme title colors (medium contrast)
+$dark-primary-title: #93c5fd; // Medium blue
+$dark-secondary-title: #6ee7b7; // Medium green
+$dark-tertiary-title: #c4b5fd; // Medium purple
+$dark-quaternary-title: #7dd3fc; // Medium teal
+$dark-quinary-title: #fed7aa; // Medium orange
+$dark-senary-title: #fca5a5; // Medium red
 
 // ================================
 // Theme Maps - Using variables above
@@ -100,28 +161,28 @@ $services-light-theme: (
   service-card-senary-bg: $light-card-senary-bg,
 
   // Icons - using same color for consistency
-  service-icon-primary: $light-primary-color,
-  service-icon-secondary: $light-secondary-color,
-  service-icon-tertiary: $light-tertiary-color,
-  service-icon-quaternary: $light-quaternary-color,
-  service-icon-quinary: $light-quinary-color,
-  service-icon-senary: $light-senary-color,
+  service-icon-primary: $light-text-primary,
+  service-icon-secondary: $light-text-primary,
+  service-icon-tertiary: $light-text-primary,
+  service-icon-quaternary: $light-text-primary,
+  service-icon-quinary: $light-text-primary,
+  service-icon-senary: $light-text-primary,
 
   // Titles - using same color as icons
-  service-title-primary: $light-primary-color,
-  service-title-secondary: $light-secondary-color,
-  service-title-tertiary: $light-tertiary-color,
-  service-title-quaternary: $light-quaternary-color,
-  service-title-quinary: $light-quinary-color,
-  service-title-senary: $light-senary-color,
+  service-title-primary: $light-text-primary,
+  service-title-secondary: $light-text-primary,
+  service-title-tertiary: $light-text-primary,
+  service-title-quaternary: $light-text-primary,
+  service-title-quinary: $light-text-primary,
+  service-title-senary: $light-text-primary,
 
   // Descriptions - using same color as icons and titles
-  service-description-primary: $light-primary-color,
-  service-description-secondary: $light-secondary-color,
-  service-description-tertiary: $light-tertiary-color,
-  service-description-quaternary: $light-quaternary-color,
-  service-description-quinary: $light-quinary-color,
-  service-description-senary: $light-senary-color
+  service-description-primary: $light-text-primary,
+  service-description-secondary: $light-text-primary,
+  service-description-tertiary: $light-text-primary,
+  service-description-quaternary: $light-text-primary,
+  service-description-quinary: $light-text-primary,
+  service-description-senary: $light-text-primary
 );
 
 $services-dark-theme: (
@@ -137,27 +198,27 @@ $services-dark-theme: (
   service-card-quinary-bg: $dark-card-quinary-bg,
   service-card-senary-bg: $dark-card-senary-bg,
 
-  // Icons - using distinct colors for better contrast
-  service-icon-primary: $dark-primary-icon,
-  service-icon-secondary: $dark-secondary-icon,
-  service-icon-tertiary: $dark-tertiary-icon,
-  service-icon-quaternary: $dark-quaternary-icon,
-  service-icon-quinary: $dark-quinary-icon,
-  service-icon-senary: $dark-senary-icon,
+  // Icons - all using pure white
+  service-icon-primary: #ffffff,
+  service-icon-secondary: #ffffff,
+  service-icon-tertiary: #ffffff,
+  service-icon-quaternary: #ffffff,
+  service-icon-quinary: #ffffff,
+  service-icon-senary: #ffffff,
 
-  // Titles - using medium contrast colors
-  service-title-primary: $dark-primary-title,
-  service-title-secondary: $dark-secondary-title,
-  service-title-tertiary: $dark-tertiary-title,
-  service-title-quaternary: $dark-quaternary-title,
-  service-title-quinary: $dark-quinary-title,
-  service-title-senary: $dark-senary-title,
+  // Titles - all using pure white
+  service-title-primary: #ffffff,
+  service-title-secondary: #ffffff,
+  service-title-tertiary: #ffffff,
+  service-title-quaternary: #ffffff,
+  service-title-quinary: #ffffff,
+  service-title-senary: #ffffff,
 
-  // Descriptions - all using the same high-contrast color
-  service-description-primary: $dark-description-color,
-  service-description-secondary: $dark-description-color,
-  service-description-tertiary: $dark-description-color,
-  service-description-quaternary: $dark-description-color,
-  service-description-quinary: $dark-description-color,
-  service-description-senary: $dark-description-color
+  // Descriptions - all using pure white
+  service-description-primary: #ffffff,
+  service-description-secondary: #ffffff,
+  service-description-tertiary: #ffffff,
+  service-description-quaternary: #ffffff,
+  service-description-quinary: #ffffff,
+  service-description-senary: #ffffff
 );

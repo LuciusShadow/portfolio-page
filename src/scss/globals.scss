@@ -3,13 +3,63 @@
 @forward 'variables';
 @forward 'mixins';
 
+// Global CSS custom properties for accessibility
+:root {
+  --color-primary: #2563eb;
+  --color-secondary: #60a5fa;
+  --color-focus-ring: #2563eb;
+  --color-text-aaa-light: #111827;
+  --color-text-aaa-dark: #ffffff;
+  --box-shadow-hover: rgba(0, 0, 0, 0.15);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primary: #60a5fa;
+    --color-secondary: #93c5fd;
+    --color-focus-ring: #60a5fa;
+  }
+}
+
+// Screen Reader Only Classes - Central Definition
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.sr-only-focusable:focus {
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  padding: 0.5rem !important;
+  margin: 0 !important;
+  overflow: visible !important;
+  clip: auto !important;
+  white-space: normal !important;
+  background-color: var(--color-primary) !important;
+  color: var(--color-text-aaa-dark) !important;
+  border: 2px solid var(--color-focus-ring) !important;
+  border-radius: 4px !important;
+  text-decoration: none !important;
+  z-index: 1000 !important;
+  outline: 2px solid var(--color-focus-ring) !important;
+  outline-offset: 2px !important;
+}
+
 // Skip link for accessibility
 .skip-link {
   position: absolute;
   top: -40px;
   left: 6px;
   background: var(--color-primary);
-  color: white;
+  color: var(--color-text-aaa-dark);
   padding: 8px;
   text-decoration: none;
   z-index: 9999;
@@ -19,7 +69,7 @@
 
   &:focus {
     top: 6px;
-    outline: 2px solid var(--color-secondary);
+    outline: 2px solid var(--color-focus-ring);
     outline-offset: 2px;
   }
 }
@@ -34,6 +84,65 @@
   border-radius: $border-radius-md;
   box-shadow: var(--box-shadow-md);
   @include card-hover;
+}
+
+// AAA Focus Management
+%focus-aaa {
+  &:focus {
+    outline: 3px solid var(--color-focus-ring);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+// Apply AAA focus to all interactive elements
+button,
+a,
+input,
+select,
+textarea,
+[tabindex]:not([tabindex='-1']) {
+  @extend %focus-aaa;
+}
+
+// High contrast mode support
+@media (prefers-contrast: high) {
+  * {
+    &:focus {
+      outline: 4px solid currentColor !important;
+      outline-offset: 2px !important;
+    }
+  }
+
+  button,
+  a {
+    border: 2px solid currentColor !important;
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+// Touch target size for AAA (minimum 44x44px)
+@media (pointer: coarse) {
+  button,
+  a,
+  input,
+  select,
+  textarea,
+  [role='button'] {
+    min-height: 44px;
+    min-width: 44px;
+  }
 }
 
 // Responsive mixins (keep existing)

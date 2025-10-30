@@ -16,7 +16,6 @@ $border-radius-sm: 0.375rem;
 $border-radius-md: 0.5rem;
 $border-radius-lg: 1rem;
 $border-radius-xl: 1.5rem;
-$border-radius-full: 9999px;
 
 // Spacing variables
 $spacing-xs: 0.5rem;
@@ -64,12 +63,20 @@ $gradient-primary: linear-gradient(
   $color-secondary 0%,
   $color-primary 100%
 );
-$gradient-text: linear-gradient(
+
+// Light theme gradient (keep original)
+$gradient-text-light: linear-gradient(
   to right,
   $color-secondary,
   $color-primary,
   #0d9488
 );
+
+// Dark theme gradient (white to light purple for hero title)
+$gradient-text-dark: linear-gradient(to right, #ffffff, #c4b5fd, #a78bfa);
+
+// Default gradient for backwards compatibility
+$gradient-text: $gradient-text-light;
 
 // Services Section Variables
 $services-card-padding: 1.5rem;

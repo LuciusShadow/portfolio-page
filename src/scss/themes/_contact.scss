@@ -39,6 +39,16 @@ $red-light: #f87171;
 $red-lighter: #fca5a5;
 $red-lightest: #fee2e2;
 
+// Neutral gray colors - extracted from hardcoded values
+$gray-neutral-dark: #374151; // Contact input bg dark theme
+$gray-neutral-medium: #1f2937; // Social bg dark theme
+$gray-neutral-light: #6b7280; // Text muted light theme
+$gray-neutral-lighter: #9ca3af; // Input placeholder dark theme
+$gray-neutral-lightest: #d1d5db; // Text muted dark theme
+
+// Text colors - extracted from hardcoded values
+$text-input-placeholder-light: #484c56; // Input placeholder light theme
+
 $white: #ffffff;
 $black: #000000;
 
@@ -86,7 +96,7 @@ $contact-light-theme: (
   'contact-input-focus-ring': rgba($orange-primary, $alpha-border-light),
   'contact-input-text': $text-aaa-light,
   // Added for AAA compliance
-  'contact-input-placeholder': #484c56,
+  'contact-input-placeholder': $text-input-placeholder-light,
 
   // Added for form accessibility
   // Button styling - improved contrast and readability
@@ -110,7 +120,27 @@ $contact-light-theme: (
   'contact-status-success-text': $green-secondary,
   'contact-status-error-bg': $red-lightest,
   'contact-status-error-border': $red-primary,
-  'contact-status-error-text': $red-secondary
+  'contact-status-error-text': $red-secondary,
+
+  // Text colors for AAA compliance
+  'color-text': $text-aaa-light,
+  // Near black for AAA contrast
+  'color-text-muted': $gray-neutral-light,
+  // Gray for secondary text
+  'primary-color': $indigo-primary,
+  // Indigo primary
+  'text-primary': $text-aaa-light,
+  // Main text color
+  'text-secondary': $gray-neutral-light,
+
+  // Secondary text color
+  // Enhanced social button colors for AAA compliance
+  'social-icon-email': $text-aaa-light,
+  // Dark for better contrast
+  'social-icon-github': $text-aaa-light,
+  // Dark for better contrast
+  'social-icon-linkedin': $text-aaa-light,
+  // Dark for better contrast
 );
 
 $contact-dark-theme: (
@@ -134,13 +164,13 @@ $contact-dark-theme: (
   'contact-form-shadow': $shadow-dark,
 
   // Input styling (dark theme) - FIXED for AAA contrast
-  'contact-input-bg': #374151,
+  'contact-input-bg': $gray-neutral-dark,
   // Changed to neutral dark gray
   'contact-input-border': rgba($orange-primary, $alpha-border-heavy),
   'contact-input-focus-ring': rgba($orange-primary, $alpha-border-medium),
   'contact-input-text': $text-aaa-dark,
   // White text for AAA contrast
-  'contact-input-placeholder': #9ca3af,
+  'contact-input-placeholder': $gray-neutral-lighter,
 
   // Light gray for placeholder
   // Button styling (dark theme) - improved contrast
@@ -150,12 +180,12 @@ $contact-dark-theme: (
   'contact-button-hover-bg':
     linear-gradient(135deg, $blue-lighter 0%, $blue-light 100%),
   // Social button styling (dark theme) - FIXED for AAA contrast
-  'contact-social-bg': #1f2937,
+  'contact-social-bg': $gray-neutral-medium,
   // Changed to neutral dark background
   'contact-social-text': $text-aaa-dark,
   // White text for AAA contrast
   'contact-social-border': $orange-secondary,
-  'contact-social-hover-bg': #374151,
+  'contact-social-hover-bg': $gray-neutral-dark,
   // Slightly lighter on hover
   'contact-social-hover-border': $orange-primary,
 
@@ -165,5 +195,25 @@ $contact-dark-theme: (
   'contact-status-success-text': $green-lighter,
   'contact-status-error-bg': rgba($red-light, $alpha-low),
   'contact-status-error-border': $red-light,
-  'contact-status-error-text': $red-lighter
+  'contact-status-error-text': $red-lighter,
+
+  // Text colors for AAA compliance - ALL WHITE in dark mode
+  'color-text': $text-aaa-dark,
+  // White for AAA contrast on dark
+  'color-text-muted': $text-aaa-dark,
+  // Changed to white for consistency
+  'primary-color': $indigo-light,
+  // Lighter indigo for dark mode
+  'text-primary': $text-aaa-dark,
+  // Main text color
+  'text-secondary': $text-aaa-dark,
+  // Changed to white for consistency
+  // Secondary text color
+  // Enhanced social button colors for AAA compliance
+  'social-icon-email': $text-aaa-dark,
+  // White for better contrast
+  'social-icon-github': $text-aaa-dark,
+  // White for better contrast
+  'social-icon-linkedin': $text-aaa-dark,
+  // White for better contrast
 );

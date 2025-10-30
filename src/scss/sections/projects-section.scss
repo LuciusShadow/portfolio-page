@@ -23,11 +23,7 @@
     font-size: 1.875rem;
     font-weight: bold;
     margin-bottom: 1rem;
-    background: var(--gradient-projects-title);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
+    color: var(--color-text);
 
     @include globals.desktop-only {
       font-size: 2.25rem;
@@ -74,6 +70,57 @@
       .projects-section__overlay {
         opacity: 1;
       }
+
+      .projects-section__actions {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: all;
+      }
+    }
+
+    &:focus {
+      outline: 3px solid var(--color-focus-ring, #2563eb);
+      outline-offset: 2px;
+      transform: translateY(-2px);
+
+      .projects-section__overlay {
+        opacity: 1;
+      }
+
+      .projects-section__actions {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: all;
+      }
+    }
+
+    &--active {
+      transform: translateY(-4px);
+      box-shadow: var(--projects-card-shadow-hover);
+      border-color: var(--color-focus-ring, #2563eb);
+      border-width: 2px;
+
+      .projects-section__overlay {
+        opacity: 1;
+      }
+
+      .projects-section__actions {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: all;
+      }
+    }
+
+    &:focus-within {
+      .projects-section__overlay {
+        opacity: 1;
+      }
+
+      .projects-section__actions {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: all;
+      }
     }
   }
 
@@ -99,11 +146,32 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 5; // Ensure overlay is above image but below actions
+    border-radius: 0; // Ensure overlay covers entire image area
   }
 
   &__actions {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) translateY(10px);
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
     display: flex;
     gap: 1rem;
+    z-index: 10; // Above overlay
+    padding: 1rem;
+    border-radius: 8px;
+    // Add subtle background to make buttons more visible
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
+
+    &--visible {
+      opacity: 1;
+      transform: translate(-50%, -50%) translateY(0);
+      pointer-events: all;
+    }
   }
 
   &__action-button {
@@ -117,6 +185,8 @@
     text-decoration: none;
     transition: all 0.2s ease;
     border: 1px solid transparent;
+    min-width: 120px; // Ensure consistent button sizes
+    justify-content: center; // Center content within button
 
     &--primary {
       background: var(--projects-button-primary-bg);
@@ -138,6 +208,15 @@
         background: var(--projects-button-secondary-hover-bg);
         transform: translateY(-1px);
       }
+    }
+
+    &:focus {
+      outline: 2px solid var(--color-focus-ring, #2563eb);
+      outline-offset: 2px;
+      z-index: 10;
+      transform: scale(1.05);
+      // Ensure overlay stays visible when button is focused
+      position: relative;
     }
   }
 
@@ -185,6 +264,83 @@
     border: 1px solid var(--projects-tech-badge-border);
   }
 
+  &__help {
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  &__help-details {
+    display: inline-block;
+    background: var(--projects-card-background);
+    border: 1px solid var(--projects-card-border);
+    border-radius: 8px;
+    padding: 1rem;
+    max-width: 400px;
+  }
+
+  &__help-summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--projects-button-secondary-text);
+    list-style: none; // Remove default marker
+
+    &::-webkit-details-marker {
+      display: none; // Remove default marker in webkit browsers
+    }
+
+    &::marker {
+      display: none; // Remove default marker in other browsers
+    }
+
+    &:focus {
+      outline: 2px solid var(--color-focus-ring, #2563eb);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    &::after {
+      content: ' ▼';
+      font-size: 0.75rem;
+      margin-left: 0.5rem;
+      transition: transform 0.2s ease;
+    }
+  }
+
+  &__help-details[open] &__help-summary::after {
+    transform: rotate(180deg);
+  }
+
+  &__help-content {
+    margin-top: 1rem;
+    text-align: left;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      color: var(--projects-button-secondary-text);
+      font-size: 0.875rem;
+      line-height: 1.4;
+    }
+
+    kbd {
+      background: var(--projects-tech-badge-bg);
+      color: var(--projects-tech-badge-text);
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+      font-size: 0.75rem;
+      border: 1px solid var(--projects-tech-badge-border);
+      margin-right: 0.25rem;
+      font-weight: 600;
+    }
+  }
+
   // Responsive adjustments
   @include globals.mobile-only {
     &__card {
@@ -202,11 +358,222 @@
     &__actions {
       flex-direction: column;
       gap: 0.75rem;
+      padding: 1rem;
+
+      // Adjust transform for mobile
+      transform: translate(-50%, -50%) translateY(15px);
+
+      &--visible {
+        transform: translate(-50%, -50%) translateY(0);
+      }
     }
 
     &__action-button {
-      justify-content: center;
+      min-width: 140px; // Slightly wider on mobile for touch targets
       padding: 0.75rem 1rem;
     }
+
+    &__help-details {
+      max-width: 90%;
+      padding: 0.75rem;
+    }
+
+    &__help-content {
+      li {
+        font-size: 0.8rem;
+      }
+
+      kbd {
+        font-size: 0.7rem;
+        padding: 0.15rem 0.3rem;
+      }
+    }
+  }
+}
+
+// Screen reader only classes
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+// Card states
+.projects-section__card {
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:focus {
+    outline: 3px solid var(--color-focus-ring, #2563eb);
+    outline-offset: 2px;
+    transform: translateY(-2px);
+  }
+
+  &--active {
+    transform: translateY(-4px);
+    box-shadow: var(--projects-card-shadow-hover);
+    border-color: var(--color-focus-ring, #2563eb);
+    border-width: 2px;
+
+    .projects-section__actions {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+    }
+  }
+}
+
+// Action buttons visibility
+.projects-section__actions {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateY(10px);
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  display: flex;
+  gap: 1rem;
+  z-index: 10; // Above overlay
+
+  &--visible {
+    opacity: 1;
+    transform: translate(-50%, -50%) translateY(0);
+    pointer-events: all;
+  }
+}
+
+// Override for when actions are shown (hover, focus, active)
+.projects-section__card {
+  &:hover,
+  &:focus,
+  &--active,
+  &:focus-within {
+    .projects-section__actions {
+      opacity: 1;
+      transform: translate(-50%, -50%) translateY(0);
+      pointer-events: all;
+    }
+  }
+}
+
+// High contrast mode
+@media (prefers-contrast: high) {
+  .projects-section__card {
+    &:focus,
+    &--active {
+      outline: 4px solid currentColor !important;
+      background: var(--projects-card-background) !important;
+    }
+  }
+
+  .projects-section__action-button {
+    border: 2px solid currentColor !important;
+    background: var(--projects-card-background) !important;
+
+    &:focus {
+      outline: 3px solid currentColor !important;
+      background: var(--color-focus-ring, #2563eb) !important;
+      color: white !important;
+    }
+  }
+
+  .projects-section {
+    &__overlay {
+      background: rgba(
+        0,
+        0,
+        0,
+        0.8
+      ) !important; // Stronger overlay for high contrast
+    }
+
+    &__actions {
+      background: var(--projects-card-background) !important;
+      border: 2px solid currentColor !important;
+      backdrop-filter: none !important;
+    }
+
+    &__help-details {
+      border: 2px solid currentColor !important;
+    }
+
+    &__help-summary {
+      border: 1px solid transparent;
+
+      &:focus {
+        border-color: currentColor !important;
+        outline: 3px solid currentColor !important;
+      }
+    }
+
+    kbd {
+      border: 1px solid currentColor !important;
+      background: transparent !important;
+    }
+  }
+}
+
+// Dark theme adjustments for help section:
+@media (prefers-color-scheme: dark) {
+  .projects-section {
+    &__actions {
+      background: rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(8px);
+    }
+  }
+
+  @include globals.mobile-only {
+    .projects-section {
+      &__actions {
+        background: rgba(0, 0, 0, 0.3);
+      }
+    }
+  }
+}
+
+// Reduced motion updates to include help section:
+@media (prefers-reduced-motion: reduce) {
+  .projects-section {
+    &__help-summary::after {
+      transition: none !important;
+    }
+
+    &__actions {
+      transition: none !important;
+      backdrop-filter: none !important; // Remove blur effect for reduced motion
+
+      &--visible {
+        transform: translate(-50%, -50%) translateY(0) !important;
+      }
+    }
+
+    &__card {
+      &:hover,
+      &:focus,
+      &--active,
+      &:focus-within {
+        .projects-section__actions {
+          transform: translate(-50%, -50%) translateY(0) !important;
+        }
+      }
+    }
+  }
+}
+
+// Focus ring color custom property
+:root {
+  --color-focus-ring: #2563eb;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-focus-ring: #60a5fa;
   }
 }

@@ -10,7 +10,7 @@ $base-light-theme: (
   active-box-shadow: rgba(0, 0, 0, 0.6),
   hover-box-shadow: rgba(0, 0, 0, 0.9),
   gradient-primary: $gradient-primary,
-  gradient-text: $gradient-text,
+  gradient-text: $gradient-text-light,
 
   // Shadow variables
   box-shadow-sm: #{$shadow-sm},
@@ -59,12 +59,12 @@ $base-light-theme: (
 $base-dark-theme: (
   primary: #9333ea,
   background: #1f2937,
-  text: #f9fafb,
-  text-muted: #9ca3af,
+  text: #ffffff,
+  text-muted: #ffffff,
   active-box-shadow: rgba(255, 255, 255, 0.1),
   hover-box-shadow: rgba(255, 255, 255, 0.15),
   gradient-primary: $gradient-primary,
-  gradient-text: $gradient-text,
+  gradient-text: $gradient-text-dark,
 
   // Shadow variables
   box-shadow-sm: #{$shadow-sm},

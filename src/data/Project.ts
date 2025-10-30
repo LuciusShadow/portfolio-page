@@ -7,4 +7,5 @@ export interface Project {
   technologies: string[];
   github?: string;
   live?: string;
+  year?: string;
 }

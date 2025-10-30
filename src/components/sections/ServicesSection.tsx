@@ -54,36 +54,83 @@ export default function ServicesSection(props: ServicesSectionProps = {}) {
       }
     ]
   } = props;
+
   return (
-    <section id="services" className="services-section">
+    <section id="services" className="services-section" aria-labelledby="services-title">
       <div className="services-section__container">
-        <div className="services-section__header">
-          <h2 className="services-section__title">
+        {/* Section Header */}
+        <header className="services-section__header">
+          <h2 id="services-title" className="services-section__title">
             {title}
           </h2>
           <p className="services-section__subtitle">
             {subtitle}
           </p>
+        </header>
+
+        {/* Skip link for keyboard navigation */}
+        <div className="services-section__skip">
+          <a href="#certifications" className="sr-only sr-only-focusable">
+            Skip to certifications section
+          </a>
         </div>
-        <div className="services-section__grid">
+
+        {/* Services Grid */}
+        <div
+          className="services-section__grid"
+          role="region"
+          aria-label="Professional services offered"
+        >
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (
-              <div key={index} className={`services-section__card services-section__card--${service.colorClass}`}>
-                <div className="services-section__card-header">
-                  <IconComponent className={`services-section__icon services-section__icon--${service.colorClass}`} />
-                  <h3 className={`services-section__card-title services-section__card-title--${service.colorClass}`}>
+              <article
+                key={index}
+                className={`services-section__card services-section__card--${service.colorClass}`}
+                tabIndex={0}
+                role="group"
+                aria-labelledby={`service-${index}-title`}
+                aria-describedby={`service-${index}-description`}
+              >
+                <header className="services-section__card-header">
+                  <IconComponent
+                    className={`services-section__icon services-section__icon--${service.colorClass}`}
+                    aria-hidden="true"
+                    role="img"
+                    aria-label={`${service.title} service icon`}
+                  />
+                  <h3
+                    id={`service-${index}-title`}
+                    className={`services-section__card-title services-section__card-title--${service.colorClass}`}
+                  >
                     {service.title}
                   </h3>
-                </div>
+                </header>
+
                 <div className="services-section__card-content">
-                  <p className={`services-section__card-description services-section__card-description--${service.colorClass}`}>
+                  <p
+                    id={`service-${index}-description`}
+                    className={`services-section__card-description services-section__card-description--${service.colorClass}`}
+                  >
                     {service.description}
                   </p>
                 </div>
-              </div>
+
+                {/* Status indicator for screen readers */}
+                <div className="sr-only">
+                  Service {index + 1} of {services.length}
+                </div>
+              </article>
             );
           })}
+        </div>
+
+        {/* Services summary for screen readers */}
+        <div className="services-section__summary sr-only" aria-live="polite">
+          <p>
+            Services overview: {services.length} professional services available.
+            Use Tab to navigate between service cards for detailed information.
+          </p>
         </div>
       </div>
     </section>

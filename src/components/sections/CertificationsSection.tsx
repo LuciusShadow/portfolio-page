@@ -48,48 +48,110 @@ export default function CertificationsSection(props: CertificationsSectionProps 
       }
     ]
   } = props;
+
   // Sort certifications by year in descending order (newest first)
   const sortedCertifications = [...certifications].sort((a, b) => {
     return parseInt(b.year) - parseInt(a.year);
   });
 
   return (
-    <section id="certifications" className="certifications-section">
+    <section id="certifications" className="certifications-section" aria-labelledby="certifications-title">
       <div className="certifications-section__container">
         {/* Section Header */}
-        <div className="certifications-section__header">
-          <h2 className="certifications-section__title">
+        <header className="certifications-section__header">
+          <h2 id="certifications-title" className="certifications-section__title">
             {title}
           </h2>
           <p className="certifications-section__subtitle">
             {subtitle}
           </p>
+        </header>
+
+        {/* Skip link for keyboard navigation */}
+        <div className="certifications-section__skip">
+          <a href="#contact" className="sr-only sr-only-focusable">
+            Skip to contact section
+          </a>
+        </div>
+
+        {/* Certifications sorting info for screen readers */}
+        <div className="certifications-section__info sr-only">
+          <p>
+            Certifications are sorted by year, showing the most recent first.
+            Total: {sortedCertifications.length} certifications and qualifications.
+          </p>
         </div>
 
         {/* Certifications Grid */}
-        <div className="certifications-section__grid">
+        <div
+          className="certifications-section__grid"
+          role="region"
+          aria-label="Professional certifications and qualifications"
+        >
           {sortedCertifications.map((cert, index) => (
-            <div key={index} className="certifications-section__card">
-              <div className="certifications-section__card-header">
+            <article
+              key={index}
+              className="certifications-section__card"
+              tabIndex={0}
+              role="group"
+              aria-labelledby={`cert-${index}-title`}
+              aria-describedby={`cert-${index}-details`}
+            >
+              <header className="certifications-section__card-header">
                 {cert.icon ? (
                   <img
                     src={cert.icon}
-                    alt={cert.issuer}
+                    alt={`${cert.issuer} logo`}
                     className="certifications-section__card-icon-image"
+                    loading="lazy"
                   />
                 ) : (
-                  <Award className="certifications-section__card-icon" />
+                  <Award
+                    className="certifications-section__card-icon"
+                    aria-hidden="true"
+                    role="img"
+                    aria-label="Certification award icon"
+                  />
                 )}
-                <h3 className="certifications-section__card-title">{cert.name}</h3>
-                <p className="certifications-section__card-issuer">{cert.issuer}</p>
-              </div>
+                <h3
+                  id={`cert-${index}-title`}
+                  className="certifications-section__card-title"
+                >
+                  {cert.name}
+                </h3>
+                <p
+                  className="certifications-section__card-issuer"
+                  aria-label={`Issued by ${cert.issuer}`}
+                >
+                  {cert.issuer}
+                </p>
+              </header>
+
               <div className="certifications-section__card-content">
-                <span className="certifications-section__card-badge">
+                <span
+                  className="certifications-section__card-badge"
+                  aria-label={`Completed in ${cert.year}`}
+                >
                   {cert.year}
                 </span>
               </div>
-            </div>
+
+              {/* Hidden details for screen readers */}
+              <div id={`cert-${index}-details`} className="sr-only">
+                Certification {index + 1} of {sortedCertifications.length}.
+                {cert.name} from {cert.issuer}, completed in {cert.year}.
+              </div>
+            </article>
           ))}
+        </div>
+
+        {/* Certifications summary for screen readers */}
+        <div className="certifications-section__summary sr-only" aria-live="polite">
+          <p>
+            Certifications timeline: Spanning from {sortedCertifications[sortedCertifications.length - 1]?.year} to {sortedCertifications[0]?.year},
+            including {sortedCertifications.filter(cert => cert.issuer.includes('Udemy')).length} online courses and
+            {sortedCertifications.filter(cert => cert.issuer.includes('TU Darmstadt')).length} academic degree.
+          </p>
         </div>
       </div>
     </section>

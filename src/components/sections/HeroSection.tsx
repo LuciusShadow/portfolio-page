@@ -29,12 +29,29 @@ export default function HeroSection(props: HeroSectionProps = {}) {
   const location = useLocation();
   const navigate = useNavigate();
 
+  // Enhanced announcement function for screen readers
+  const announceToScreenReader = (message: string) => {
+    const announcement = document.createElement('div');
+    announcement.setAttribute('aria-live', 'polite');
+    announcement.setAttribute('aria-atomic', 'true');
+    announcement.setAttribute('class', 'sr-only');
+    announcement.textContent = message;
+
+    document.body.appendChild(announcement);
+    setTimeout(() => {
+      document.body.removeChild(announcement);
+    }, 1000);
+  };
+
   const handleViewWork = () => {
+    announceToScreenReader('Navigating to projects section');
     scrollToProjects(location.pathname, navigate);
   };
 
   const handleDownloadResume = () => {
     try {
+      announceToScreenReader('Starting resume download');
+
       // Create a temporary anchor element
       const link = document.createElement('a');
       link.href = resumePDF;
@@ -49,19 +66,23 @@ export default function HeroSection(props: HeroSectionProps = {}) {
       document.body.removeChild(link);
 
       console.log('✅ Resume download initiated');
+      announceToScreenReader('Resume download started successfully');
     } catch (error) {
       console.error('❌ Error downloading resume:', error);
+      announceToScreenReader('Resume download failed, opening in new tab');
 
       // Fallback: open in new tab if download fails
       try {
         window.open(resumePDF, '_blank');
       } catch (fallbackError) {
         console.error('❌ Fallback method also failed:', fallbackError);
+        announceToScreenReader('Unable to access resume file');
       }
     }
   };
 
   const handleGetInTouch = () => {
+    announceToScreenReader('Navigating to contact section');
     const contactSection = document.querySelector('.contact-section');
     if (contactSection) {
       contactSection.scrollIntoView({
@@ -72,41 +93,80 @@ export default function HeroSection(props: HeroSectionProps = {}) {
   };
 
   return (
-    <section className="hero-section">
+    <section className="hero-section" role="main" aria-labelledby="hero-title">
       <div className="hero-section__container">
-        <h1 className="hero-section__title">{title}</h1>
-        <p className="hero-section__description">
-          {description}
-        </p>
-        <div className="hero-section__buttons">
+        {/* Skip link for keyboard navigation */}
+        <div className="hero-section__skip">
+          <a href="#about" className="sr-only sr-only-focusable">
+            Skip to about section
+          </a>
+        </div>
+
+        <header className="hero-section__header">
+          <h1 id="hero-title" className="hero-section__title">{title}</h1>
+          <p className="hero-section__description">
+            {description}
+          </p>
+        </header>
+
+        <nav className="hero-section__buttons" role="navigation" aria-label="Main actions">
           <button
             className="hero-section__button hero-section__button--primary"
             onClick={handleViewWork}
+            aria-label="View my work and projects"
+            type="button"
           >
             {primaryButtonText}
           </button>
           <button
             className="hero-section__button hero-section__button--secondary"
             onClick={handleDownloadResume}
+            aria-label="Download my resume as PDF file"
+            type="button"
+            aria-describedby="resume-description"
           >
-            <Download className="hero-section__button-icon" />
+            <Download className="hero-section__button-icon" aria-hidden="true" />
             {secondaryButtonText}
           </button>
           <button
             className="hero-section__button hero-section__button--tertiary"
             onClick={handleGetInTouch}
+            aria-label="Navigate to contact section to get in touch"
+            type="button"
           >
             {tertiaryButtonText}
           </button>
+        </nav>
+
+        {/* Hidden descriptions for screen readers */}
+        <div id="resume-description" className="sr-only">
+          This will download my current resume in PDF format
         </div>
-        <div className="hero-section__stats">
+
+        <aside className="hero-section__stats" role="complementary" aria-labelledby="stats-heading">
+          <h2 id="stats-heading" className="sr-only">Professional Statistics</h2>
           {statItems.map((item, index) => (
-            <div key={item.label} className={`hero-section__stat-item hero-section__stat-item--${index + 1}`}>
-              <span className="hero-section__stat-value">{item.value}</span>
-              <span className="hero-section__stat-label">{item.label}</span>
+            <div
+              key={item.label}
+              className={`hero-section__stat-item hero-section__stat-item--${index + 1}`}
+              role="group"
+              aria-labelledby={`stat-${index}-label`}
+            >
+              <span
+                className="hero-section__stat-value"
+                aria-describedby={`stat-${index}-label`}
+              >
+                {item.value}
+              </span>
+              <span
+                id={`stat-${index}-label`}
+                className="hero-section__stat-label"
+              >
+                {item.label}
+              </span>
             </div>
           ))}
-        </div>
+        </aside>
       </div>
     </section>
   );

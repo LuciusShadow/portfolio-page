@@ -23,11 +23,7 @@
     font-size: 1.875rem;
     font-weight: bold;
     margin-bottom: 1rem;
-    background: var(--gradient-certifications-title);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
+    color: var(--color-text);
 
     @include globals.desktop-only {
       font-size: 2.25rem;

@@ -48,99 +48,171 @@ export default function SkillsSection(props: SkillsSectionProps = {}) {
         skills: [
           { skill: "Accessibility (a11y) Standards", value: 90 },
           { skill: "SCSS/Sass", value: 95 },
-          { skill: "CSS3", value: 90 },
-          { skill: "Bootstrap", value: 65 }
+          { skill: "CSS3", value: 95 },
+          { skill: "Bootstrap", value: 80 }
         ]
       },
       {
         title: "Backend Development",
         skills: [
-          { skill: "Node.js", value: 65 },
-          { skill: "Express.js", value: 25 },
-          { skill: "REST APIs", value: 70 },
-          { skill: "MongoDB", value: 50 }
+          { skill: "Node.js", value: 75 },
+          { skill: "Express.js", value: 70 },
+          { skill: "REST APIs", value: 85 },
+          { skill: "Database Design", value: 70 }
         ]
       },
       {
         title: "Development Tools",
         skills: [
           { skill: "Git & GitHub", value: 90 },
-          { skill: "Visual Studio Code", value: 75 },
-          { skill: "Vite", value: 80 },
-          { skill: "NPM", value: 85 }
+          { skill: "VS Code", value: 95 },
+          { skill: "npm/yarn", value: 85 },
+          { skill: "Webpack/Vite", value: 75 }
         ]
       },
       {
         title: "Testing & Quality",
         skills: [
-          { skill: "Cypress", value: 85 },
-          { skill: "Jasmine/Karma", value: 75 },
-          { skill: "ESLint", value: 90 },
-          { skill: "Prettier", value: 95 }
+          { skill: "Unit Testing", value: 80 },
+          { skill: "E2E Testing", value: 70 },
+          { skill: "Code Review", value: 85 },
+          { skill: "Performance Optimization", value: 75 }
         ]
       },
       {
         title: "AI-Tools",
         skills: [
-          { skill: "GitHub Copilot", value: 85 },
-          { skill: "Prompt Engineering", value: 45 },
-          { skill: "Prototyping / MVP-Building with AI", value: 45 }
+          { skill: "GitHub Copilot", value: 95 },
+          { skill: "ChatGPT", value: 90 },
+          { skill: "Claude", value: 85 },
+          { skill: "AI-Assisted Development", value: 90 }
         ]
       }
     ]
   } = props;
+
   return (
-    <section id="skills" className="skills-section">
+    <section id="skills" className="skills-section" aria-labelledby="skills-title">
       <div className="skills-section__container">
-        <div className="skills-section__header">
-          <h2 className="skills-section__title">
+        {/* Section Header */}
+        <header className="skills-section__header">
+          <h2 id="skills-title" className="skills-section__title">
             {title}
           </h2>
           <p className="skills-section__subtitle">
             {subtitle}
           </p>
+        </header>
+
+        {/* Skip link for keyboard navigation */}
+        <div className="skills-section__skip">
+          <a href="#services" className="sr-only sr-only-focusable">
+            Skip to services section
+          </a>
         </div>
 
-        <div className="skills-section__grid">
-          {skillCategories.map((category, categoryIndex) => (
-            <div key={categoryIndex} className="skills-section__category">
-              <h3 className="skills-section__category-title">
-                {category.title}
-              </h3>
-              <div className="skills-section__skills">
-                {category.skills.map((skillItem, skillIndex) => {
-                  // Use provided level or calculate from value
-                  const displayLevel = skillItem.level || calculateSkillLevel(skillItem.value);
-                  // Use provided color or get color based on position in array
-                  const colorClass = skillItem.color || getColorByPosition(skillIndex);
+        {/* Skills Grid */}
+        <div
+          className="skills-section__grid"
+          role="region"
+          aria-label="Technical skills organized by category"
+        >
+          {skillCategories.map((category, categoryIndex) => {
+            const colorClass = getColorByPosition(categoryIndex);
+            return (
+              <article
+                key={category.title}
+                className={`skills-section__category skills-section__category--${colorClass}`}
+                role="group"
+                aria-labelledby={`category-${categoryIndex}-title`}
+                tabIndex={0}
+              >
+                <header className="skills-section__category-header">
+                  <h3
+                    id={`category-${categoryIndex}-title`}
+                    className="skills-section__category-title"
+                  >
+                    {category.title}
+                  </h3>
+                  <div className="sr-only">
+                    Skill category {categoryIndex + 1} of {skillCategories.length}.
+                    Contains {category.skills.length} skills.
+                  </div>
+                </header>
 
-                  return (
-                    <div key={skillIndex} className="skills-section__skill">
-                      <div className="skills-section__skill-header">
-                        <span className="skills-section__skill-name">
-                          {skillItem.skill}
-                        </span>
-                        <div className="skills-section__skill-info">
-                          <span className="skills-section__skill-level">
-                            {displayLevel}
-                          </span>
-                          <span className="skills-section__skill-percentage" aria-hidden="true">
-                            {skillItem.value}%
-                          </span>
+                <div
+                  className="skills-section__skills-list"
+                  role="list"
+                  aria-label={`${category.title} skills`}
+                >
+                  {category.skills.map((skillItem, skillIndex) => {
+                    const displayLevel = calculateSkillLevel(skillItem.value);
+                    return (
+                      <div
+                        key={skillItem.skill}
+                        className="skills-section__skill-item"
+                        role="listitem"
+                        tabIndex={0}
+                        aria-label={`${skillItem.skill}: ${displayLevel} level`}
+                      >
+                        <div className="skills-section__skill-header">
+                          <h4 className="skills-section__skill-name">
+                            {skillItem.skill}
+                          </h4>
+                          <div className="skills-section__skill-info">
+                            <span
+                              className="skills-section__skill-level"
+                              aria-live="polite"
+                            >
+                              {displayLevel}
+                            </span>
+                            <span
+                              className="skills-section__skill-percentage"
+                              aria-hidden="true"
+                            >
+                              {skillItem.value}%
+                            </span>
+                          </div>
+                        </div>
+
+                        <div className="skills-section__progress-container">
+                          <div
+                            className="skills-section__progress"
+                            role="progressbar"
+                            aria-valuenow={skillItem.value}
+                            aria-valuemin={0}
+                            aria-valuemax={100}
+                            aria-label={`${skillItem.skill} proficiency: ${skillItem.value} percent`}
+                          >
+                            <div
+                              className={`skills-section__progress-bar skills-section__progress-bar--${colorClass}`}
+                              style={{ width: `${skillItem.value}%` }}
+                              aria-hidden="true"
+                            ></div>
+                          </div>
+
+                          {/* Screen reader description */}
+                          <div className="sr-only">
+                            Skill {skillIndex + 1} of {category.skills.length} in {category.title}.
+                            Proficiency level: {displayLevel} at {skillItem.value} percent.
+                          </div>
                         </div>
                       </div>
-                      <div className="skills-section__progress">
-                        <div
-                          className={`skills-section__progress-bar skills-section__progress-bar--${colorClass}`}
-                          style={{ width: `${skillItem.value}%` }}
-                        ></div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          ))}
+                    );
+                  })}
+                </div>
+              </article>
+            );
+          })}
+        </div>
+
+        {/* Skills summary for screen readers */}
+        <div className="skills-section__summary sr-only" aria-live="polite">
+          <p>
+            Skills overview: {skillCategories.length} categories with a total of{' '}
+            {skillCategories.reduce((total, category) => total + category.skills.length, 0)} skills.
+            Use Tab to navigate between categories and individual skills.
+          </p>
         </div>
       </div>
     </section>
