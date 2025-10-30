@@ -137,7 +137,7 @@ export default function ContactSection(props: ContactSectionProps = {}) {
           </div>
 
           {/* Contact Info Sidebar */}
-          <aside className="contact-section__sidebar" role="complementary" aria-labelledby="info-heading">
+          <aside className="contact-section__sidebar" aria-labelledby="info-heading">
             <div className="contact-section__info-card">
               <h3 id="info-heading" className="sr-only">Contact Information</h3>
 

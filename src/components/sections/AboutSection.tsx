@@ -112,7 +112,6 @@ export default function AboutSection(props: AboutSectionProps = {}) {
                 <article
                   key={index}
                   className={`about-section__feature-card about-section__feature-card--${card.colorClass}`}
-                  tabIndex={0}
                   role="group"
                   aria-labelledby={`feature-${index}-title`}
                   aria-describedby={`feature-${index}-description`}

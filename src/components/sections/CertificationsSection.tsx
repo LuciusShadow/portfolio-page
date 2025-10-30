@@ -51,7 +51,7 @@ export default function CertificationsSection(props: CertificationsSectionProps 
 
   // Sort certifications by year in descending order (newest first)
   const sortedCertifications = [...certifications].sort((a, b) => {
-    return parseInt(b.year) - parseInt(a.year);
+    return Number.parseInt(b.year) - Number.parseInt(a.year);
   });
 
   return (
@@ -92,7 +92,6 @@ export default function CertificationsSection(props: CertificationsSectionProps 
             <article
               key={index}
               className="certifications-section__card"
-              tabIndex={0}
               role="group"
               aria-labelledby={`cert-${index}-title`}
               aria-describedby={`cert-${index}-details`}

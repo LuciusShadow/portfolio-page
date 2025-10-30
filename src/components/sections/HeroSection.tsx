@@ -143,13 +143,12 @@ export default function HeroSection(props: HeroSectionProps = {}) {
           This will download my current resume in PDF format
         </div>
 
-        <aside className="hero-section__stats" role="complementary" aria-labelledby="stats-heading">
+        <aside className="hero-section__stats" aria-labelledby="stats-heading">
           <h2 id="stats-heading" className="sr-only">Professional Statistics</h2>
           {statItems.map((item, index) => (
             <div
               key={item.label}
               className={`hero-section__stat-item hero-section__stat-item--${index + 1}`}
-              role="group"
               aria-labelledby={`stat-${index}-label`}
             >
               <span
