@@ -232,9 +232,6 @@ export default function ProjectsSection(props: ProjectsSectionProps = {}) {
                 key={project.id}
                 className={`projects-section__card ${isActive ? 'projects-section__card--active' : ''}`}
                 ref={(el) => { cardRefs.current[cardIndex] = el; }}
-                tabIndex={0}
-                role="gridcell"
-                aria-expanded={isActive}
                 aria-describedby={`project-${project.id}-description project-${project.id}-metadata`}
                 aria-label={`Project card: ${project.title}. ${cardIndex + 1} of ${projects.length}`}
                 onKeyDown={(e) => handleCardKeyDown(e, cardIndex)}

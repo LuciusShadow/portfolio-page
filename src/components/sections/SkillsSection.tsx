@@ -125,7 +125,6 @@ export default function SkillsSection(props: SkillsSectionProps = {}) {
                 className={`skills-section__category skills-section__category--${colorClass}`}
                 role="group"
                 aria-labelledby={`category-${categoryIndex}-title`}
-                tabIndex={0}
               >
                 <header className="skills-section__category-header">
                   <h3
@@ -152,7 +151,6 @@ export default function SkillsSection(props: SkillsSectionProps = {}) {
                         key={skillItem.skill}
                         className="skills-section__skill-item"
                         role="listitem"
-                        tabIndex={0}
                         aria-label={`${skillItem.skill}: ${displayLevel} level`}
                       >
                         <div className="skills-section__skill-header">
