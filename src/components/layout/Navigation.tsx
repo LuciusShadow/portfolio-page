@@ -14,7 +14,7 @@ type Props = {
 export default function Navbar({
   theme,
   setTheme
-}: Props) {
+}: Readonly<Props>) {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();

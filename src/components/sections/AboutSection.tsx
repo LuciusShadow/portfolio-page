@@ -71,7 +71,7 @@ export default function AboutSection(props: AboutSectionProps = {}) {
         </div>
 
         {/* Personal Photo and Bio */}
-        <div className="about-section__content" role="main">
+        <main className="about-section__content" role="main">
           <div className="about-section__image-wrapper">
             <img
               src={profileImage}
@@ -88,19 +88,18 @@ export default function AboutSection(props: AboutSectionProps = {}) {
                 Hi, I'm {name}!
               </h3>
               <div className="about-section__bio-text">
-                {bio.map((paragraph, index) => (
-                  <p key={index}>{paragraph}</p>
+                {bio.map((paragraph) => (
+                  <p key={paragraph.substring(0, 50)}>{paragraph}</p>
                 ))}
               </div>
             </div>
           </div>
-        </div>
+        </main>
 
         {/* Feature Cards Grid */}
         <div
           id="features"
           className="about-section__features"
-          role="region"
           aria-labelledby="features-heading"
         >
           <h3 id="features-heading" className="sr-only">My Areas of Expertise</h3>
@@ -108,23 +107,21 @@ export default function AboutSection(props: AboutSectionProps = {}) {
           <div className="about-section__features-grid">
             {featureCards.map((card, index) => {
               const IconComponent = card.icon;
+              const cardId = card.title.toLowerCase().replaceAll(/\s+/g, '-');
               return (
                 <article
-                  key={index}
+                  key={cardId}
                   className={`about-section__feature-card about-section__feature-card--${card.colorClass}`}
-                  role="group"
-                  aria-labelledby={`feature-${index}-title`}
-                  aria-describedby={`feature-${index}-description`}
+                  aria-labelledby={`feature-${cardId}-title`}
+                  aria-describedby={`feature-${cardId}-description`}
                 >
                   <header className="about-section__feature-header">
                     <IconComponent
                       className={`about-section__feature-icon about-section__feature-icon--${card.colorClass}`}
                       aria-hidden="true"
-                      role="img"
-                      aria-label={`${card.title} icon`}
                     />
                     <h4
-                      id={`feature-${index}-title`}
+                      id={`feature-${cardId}-title`}
                       className={`about-section__feature-title about-section__feature-title--${card.colorClass}`}
                     >
                       {card.title}
@@ -132,7 +129,7 @@ export default function AboutSection(props: AboutSectionProps = {}) {
                   </header>
                   <div className="about-section__feature-content">
                     <p
-                      id={`feature-${index}-description`}
+                      id={`feature-${cardId}-description`}
                       className={`about-section__feature-description about-section__feature-description--${card.colorClass}`}
                     >
                       {card.description}
@@ -149,6 +146,6 @@ export default function AboutSection(props: AboutSectionProps = {}) {
           </div>
         </div>
       </div>
-    </section>
+    </section >
   );
 }

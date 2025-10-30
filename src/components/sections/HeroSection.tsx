@@ -39,7 +39,7 @@ export default function HeroSection(props: HeroSectionProps = {}) {
 
     document.body.appendChild(announcement);
     setTimeout(() => {
-      document.body.removeChild(announcement);
+      announcement.remove();
     }, 1000);
   };
 
@@ -63,7 +63,7 @@ export default function HeroSection(props: HeroSectionProps = {}) {
       link.click();
 
       // Clean up
-      document.body.removeChild(link);
+      link.remove();
 
       console.log('✅ Resume download initiated');
       announceToScreenReader('Resume download started successfully');
@@ -93,7 +93,7 @@ export default function HeroSection(props: HeroSectionProps = {}) {
   };
 
   return (
-    <section className="hero-section" role="main" aria-labelledby="hero-title">
+    <main className="hero-section" aria-labelledby="hero-title">
       <div className="hero-section__container">
         {/* Skip link for keyboard navigation */}
         <div className="hero-section__skip">
@@ -167,6 +167,6 @@ export default function HeroSection(props: HeroSectionProps = {}) {
           ))}
         </aside>
       </div>
-    </section>
+    </main>
   );
 }

@@ -278,17 +278,23 @@
       transform: translateY(-1px);
     }
 
+    // Enhanced focus states for AAA compliance
+    &:focus {
+      outline: 3px solid var(--color-focus-ring, #2563eb);
+      outline-offset: 2px;
+    }
+
     // Brand-specific icon colors with better contrast
     &--email .contact-section__social-icon {
-      color: #2563eb; // Stronger blue for email
+      color: var(--social-icon-email, #2563eb); // Use theme variable
     }
 
     &--github .contact-section__social-icon {
-      color: #1f2937; // Darker for GitHub
+      color: var(--social-icon-github, #1f2937); // Use theme variable
     }
 
     &--linkedin .contact-section__social-icon {
-      color: #0d67b5; // Stronger LinkedIn blue
+      color: var(--social-icon-linkedin, #0d67b5); // Use theme variable
     }
   }
 
@@ -500,25 +506,12 @@
     padding: 0;
   }
 
-  &__email-icon {
+  &__email-card-icon {
     width: 3rem;
     height: 3rem;
     color: var(--primary-color);
     margin: 0 auto 1rem;
     display: block;
-  }
-
-  &__email-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 0.5rem;
-  }
-
-  &__email-description {
-    color: var(--text-secondary);
-    font-size: 1rem;
-    line-height: 1.6;
   }
 
   &__email-button {
@@ -669,26 +662,6 @@
   white-space: normal !important;
   background-color: var(--contact-button-bg) !important;
   color: var(--contact-button-text) !important;
-  border: 2px solid var(--contact-social-border) !important;
-  border-radius: 4px !important;
-  text-decoration: none !important;
-  z-index: 1000 !important;
-}
-
-// Update social button icons for AAA compliance
-.contact-section__social-button {
-  &--email .contact-section__social-icon {
-    color: var(--social-icon-email); // Use theme variable
-  }
-
-  &--github .contact-section__social-icon {
-    color: var(--social-icon-github); // Use theme variable
-  }
-
-  &--linkedin .contact-section__social-icon {
-    color: var(--social-icon-linkedin); // Use theme variable
-  }
-
   // Enhanced focus states for AAA compliance
   &:focus {
     outline: 3px solid var(--color-focus-ring, #2563eb);

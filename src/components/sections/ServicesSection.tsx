@@ -85,10 +85,8 @@ export default function ServicesSection(props: ServicesSectionProps = {}) {
             const IconComponent = service.icon;
             return (
               <article
-                key={index}
+                key={`${service.title}-${service.colorClass}`}
                 className={`services-section__card services-section__card--${service.colorClass}`}
-                tabIndex={0}
-                role="group"
                 aria-labelledby={`service-${index}-title`}
                 aria-describedby={`service-${index}-description`}
               >
@@ -96,8 +94,6 @@ export default function ServicesSection(props: ServicesSectionProps = {}) {
                   <IconComponent
                     className={`services-section__icon services-section__icon--${service.colorClass}`}
                     aria-hidden="true"
-                    role="img"
-                    aria-label={`${service.title} service icon`}
                   />
                   <h3
                     id={`service-${index}-title`}

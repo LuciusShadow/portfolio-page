@@ -1,4 +1,4 @@
-import { Mail, Github, Linkedin, Send } from 'lucide-react';
+import { Mail, ExternalLink, Send } from 'lucide-react';
 import { personalConfig, getObfuscatedEmail } from '../../config/personal';
 import { getTexts } from '../../config/texts';
 
@@ -50,10 +50,10 @@ export default function ContactSection(props: ContactSectionProps = {}) {
     announcement.textContent = 'Opening email client with pre-filled message';
     document.body.appendChild(announcement);
 
-    window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+    globalThis.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
 
     setTimeout(() => {
-      document.body.removeChild(announcement);
+      announcement.remove();
     }, 1000);
   };
 
@@ -70,10 +70,10 @@ export default function ContactSection(props: ContactSectionProps = {}) {
     announcement.textContent = `Opening ${platform} profile in new tab`;
     document.body.appendChild(announcement);
 
-    window.open(url, '_blank', 'noopener,noreferrer');
+    globalThis.open(url, '_blank', 'noopener,noreferrer');
 
     setTimeout(() => {
-      document.body.removeChild(announcement);
+      announcement.remove();
     }, 1000);
   };
 
@@ -98,15 +98,13 @@ export default function ContactSection(props: ContactSectionProps = {}) {
         </div>
 
         {/* Contact Content Grid */}
-        <div className="contact-section__grid" role="main">
+        <main className="contact-section__grid">
           {/* Let's Connect Card */}
           <div className="contact-section__connect-card" role="region" aria-labelledby="connect-heading">
             <div className="contact-section__connect-header">
               <Mail
                 className="contact-section__email-icon"
                 aria-hidden="true"
-                role="img"
-                aria-label="Email icon"
               />
               <div className="contact-section__connect-text">
                 <h3 id="connect-heading" className="contact-section__email-title">
@@ -141,15 +139,13 @@ export default function ContactSection(props: ContactSectionProps = {}) {
             <div className="contact-section__info-card">
               <h3 id="info-heading" className="sr-only">Contact Information</h3>
 
-              <div className="contact-section__availability" role="status" aria-live="polite">
+              <output className="contact-section__availability" aria-live="polite">
                 <div
                   className="contact-section__status-indicator"
                   aria-hidden="true"
-                  role="img"
-                  aria-label="Available status indicator"
                 ></div>
                 <span className="contact-section__status-text">{availabilityText}</span>
-              </div>
+              </output>
 
               <div className="contact-section__quick-facts">
                 <dl className="contact-section__fact-list">
@@ -171,11 +167,11 @@ export default function ContactSection(props: ContactSectionProps = {}) {
           </aside>
 
           {/* Social Contact Methods */}
-          <div className="contact-section__social-card" role="region" aria-labelledby="social-heading">
+          <div className="contact-section__social-card" aria-labelledby="social-heading">
             <h4 id="social-heading" className="contact-section__social-title">{socialTitle}</h4>
-            <div className="contact-section__social-list" role="list">
+            <ul className="contact-section__social-list">
 
-              <div className="contact-section__detail-item" role="listitem">
+              <li className="contact-section__detail-item">
                 <button
                   className="contact-section__social-button contact-section__social-button--email"
                   onClick={handleEmailClick}
@@ -187,38 +183,38 @@ export default function ContactSection(props: ContactSectionProps = {}) {
                 <span className="contact-section__detail-text" aria-label="Email address">
                   {getObfuscatedEmail()}
                 </span>
-              </div>
+              </li>
 
-              <div className="contact-section__detail-item" role="listitem">
+              <li className="contact-section__detail-item">
                 <button
                   className="contact-section__social-button contact-section__social-button--github"
                   onClick={() => handleSocialClick('GitHub', personalConfig.social.github.url)}
                   aria-label={`Visit GitHub profile: ${personalConfig.social.github.username} (opens in new tab)`}
                   type="button"
                 >
-                  <Github className="contact-section__social-icon" aria-hidden="true" />
+                  <ExternalLink className="contact-section__social-icon" aria-hidden="true" />
                 </button>
                 <span className="contact-section__detail-text" aria-label="GitHub username">
                   {personalConfig.social.github.username}
                 </span>
-              </div>
+              </li>
 
-              <div className="contact-section__detail-item" role="listitem">
+              <li className="contact-section__detail-item">
                 <button
                   className="contact-section__social-button contact-section__social-button--linkedin"
                   onClick={() => handleSocialClick('LinkedIn', personalConfig.social.linkedin.url)}
                   aria-label={`Visit LinkedIn profile: ${personalConfig.social.linkedin.username} (opens in new tab)`}
                   type="button"
                 >
-                  <Linkedin className="contact-section__social-icon" aria-hidden="true" />
+                  <ExternalLink className="contact-section__social-icon" aria-hidden="true" />
                 </button>
                 <span className="contact-section__detail-text" aria-label="LinkedIn username">
                   {personalConfig.social.linkedin.username}
                 </span>
-              </div>
-            </div>
+              </li>
+            </ul>
           </div>
-        </div>
+        </main>
       </div>
     </section>
   );

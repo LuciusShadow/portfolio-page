@@ -83,16 +83,14 @@ export default function CertificationsSection(props: CertificationsSectionProps 
         </div>
 
         {/* Certifications Grid */}
-        <div
+        <section
           className="certifications-section__grid"
-          role="region"
           aria-label="Professional certifications and qualifications"
         >
           {sortedCertifications.map((cert, index) => (
-            <article
-              key={index}
+            <div
+              key={`${cert.name}-${cert.year}-${cert.issuer}`}
               className="certifications-section__card"
-              role="group"
               aria-labelledby={`cert-${index}-title`}
               aria-describedby={`cert-${index}-details`}
             >
@@ -108,7 +106,6 @@ export default function CertificationsSection(props: CertificationsSectionProps 
                   <Award
                     className="certifications-section__card-icon"
                     aria-hidden="true"
-                    role="img"
                     aria-label="Certification award icon"
                   />
                 )}
@@ -140,14 +137,13 @@ export default function CertificationsSection(props: CertificationsSectionProps 
                 Certification {index + 1} of {sortedCertifications.length}.
                 {cert.name} from {cert.issuer}, completed in {cert.year}.
               </div>
-            </article>
+            </div>
           ))}
-        </div>
-
+        </section>
         {/* Certifications summary for screen readers */}
         <div className="certifications-section__summary sr-only" aria-live="polite">
           <p>
-            Certifications timeline: Spanning from {sortedCertifications[sortedCertifications.length - 1]?.year} to {sortedCertifications[0]?.year},
+            Certifications timeline: Spanning from {sortedCertifications.at(-1)?.year} to {sortedCertifications.at(0)?.year},
             including {sortedCertifications.filter(cert => cert.issuer.includes('Udemy')).length} online courses and
             {sortedCertifications.filter(cert => cert.issuer.includes('TU Darmstadt')).length} academic degree.
           </p>

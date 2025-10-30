@@ -120,10 +120,9 @@ export default function SkillsSection(props: SkillsSectionProps = {}) {
           {skillCategories.map((category, categoryIndex) => {
             const colorClass = getColorByPosition(categoryIndex);
             return (
-              <article
+              <fieldset
                 key={category.title}
                 className={`skills-section__category skills-section__category--${colorClass}`}
-                role="group"
                 aria-labelledby={`category-${categoryIndex}-title`}
               >
                 <header className="skills-section__category-header">
@@ -139,18 +138,16 @@ export default function SkillsSection(props: SkillsSectionProps = {}) {
                   </div>
                 </header>
 
-                <div
+                <ul
                   className="skills-section__skills-list"
-                  role="list"
                   aria-label={`${category.title} skills`}
                 >
                   {category.skills.map((skillItem, skillIndex) => {
                     const displayLevel = calculateSkillLevel(skillItem.value);
                     return (
-                      <div
+                      <li
                         key={skillItem.skill}
                         className="skills-section__skill-item"
-                        role="listitem"
                         aria-label={`${skillItem.skill}: ${displayLevel} level`}
                       >
                         <div className="skills-section__skill-header">
@@ -195,11 +192,12 @@ export default function SkillsSection(props: SkillsSectionProps = {}) {
                             Proficiency level: {displayLevel} at {skillItem.value} percent.
                           </div>
                         </div>
-                      </div>
-                    );
+                      </li>
+                    )
                   })}
-                </div>
-              </article>
+                </ul>
+
+              </fieldset>
             );
           })}
         </div>

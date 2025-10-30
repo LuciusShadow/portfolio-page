@@ -1,4 +1,4 @@
-import { Github, ExternalLink } from 'lucide-react';
+import { GitBranch, ExternalLink } from 'lucide-react';
 import { useState, useRef, useEffect, type KeyboardEvent } from 'react';
 import { personalConfig } from '../../config/personal';
 import { getTexts } from '../../config/texts';
@@ -167,7 +167,7 @@ export default function ProjectsSection(props: ProjectsSectionProps = {}) {
 
     document.body.appendChild(announcement);
     setTimeout(() => {
-      document.body.removeChild(announcement);
+      announcement.remove();
     }, 1000);
   };
 
@@ -248,9 +248,8 @@ export default function ProjectsSection(props: ProjectsSectionProps = {}) {
                   <div className="projects-section__overlay" aria-hidden="true"></div>
 
                   {/* Conditionally visible action buttons */}
-                  <div
+                  <fieldset
                     className={`projects-section__actions ${isActive ? 'projects-section__actions--visible' : ''}`}
-                    role="group"
                     aria-label={`Actions for ${project.title}`}
                     aria-hidden={!isActive}
                   >
@@ -265,7 +264,7 @@ export default function ProjectsSection(props: ProjectsSectionProps = {}) {
                         tabIndex={isActive ? 0 : -1}
                         onKeyDown={(e) => handleActionKeyDown(e, cardIndex, 0)}
                       >
-                        <Github className="projects-section__action-icon" aria-hidden="true" />
+                        <GitBranch className="projects-section__action-icon" aria-hidden="true" />
                         <span className="projects-section__action-text">{texts.codeButtonText}</span>
                       </a>
                     )}
@@ -283,8 +282,9 @@ export default function ProjectsSection(props: ProjectsSectionProps = {}) {
                         <ExternalLink className="projects-section__action-icon" aria-hidden="true" />
                         <span className="projects-section__action-text">{texts.liveButtonText}</span>
                       </a>
+
                     )}
-                  </div>
+                  </fieldset>
                 </div>
 
                 <div className="projects-section__content">
@@ -305,18 +305,17 @@ export default function ProjectsSection(props: ProjectsSectionProps = {}) {
                     </div>
                   </div>
 
-                  <div className="projects-section__technologies" role="list" aria-label="Technologies used">
+                  <ul className="projects-section__technologies" aria-label="Technologies used">
                     {project.technologies.map((tech, index) => (
-                      <span
+                      <li
                         key={tech}
                         className="projects-section__tech-badge"
-                        role="listitem"
                         aria-label={`Technology ${index + 1}: ${tech}`}
                       >
                         {tech}
-                      </span>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
 
                   {/* Enhanced status indicator for active card */}
                   {isActive && (

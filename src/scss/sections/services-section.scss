@@ -106,6 +106,7 @@
     min-height: 250px; // Ensures consistent card heights
     position: relative;
     border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: cardFadeIn 0.6s ease-out;
 
     // Add subtle backdrop blur for depth
     &::before {
@@ -132,6 +133,52 @@
       outline-offset: 2px;
     }
 
+    // Make cards keyboard accessible
+    &[tabindex='0'] {
+      cursor: pointer;
+    }
+
+    // AAA-compliant focus indicator (3px minimum)
+    &:focus {
+      outline: 3px solid var(--color-focus-ring, #2563eb);
+      outline-offset: 2px;
+      transform: translateY(-2px);
+    }
+
+    // Enhanced hover and focus interaction
+    &:hover,
+    &:focus {
+      transform: translateY(-4px);
+      box-shadow: $shadow-card-hover;
+
+      // When both focused and hovered
+      &:focus {
+        outline: 3px solid var(--color-focus-ring, #2563eb);
+        outline-offset: 2px;
+        transform: translateY(-6px); // Slightly more lift when focused
+      }
+    }
+
+    // Animation delays for cards
+    &:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+    &:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    &:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+    &:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+    &:nth-child(5) {
+      animation-delay: 0.5s;
+    }
+    &:nth-child(6) {
+      animation-delay: 0.6s;
+    }
+
     // Responsive card heights - more flexible approach
     @media (min-width: 768px) {
       min-height: 280px; // Use min-height instead of fixed height
@@ -148,6 +195,54 @@
     // Ensure cards don't get too tall on large screens
     @media (min-width: 1920px) {
       max-height: 400px;
+    }
+
+    // High contrast mode support
+    @media (prefers-contrast: high) {
+      border: 2px solid currentColor !important;
+
+      &:focus {
+        outline: 4px solid currentColor !important;
+        outline-offset: 3px !important;
+      }
+
+      // Enhance icon visibility in high contrast
+      .services-section__icon {
+        filter: contrast(1.5) !important;
+      }
+    }
+
+    // Reduced motion support
+    @media (prefers-reduced-motion: reduce) {
+      transition: none !important;
+
+      &:hover,
+      &:focus {
+        transform: none !important;
+      }
+    }
+
+    // Touch device optimizations
+    @media (hover: none) and (pointer: coarse) {
+      min-height: 320px;
+
+      &:hover {
+        transform: none;
+        box-shadow: $shadow-card;
+      }
+
+      &:focus {
+        transform: translateY(-2px);
+        box-shadow: $shadow-card-hover;
+        outline: 3px solid var(--color-focus-ring, #2563eb);
+        outline-offset: 2px;
+      }
+    }
+
+    // Dark theme enhancements
+    @media (prefers-color-scheme: dark) {
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3),
+        0 2px 4px -1px rgba(0, 0, 0, 0.2);
     }
 
     &--primary {
@@ -277,131 +372,25 @@
     flex: 1;
     display: flex;
     align-items: center;
+    // ================================
+    // WCAG Level AAA Accessibility Enhancements
+    // ================================
 
-    @media (max-width: 767px) {
-      padding: 0 1.25rem 1.25rem 1.25rem;
+    // High contrast mode support for better accessibility
+    @media (prefers-contrast: high) {
+      // Ensure text remains readable in high contrast mode
+      .services-section__card-title,
+      .services-section__card-description {
+        text-shadow: none !important;
+      }
     }
+    animation-delay: 0.4s;
   }
-
-  &__card-description {
-    margin: 0;
-    line-height: 1.5;
-    font-size: 0.875rem;
-    text-align: center;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-    font-weight: 400;
-
-    @media (max-width: 767px) {
-      font-size: 0.8rem;
-      line-height: 1.4;
-    }
-
-    @media (min-width: 1280px) {
-      font-size: 0.9rem;
-      line-height: 1.6;
-    }
-
-    &--primary {
-      color: var(--service-description-primary);
-    }
-
-    &--secondary {
-      color: var(--service-description-secondary);
-    }
-
-    &--tertiary {
-      color: var(--service-description-tertiary);
-    }
-
-    &--quaternary {
-      color: var(--service-description-quaternary);
-    }
-
-    &--quinary {
-      color: var(--service-description-quinary);
-    }
-
-    &--senary {
-      color: var(--service-description-senary);
-    }
+  &:nth-child(5) {
+    animation-delay: 0.5s;
   }
-}
-
-// Handle 6 cards specifically for better distribution
-.services-section__grid:has(.services-section__card:nth-child(6):last-child) {
-  // For exactly 6 cards
-  @media (min-width: 768px) and (max-width: 1023px) {
-    grid-template-columns: repeat(2, 1fr);
-
-    // Make last 2 cards center themselves if needed
-    .services-section__card:nth-child(5),
-    .services-section__card:nth-child(6) {
-      justify-self: center;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-// Ultra-compact mobile layout for very small screens
-@media (max-height: 700px) and (max-width: 767px) {
-  .services-section {
-    min-height: auto;
-    padding: 1rem 0;
-
-    &__header {
-      margin-bottom: 1rem;
-    }
-
-    &__card {
-      min-height: 200px;
-      height: auto;
-    }
-
-    &__card-header {
-      padding: 1rem;
-    }
-
-    &__icon {
-      width: 1.75rem;
-      height: 1.75rem;
-      margin-bottom: 0.5rem;
-    }
-  }
-}
-
-// ================================
-// WCAG Level AAA Accessibility Enhancements
-// ================================
-
-// Enhanced focus states for keyboard navigation
-.services-section__card {
-  // Make cards keyboard accessible
-  &[tabindex='0'] {
-    cursor: pointer;
-  }
-
-  // AAA-compliant focus indicator (3px minimum)
-  &:focus {
-    outline: 3px solid var(--color-focus-ring, #2563eb);
-    outline-offset: 2px;
-    transform: translateY(-2px);
-  }
-
-  // Enhanced hover and focus interaction
-  &:hover,
-  &:focus {
-    transform: translateY(-4px);
-    box-shadow: $shadow-card-hover;
-
-    // When both focused and hovered
-    &:focus {
-      outline: 3px solid var(--color-focus-ring, #2563eb);
-      outline-offset: 2px;
-      transform: translateY(-6px); // Slightly more lift when focused
-    }
+  &:nth-child(6) {
+    animation-delay: 0.6s;
   }
 }
 
@@ -468,47 +457,25 @@
     // Enhance card visibility with better shadows in dark mode
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3),
       0 2px 4px -1px rgba(0, 0, 0, 0.2);
+    animation: cardFadeIn 0.6s ease-out;
 
-    &:hover,
-    &:focus {
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4),
-        0 10px 10px -5px rgba(0, 0, 0, 0.2);
+    &:nth-child(1) {
+      animation-delay: 0.1s;
     }
-  }
-}
-
-// Subtle loading animation for cards
-@keyframes cardFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-// Animation delays for staggered effect
-.services-section__card {
-  animation: cardFadeIn 0.6s ease-out;
-
-  &:nth-child(1) {
-    animation-delay: 0.1s;
-  }
-  &:nth-child(2) {
-    animation-delay: 0.2s;
-  }
-  &:nth-child(3) {
-    animation-delay: 0.3s;
-  }
-  &:nth-child(4) {
-    animation-delay: 0.4s;
-  }
-  &:nth-child(5) {
-    animation-delay: 0.5s;
-  }
-  &:nth-child(6) {
-    animation-delay: 0.6s;
+    &:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    &:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+    &:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+    &:nth-child(5) {
+      animation-delay: 0.5s;
+    }
+    &:nth-child(6) {
+      animation-delay: 0.6s;
+    }
   }
 }
