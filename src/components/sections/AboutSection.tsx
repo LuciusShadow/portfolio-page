@@ -14,6 +14,7 @@ interface AboutSectionProps {
 
 export default function AboutSection(props: AboutSectionProps = {}) {
   const texts = getTexts().about;
+  const accessibilityTexts = getTexts().accessibility;
 
   // Use centralized texts as defaults, allow props to override
   const {
@@ -22,32 +23,12 @@ export default function AboutSection(props: AboutSectionProps = {}) {
     subtitle = texts.subtitle,
     bio = texts.bio,
     profileImage = saschaImage,
-    featureCards = [
-      {
-        icon: Code,
-        title: "Web Development",
-        description: "Building modern web applications with Angular and React frameworks, leveraging TypeScript and JavaScript for robust, scalable solutions.",
-        colorClass: "primary"
-      },
-      {
-        icon: Palette,
-        title: "Responsive Design",
-        description: "Creating pixel-perfect, responsive interfaces that work seamlessly across all devices and screen sizes.",
-        colorClass: "secondary"
-      },
-      {
-        icon: ShieldCheck,
-        title: "Cross-Browser Compatibility",
-        description: "Ensuring consistent user experiences across all major browsers with thorough testing and optimization.",
-        colorClass: "tertiary"
-      },
-      {
-        icon: Eye,
-        title: "Web Accessibility",
-        description: "Implementing accessibility best practices to deliver websites that support screen readers, keyboard navigation, and assistive technologies.",
-        colorClass: "quaternary"
-      }
-    ]
+    featureCards = texts.featureCards.map((card, index) => ({
+      icon: [Code, Palette, ShieldCheck, Eye][index] || Code,
+      title: card.title,
+      description: card.description,
+      colorClass: ["primary", "secondary", "tertiary", "quaternary"][index] || "primary"
+    }))
   } = props;
 
   return (
@@ -65,8 +46,8 @@ export default function AboutSection(props: AboutSectionProps = {}) {
 
         {/* Skip link for keyboard navigation */}
         <div className="about-section__skip">
-          <a href="#features" className="sr-only sr-only-focusable">
-            Skip to features section
+          <a href="#services" className="sr-only sr-only-focusable">
+            {accessibilityTexts.skipLinks.skipToServices}
           </a>
         </div>
 

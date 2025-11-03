@@ -10,43 +10,18 @@ interface CertificationsSectionProps {
 
 export default function CertificationsSection(props: CertificationsSectionProps = {}) {
   const texts = getTexts().certifications;
+  const accessibilityTexts = getTexts().accessibility;
 
   // Use centralized texts as defaults, allow props to override  
   const {
     title = texts.title,
     subtitle = texts.subtitle,
-    certifications = [
-      {
-        name: "Practical Prompt Engineering Masterclass: Hands-On Learning",
-        issuer: "Udemy Lecture - Asif Farooqi, Abdullah Dar",
-        year: "2025",
-        icon: ""
-      },
-      {
-        name: "Understanding Typescript",
-        issuer: "Udemy Lecture - Maximilian Schwarzmüller",
-        year: "2025",
-        icon: ""
-      },
-      {
-        name: "Angular Step by Step",
-        issuer: "Udemy Lecture - Shivprasad Koirala",
-        year: "2020",
-        icon: ""
-      },
-      {
-        name: "Angular and Typescript",
-        issuer: "LinkedIn TestDome",
-        year: "2020",
-        icon: ""
-      },
-      {
-        name: "Bachelor of Science in Computer Science",
-        issuer: "TU Darmstadt",
-        year: "2015",
-        icon: ""
-      }
-    ]
+    certifications = texts.certificationItems.map((cert, index) => ({
+      name: cert.name,
+      issuer: cert.issuer,
+      year: ["2025", "2025", "2020", "2020", "2015"][index] || "2025",
+      icon: ""
+    }))
   } = props;
 
   // Sort certifications by year in descending order (newest first)
@@ -70,7 +45,7 @@ export default function CertificationsSection(props: CertificationsSectionProps 
         {/* Skip link for keyboard navigation */}
         <div className="certifications-section__skip">
           <a href="#contact" className="sr-only sr-only-focusable">
-            Skip to contact section
+            {accessibilityTexts.skipLinks.skipToContact}
           </a>
         </div>
 

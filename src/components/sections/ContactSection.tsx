@@ -40,14 +40,14 @@ export default function ContactSection(props: ContactSectionProps = {}) {
   // Enhanced email handler with better accessibility
   const handleEmailClick = () => {
     const email = getEmailAddress();
-    const subject = encodeURIComponent("Portfolio Inquiry - Let's discuss your project");
-    const body = encodeURIComponent("Hello Sascha,\n\nI visited your portfolio and would like to discuss a potential project or collaboration.\n\nBest regards,");
+    const subject = encodeURIComponent(texts.emailSubject);
+    const body = encodeURIComponent(texts.emailBody);
 
     // Announce action to screen readers
     const announcement = document.createElement('div');
     announcement.setAttribute('aria-live', 'polite');
     announcement.setAttribute('class', 'sr-only');
-    announcement.textContent = 'Opening email client with pre-filled message';
+    announcement.textContent = texts.emailAnnouncement;
     document.body.appendChild(announcement);
 
     globalThis.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
@@ -67,7 +67,7 @@ export default function ContactSection(props: ContactSectionProps = {}) {
     const announcement = document.createElement('div');
     announcement.setAttribute('aria-live', 'polite');
     announcement.setAttribute('class', 'sr-only');
-    announcement.textContent = `Opening ${platform} profile in new tab`;
+    announcement.textContent = texts.socialAnnouncement.replace('{platform}', platform);
     document.body.appendChild(announcement);
 
     globalThis.open(url, '_blank', 'noopener,noreferrer');

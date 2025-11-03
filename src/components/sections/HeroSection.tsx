@@ -16,6 +16,7 @@ interface HeroSectionProps {
 
 export default function HeroSection(props: HeroSectionProps = {}) {
   const texts = getTexts().hero;
+  const accessibilityTexts = getTexts().accessibility;
 
   // Use centralized texts as defaults, allow props to override
   const {
@@ -98,7 +99,7 @@ export default function HeroSection(props: HeroSectionProps = {}) {
         {/* Skip link for keyboard navigation */}
         <div className="hero-section__skip">
           <a href="#about" className="sr-only sr-only-focusable">
-            Skip to about section
+            {accessibilityTexts.skipLinks.skipToAbout}
           </a>
         </div>
 
@@ -140,11 +141,11 @@ export default function HeroSection(props: HeroSectionProps = {}) {
 
         {/* Hidden descriptions for screen readers */}
         <div id="resume-description" className="sr-only">
-          This will download my current resume in PDF format
+          {accessibilityTexts.screenReader.downloadResumeDescription}
         </div>
 
         <aside className="hero-section__stats" aria-labelledby="stats-heading">
-          <h2 id="stats-heading" className="sr-only">Professional Statistics</h2>
+          <h2 id="stats-heading" className="sr-only">{accessibilityTexts.screenReader.professionalStatistics}</h2>
           {statItems.map((item, index) => (
             <div
               key={item.label}

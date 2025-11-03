@@ -10,49 +10,18 @@ interface ServicesSectionProps {
 
 export default function ServicesSection(props: ServicesSectionProps = {}) {
   const texts = getTexts().services;
+  const accessibilityTexts = getTexts().accessibility;
 
   // Use centralized texts as defaults, allow props to override  
   const {
     title = texts.title,
     subtitle = texts.subtitle,
-    services = [
-      {
-        icon: Eye,
-        title: "Web Accessibility",
-        description: "Building inclusive and accessible web applications by implementing Web Content Accessibility Guidelines, semantic HTML, and support for assistive technologies.",
-        colorClass: "primary"
-      },
-      {
-        icon: Palette,
-        title: "Responsive Web Design",
-        description: "Creating mobile-first, responsive interfaces that provide optimal viewing experiences across all devices and screen sizes.",
-        colorClass: "secondary"
-      },
-      {
-        icon: ShieldCheck,
-        title: "Cross-Browser Testing",
-        description: "Ensuring consistent functionality and appearance across all major browsers including Chrome, Firefox, Safari, and Edge.",
-        colorClass: "tertiary"
-      },
-      {
-        icon: Laptop,
-        title: "Frontend Architecture",
-        description: "Designing and implementing scalable frontend architectures with component-based development and modern tooling.",
-        colorClass: "quaternary"
-      },
-      {
-        icon: Lightbulb,
-        title: "Performance Optimization",
-        description: "Optimizing web applications for speed and efficiency through code splitting, lazy loading, and performance best practices.",
-        colorClass: "quinary"
-      },
-      {
-        icon: Rocket,
-        title: "Testing & Quality Assurance",
-        description: "Implementing comprehensive testing strategies using Cypress for end-to-end testing and ensuring code quality.",
-        colorClass: "senary"
-      }
-    ]
+    services = texts.serviceItems.map((service, index) => ({
+      icon: [Eye, Palette, ShieldCheck, Laptop, Lightbulb, Rocket][index] || Eye,
+      title: service.title,
+      description: service.description,
+      colorClass: ["primary", "secondary", "tertiary", "quaternary", "quinary", "senary"][index] || "primary"
+    }))
   } = props;
 
   return (
@@ -70,8 +39,8 @@ export default function ServicesSection(props: ServicesSectionProps = {}) {
 
         {/* Skip link for keyboard navigation */}
         <div className="services-section__skip">
-          <a href="#certifications" className="sr-only sr-only-focusable">
-            Skip to certifications section
+          <a href="#skills" className="sr-only sr-only-focusable">
+            {accessibilityTexts.skipLinks.skipToSkills}
           </a>
         </div>
 

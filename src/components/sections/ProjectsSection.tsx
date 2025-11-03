@@ -16,6 +16,7 @@ interface ProjectsSectionProps {
 
 export default function ProjectsSection(props: ProjectsSectionProps = {}) {
   const texts = getTexts().projects;
+  const accessibilityTexts = getTexts().accessibility;
   const [activeCardIndex, setActiveCardIndex] = useState<number | null>(null);
   const [focusedActionIndex, setFocusedActionIndex] = useState<number>(0);
   const cardRefs = useRef<(HTMLElement | null)[]>([]);
@@ -25,36 +26,24 @@ export default function ProjectsSection(props: ProjectsSectionProps = {}) {
   const {
     title = texts.title,
     subtitle = texts.subtitle,
-    projects = [
-      {
-        id: 1,
-        title: "Portfolio Website",
-        description: "A personal portfolio website to showcase my skills, projects, and experience.",
-        image: portfolioImage,
-        technologies: ["React", "TypeScript", "SCSS", "Vercel", "Github Copilot"],
-        year: "2025",
-        github: personalConfig.gitProjects.portfolio,
-        live: personalConfig.projectsUrls.portfolio
-      },
-      {
-        id: 2,
-        title: "ErgoVR",
-        description: "A virtual reality application for analysis of motion sickness in VR environments from 2015.",
-        image: ergoVRImage,
-        technologies: ["Unity3D", "C#", "Oculus SDK"],
-        year: "2015",
-        github: personalConfig.gitProjects.ergoVR
-      },
-      {
-        id: 3,
-        title: "Icarace",
-        description: "Participated in the development of a web-platform for a fitness racing game for Icaros GmbH until 2018.",
-        image: icaraceImage,
-        technologies: ["Angular 4", "Typescript", "HTML", "CSS"],
-        year: "2018",
-        github: personalConfig.gitProjects.ergoVR
-      }
-    ]
+    projects = texts.projectItems.map((project, index) => ({
+      id: index + 1,
+      title: project.title,
+      description: project.description,
+      image: [portfolioImage, ergoVRImage, icaraceImage][index] || portfolioImage,
+      technologies: [
+        ["React", "TypeScript", "SCSS", "Github Copilot"],
+        ["Unity3D", "C#", "Oculus SDK"],
+        ["Angular 4", "Typescript", "HTML", "CSS"]
+      ][index] || [],
+      year: ["2025", "2015", "2018"][index] || "2025",
+      github: [
+        personalConfig.gitProjects.portfolio,
+        personalConfig.gitProjects.ergoVR,
+        personalConfig.gitProjects.ergoVR
+      ][index],
+      live: index === 0 ? personalConfig.projectsUrls.portfolio : undefined
+    }))
   } = props;
 
   // Get available actions for a project
@@ -73,7 +62,7 @@ export default function ProjectsSection(props: ProjectsSectionProps = {}) {
     // Announce to screen readers
     const project = projects[index];
     const actions = getProjectActions(project);
-    const announcement = `${project.title} card selected. ${actions.length} actions available. Use Tab to navigate actions, Escape to close.`;
+    const announcement = `${project.title} card selected. ${actions.length} actions available. ${accessibilityTexts.navigation.useTabToNavigate}, Escape to close.`;
     announceToScreenReader(announcement);
   };
 
@@ -196,7 +185,7 @@ export default function ProjectsSection(props: ProjectsSectionProps = {}) {
 
         {/* Keyboard navigation instructions */}
         <div className="projects-section__instructions sr-only" aria-live="polite">
-          <p>Use Tab to navigate between project cards. Press Enter or Space to select a card and view available actions. Use Tab to navigate between actions within a selected card. Press Escape to close the selected card. Use Arrow keys to move between cards when one is selected.</p>
+          <p>{accessibilityTexts.navigation.useTabToNavigateCards}</p>
         </div>
 
         {/* Global keyboard shortcuts info - MOVED BEFORE CARDS */}
@@ -217,7 +206,7 @@ export default function ProjectsSection(props: ProjectsSectionProps = {}) {
         {/* Skip link for keyboard navigation help */}
         <div className="projects-section__skip">
           <a href="#contact" className="sr-only sr-only-focusable">
-            Skip to contact section
+            {accessibilityTexts.skipLinks.skipToContact}
           </a>
         </div>
 
@@ -233,7 +222,7 @@ export default function ProjectsSection(props: ProjectsSectionProps = {}) {
                 className={`projects-section__card ${isActive ? 'projects-section__card--active' : ''}`}
                 ref={(el) => { cardRefs.current[cardIndex] = el; }}
                 aria-describedby={`project-${project.id}-description project-${project.id}-metadata`}
-                aria-label={`Project card: ${project.title}. ${cardIndex + 1} of ${projects.length}`}
+                aria-label={`${accessibilityTexts.screenReader.projectCard}: ${project.title}. ${cardIndex + 1} of ${projects.length}`}
                 onKeyDown={(e) => handleCardKeyDown(e, cardIndex)}
                 onClick={() => handleCardSelect(cardIndex)}
               >
@@ -260,7 +249,7 @@ export default function ProjectsSection(props: ProjectsSectionProps = {}) {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="projects-section__action-button projects-section__action-button--secondary"
-                        aria-label={`View ${project.title} source code on GitHub (opens in new tab)`}
+                        aria-label={`${accessibilityTexts.screenReader.viewSourceCode} ${project.title} source code on GitHub (opens in new tab)`}
                         tabIndex={isActive ? 0 : -1}
                         onKeyDown={(e) => handleActionKeyDown(e, cardIndex, 0)}
                       >
@@ -275,7 +264,7 @@ export default function ProjectsSection(props: ProjectsSectionProps = {}) {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="projects-section__action-button projects-section__action-button--primary"
-                        aria-label={`View ${project.title} live demo (opens in new tab)`}
+                        aria-label={`${accessibilityTexts.screenReader.viewLiveDemo} ${project.title} live demo (opens in new tab)`}
                         tabIndex={isActive ? 0 : -1}
                         onKeyDown={(e) => handleActionKeyDown(e, cardIndex, project.github ? 1 : 0)}
                       >
@@ -321,7 +310,7 @@ export default function ProjectsSection(props: ProjectsSectionProps = {}) {
                   {isActive && (
                     <div className="projects-section__status sr-only" aria-live="polite" aria-atomic="true">
                       {project.title} card selected. {actions.length} actions available.
-                      Use Tab to navigate actions, Escape to close, Arrow keys to move between cards.
+                      {accessibilityTexts.navigation.useTabToNavigate}, Escape to close, Arrow keys to move between cards.
                     </div>
                   )}
                 </div>

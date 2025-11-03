@@ -41,18 +41,33 @@ export interface TextConfig {
     subtitle: string;
     name: string;
     bio: string[];
+    featureCards: Array<{
+      title: string;
+      description: string;
+    }>;
   };
 
   // Services Section
   services: {
     title: string;
     subtitle: string;
+    serviceItems: Array<{
+      title: string;
+      description: string;
+    }>;
   };
 
   // Skills Section
   skills: {
     title: string;
     subtitle: string;
+    skillCategories: Array<{
+      title: string;
+      skills: Array<{
+        skill: string;
+        value: number;
+      }>;
+    }>;
   };
 
   // Projects Section
@@ -61,12 +76,20 @@ export interface TextConfig {
     subtitle: string;
     codeButtonText: string;
     liveButtonText: string;
+    projectItems: Array<{
+      title: string;
+      description: string;
+    }>;
   };
 
   // Certifications Section
   certifications: {
     title: string;
     subtitle: string;
+    certificationItems: Array<{
+      name: string;
+      issuer: string;
+    }>;
   };
 
   // Contact Section
@@ -84,6 +107,10 @@ export interface TextConfig {
     preferredContactValue: string;
     locationLabel: string;
     locationValue: string;
+    emailSubject: string;
+    emailBody: string;
+    emailAnnouncement: string;
+    socialAnnouncement: string;
   };
 
   // Imprint Page
@@ -184,6 +211,52 @@ export interface TextConfig {
     legalBasisTitle: string;
     legalBasisText: string;
   };
+
+  // Accessibility and Navigation
+  accessibility: {
+    skipLinks: {
+      skipToHero: string;
+      skipToAbout: string;
+      skipToServices: string;
+      skipToSkills: string;
+      skipToProjects: string;
+      skipToCertifications: string;
+      skipToContact: string;
+    };
+    navigation: {
+      keyboardHelp: string;
+      keyboardHelpExpanded: string[];
+      useTabToNavigate: string;
+      useTabToNavigateCards: string;
+      useTabToNavigateOptions: string;
+      closeKeyboardHelp: string;
+    };
+    screenReader: {
+      professionalStatistics: string;
+      projectCard: string;
+      viewSourceCode: string;
+      viewLiveDemo: string;
+      downloadResume: string;
+      downloadResumeDescription: string;
+      keyboardNavigationHelp: string;
+      themeSwitchButton: string;
+      switchToTheme: string;
+      certificationCard: string;
+      serviceCard: string;
+      skillBadge: string;
+    };
+    ariaLabels: {
+      mainNavigation: string;
+      socialLinks: string;
+      themeToggle: string;
+      mobileMenuToggle: string;
+      contactForm: string;
+      projectsGrid: string;
+      skillsGrid: string;
+      certificationsGrid: string;
+      servicesGrid: string;
+    };
+  };
 }
 
 // Default text configuration (English/German mix as currently used)
@@ -242,16 +315,126 @@ export const defaultTexts: TextConfig = {
       'If you are wondering whether your website already meets accessibility standards, or if you feel it is time to make your online presence more inclusive and legally compliant, I would be glad to support you. Often just a few clear steps can make a big difference, helping your website reach more people and stand out from the competition.',
       "Let's connect and see how we can make your website barrier free, modern and ready for the future.",
     ],
+    featureCards: [
+      {
+        title: 'Web Development',
+        description:
+          'Building modern web applications with Angular and React frameworks, leveraging TypeScript and JavaScript for robust, scalable solutions.',
+      },
+      {
+        title: 'Responsive Design',
+        description:
+          'Creating pixel-perfect, responsive interfaces that work seamlessly across all devices and screen sizes.',
+      },
+      {
+        title: 'Cross-Browser Compatibility',
+        description:
+          'Ensuring consistent user experiences across all major browsers with thorough testing and optimization.',
+      },
+      {
+        title: 'Web Accessibility',
+        description:
+          'Implementing accessibility best practices to deliver websites that support screen readers, keyboard navigation, and assistive technologies.',
+      },
+    ],
   },
 
   services: {
     title: 'Services',
     subtitle: 'Comprehensive web development solutions tailored to your needs',
+    serviceItems: [
+      {
+        title: 'Web Accessibility',
+        description:
+          'Building inclusive and accessible web applications by implementing Web Content Accessibility Guidelines, semantic HTML, and support for assistive technologies.',
+      },
+      {
+        title: 'Responsive Web Design',
+        description:
+          'Creating mobile-first, responsive interfaces that provide optimal viewing experiences across all devices and screen sizes.',
+      },
+      {
+        title: 'Cross-Browser Testing',
+        description:
+          'Ensuring consistent functionality and appearance across all major browsers including Chrome, Firefox, Safari, and Edge.',
+      },
+      {
+        title: 'Frontend Architecture',
+        description:
+          'Designing and implementing scalable frontend architectures with component-based development and modern tooling.',
+      },
+      {
+        title: 'Performance Optimization',
+        description:
+          'Optimizing web applications for speed and efficiency through code splitting, lazy loading, and performance best practices.',
+      },
+      {
+        title: 'Testing & Quality Assurance',
+        description:
+          'Implementing comprehensive testing strategies using Cypress for end-to-end testing and ensuring code quality.',
+      },
+    ],
   },
 
   skills: {
     title: 'Skills & Technologies',
     subtitle: 'Technical expertise across the full development stack',
+    skillCategories: [
+      {
+        title: 'Web Frameworks',
+        skills: [
+          { skill: 'Angular', value: 90 },
+          { skill: 'React', value: 70 },
+          { skill: 'Next.js', value: 70 },
+          { skill: 'TypeScript', value: 95 },
+        ],
+      },
+      {
+        title: 'Styling & Design',
+        skills: [
+          { skill: 'Accessibility (a11y) Standards', value: 90 },
+          { skill: 'SCSS/Sass', value: 95 },
+          { skill: 'CSS3', value: 95 },
+          { skill: 'Bootstrap', value: 80 },
+        ],
+      },
+      {
+        title: 'Backend Development',
+        skills: [
+          { skill: 'Node.js', value: 75 },
+          { skill: 'Express.js', value: 70 },
+          { skill: 'REST APIs', value: 85 },
+          { skill: 'Database Design', value: 70 },
+        ],
+      },
+      {
+        title: 'Development Tools',
+        skills: [
+          { skill: 'Git & GitHub', value: 90 },
+          { skill: 'VS Code', value: 95 },
+          { skill: 'npm/yarn', value: 85 },
+          { skill: 'Webpack/Vite', value: 75 },
+        ],
+      },
+      {
+        title: 'Testing & Quality',
+        skills: [
+          { skill: 'Unit Testing', value: 80 },
+          { skill: 'E2E Testing', value: 70 },
+          { skill: 'Code Review', value: 85 },
+          { skill: 'Performance Optimization', value: 75 },
+        ],
+      },
+      {
+        title: 'AI-Tools',
+        skills: [
+          { skill: 'GitHub Copilot', value: 95 },
+          { skill: 'ChatGPT', value: 90 },
+          { skill: 'Claude', value: 85 },
+          { skill: 'AI-Assisted Development', value: 90 },
+        ],
+      },
+    ],
   },
 
   projects: {
@@ -259,11 +442,50 @@ export const defaultTexts: TextConfig = {
     subtitle: 'A showcase of my work and personal projects',
     codeButtonText: 'Code',
     liveButtonText: 'Live',
+    projectItems: [
+      {
+        title: 'Portfolio Website',
+        description:
+          'A personal portfolio website to showcase my skills, projects, and experience.',
+      },
+      {
+        title: 'ErgoVR',
+        description:
+          'A virtual reality application for analysis of motion sickness in VR environments from 2015.',
+      },
+      {
+        title: 'Icarace',
+        description:
+          'Participated in the development of a web-platform for a fitness racing game for Icaros GmbH until 2018.',
+      },
+    ],
   },
 
   certifications: {
     title: 'Certifications & Achievements',
     subtitle: 'My professional qualifications and continuous learning',
+    certificationItems: [
+      {
+        name: 'Practical Prompt Engineering Masterclass: Hands-On Learning',
+        issuer: 'Udemy Lecture - Asif Farooqi, Abdullah Dar',
+      },
+      {
+        name: 'Understanding Typescript',
+        issuer: 'Udemy Lecture - Maximilian Schwarzmüller',
+      },
+      {
+        name: 'Angular Step by Step',
+        issuer: 'Udemy Lecture - Shivprasad Koirala',
+      },
+      {
+        name: 'Angular and Typescript',
+        issuer: 'LinkedIn TestDome',
+      },
+      {
+        name: 'Bachelor of Science in Computer Science',
+        issuer: 'TU Darmstadt',
+      },
+    ],
   },
 
   contact: {
@@ -281,6 +503,11 @@ export const defaultTexts: TextConfig = {
     preferredContactValue: 'Email',
     locationLabel: 'Location:',
     locationValue: 'Germany',
+    emailSubject: "Portfolio Inquiry - Let's discuss your project",
+    emailBody:
+      'Hello Sascha,\n\nI visited your portfolio and would like to discuss a potential project or collaboration.\n\nBest regards,',
+    emailAnnouncement: 'Opening email client with pre-filled message',
+    socialAnnouncement: 'Opening {platform} profile in new tab',
   },
 
   imprint: {
@@ -474,6 +701,59 @@ export const defaultTexts: TextConfig = {
     legalBasisTitle: 'Legal Basis',
     legalBasisText:
       'Processing is based on your explicit consent (Art. 6(1)(a) GDPR).',
+  },
+
+  accessibility: {
+    skipLinks: {
+      skipToHero: 'Skip to main content',
+      skipToAbout: 'Skip to about section',
+      skipToServices: 'Skip to services section',
+      skipToSkills: 'Skip to skills section',
+      skipToProjects: 'Skip to projects section',
+      skipToCertifications: 'Skip to certifications section',
+      skipToContact: 'Skip to contact section',
+    },
+    navigation: {
+      keyboardHelp: 'Keyboard Navigation Help',
+      keyboardHelpExpanded: [
+        'Use Tab to navigate between elements',
+        'Use Enter or Space to activate buttons and links',
+        'Use Arrow keys to navigate between project cards',
+        'Use Escape to close this help dialog',
+        'Use Ctrl+F to search the page',
+      ],
+      useTabToNavigate: 'Use Tab to navigate between elements',
+      useTabToNavigateCards:
+        'Use Tab to navigate between project cards, or Arrow keys to move within the grid',
+      useTabToNavigateOptions: 'Use Tab to navigate between options',
+      closeKeyboardHelp: 'Close keyboard help',
+    },
+    screenReader: {
+      professionalStatistics: 'Professional Statistics',
+      projectCard: 'Project card',
+      viewSourceCode: 'View source code',
+      viewLiveDemo: 'View live demo',
+      downloadResume: 'Download Resume',
+      downloadResumeDescription:
+        'This will download my current resume as a PDF file',
+      keyboardNavigationHelp: 'Keyboard Navigation Help',
+      themeSwitchButton: 'Theme switch button',
+      switchToTheme: 'Switch to theme',
+      certificationCard: 'Certification card',
+      serviceCard: 'Service card',
+      skillBadge: 'Skill badge',
+    },
+    ariaLabels: {
+      mainNavigation: 'Main navigation',
+      socialLinks: 'Social media links',
+      themeToggle: 'Toggle theme',
+      mobileMenuToggle: 'Toggle mobile menu',
+      contactForm: 'Contact form',
+      projectsGrid: 'Projects grid',
+      skillsGrid: 'Skills grid',
+      certificationsGrid: 'Certifications grid',
+      servicesGrid: 'Services grid',
+    },
   },
 };
 
