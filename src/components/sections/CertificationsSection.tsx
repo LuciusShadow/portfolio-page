@@ -1,5 +1,6 @@
 import { Award } from 'lucide-react';
 import { useLanguage } from '../../contexts/LanguageContext';
+import { certificationsData } from '../../config/certifications-config';
 import type { Certification } from '../../data/Certification';
 
 interface CertificationsSectionProps {
@@ -17,12 +18,7 @@ export default function CertificationsSection(props: CertificationsSectionProps 
   const {
     title = texts.title,
     subtitle = texts.subtitle,
-    certifications = texts.certificationItems.map((cert, index) => ({
-      name: cert.name,
-      issuer: cert.issuer,
-      year: ["2025", "2025", "2020", "2020", "2015"][index] || "2025",
-      icon: ""
-    }))
+    certifications = certificationsData
   } = props;
 
   // Sort certifications by year in descending order (newest first)
