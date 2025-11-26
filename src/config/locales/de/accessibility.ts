@@ -1,0 +1,52 @@
+export const accessibility = {
+  skipLinks: {
+    skipToHero: 'Zum Hauptinhalt springen',
+    skipToAbout: 'Zum Über-mich-Bereich springen',
+    skipToServices: 'Zum Leistungs-Bereich springen',
+    skipToSkills: 'Zum Fähigkeiten-Bereich springen',
+    skipToProjects: 'Zum Projekt-Bereich springen',
+    skipToCertifications: 'Zum Zertifikate-Bereich springen',
+    skipToContact: 'Zum Kontakt-Bereich springen',
+  },
+  navigation: {
+    keyboardHelp: 'Tastaturnavigations-Hilfe',
+    keyboardHelpExpanded: [
+      'Verwenden Sie Tab, um zwischen Elementen zu navigieren',
+      'Verwenden Sie Enter oder Leertaste, um Buttons und Links zu aktivieren',
+      'Verwenden Sie Pfeiltasten, um zwischen Projektkarten zu navigieren',
+      'Verwenden Sie Escape, um diesen Hilfedialog zu schließen',
+      'Verwenden Sie Strg+F, um die Seite zu durchsuchen',
+    ],
+    useTabToNavigate: 'Verwenden Sie Tab, um zwischen Elementen zu navigieren',
+    useTabToNavigateCards:
+      'Verwenden Sie Tab, um zwischen Projektkarten zu navigieren, oder Pfeiltasten, um sich im Raster zu bewegen',
+    useTabToNavigateOptions: 'Verwenden Sie Tab, um zwischen Optionen zu navigieren',
+    closeKeyboardHelp: 'Tastaturhilfe schließen',
+  },
+  screenReader: {
+    professionalStatistics: 'Berufliche Statistiken',
+    projectCard: 'Projektkarte',
+    viewSourceCode: 'Quellcode anzeigen',
+    viewLiveDemo: 'Live-Demo anzeigen',
+    downloadResume: 'Lebenslauf herunterladen',
+    downloadResumeDescription:
+      'Dies lädt meinen aktuellen Lebenslauf als PDF-Datei herunter',
+    keyboardNavigationHelp: 'Tastaturnavigations-Hilfe',
+    themeSwitchButton: 'Theme-Wechsel-Button',
+    switchToTheme: 'Zu Theme wechseln',
+    certificationCard: 'Zertifikats-Karte',
+    serviceCard: 'Leistungs-Karte',
+    skillBadge: 'Fähigkeiten-Badge',
+  },
+  ariaLabels: {
+    mainNavigation: 'Hauptnavigation',
+    socialLinks: 'Social-Media-Links',
+    themeToggle: 'Theme wechseln',
+    mobileMenuToggle: 'Mobilmenü umschalten',
+    contactForm: 'Kontaktformular',
+    projectsGrid: 'Projektraster',
+    skillsGrid: 'Fähigkeiten-Raster',
+    certificationsGrid: 'Zertifikate-Raster',
+    servicesGrid: 'Leistungs-Raster',
+  },
+};

@@ -23,39 +23,41 @@ export default function PrivacyPolicy() {
   return (
     <div className="privacy-policy" style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem' }}>
       <h1>{texts.title}</h1>
-      <p><strong>{texts.lastUpdated}</strong> {new Date().toLocaleDateString()}</p>
+      <p><strong>{texts.lastUpdated}</strong></p>
+
+      <h2>{texts.introTitle}</h2>
+      <p>{texts.introText}</p>
 
       <h2>{texts.dataCollectionTitle}</h2>
       <p>{texts.dataCollectionText}</p>
       <ul>
-        {texts.dataCollectionList.map((item) => (
-          <li key={item}>{item}</li>
+        {texts.dataCollectionList.map((item, index) => (
+          <li key={index}>{item}</li>
         ))}
       </ul>
 
-      <h2>{texts.purposeTitle}</h2>
-      <p>{texts.purposeText}</p>
-
-      <h2>{texts.providerTitle}</h2>
-      <p>{texts.providerText}</p>
-
-      <h2>{texts.retentionTitle}</h2>
-      <p>{texts.retentionText}</p>
+      <h2>{texts.webhostingTitle}</h2>
+      <p>{texts.webhostingText}</p>
+      <p>
+        <strong>{texts.webhostingProvider}</strong><br />
+        {texts.webhostingProviderName}<br />
+        {texts.webhostingProviderAddress}<br />
+        <a href={texts.webhostingProviderWebsite} target="_blank" rel="noopener noreferrer">
+          {texts.webhostingProviderWebsite}
+        </a>
+      </p>
 
       <h2>{texts.rightsTitle}</h2>
       <p>{texts.rightsText}</p>
       <ul>
-        {texts.rightsList.map((right) => (
-          <li key={right}>{right}</li>
+        {texts.rightsList.map((right, index) => (
+          <li key={index}>{right}</li>
         ))}
       </ul>
 
       <h2>{texts.contactTitle}</h2>
       <p>{texts.contactText}</p>
       <p><strong>Email:</strong> {texts.contactEmail}</p>
-
-      <h2>{texts.legalBasisTitle}</h2>
-      <p>{texts.legalBasisText}</p>
     </div>
   );
 }

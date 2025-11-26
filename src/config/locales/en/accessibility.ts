@@ -1,0 +1,52 @@
+export const accessibility = {
+  skipLinks: {
+    skipToHero: 'Skip to main content',
+    skipToAbout: 'Skip to about section',
+    skipToServices: 'Skip to services section',
+    skipToSkills: 'Skip to skills section',
+    skipToProjects: 'Skip to projects section',
+    skipToCertifications: 'Skip to certifications section',
+    skipToContact: 'Skip to contact section',
+  },
+  navigation: {
+    keyboardHelp: 'Keyboard Navigation Help',
+    keyboardHelpExpanded: [
+      'Use Tab to navigate between elements',
+      'Use Enter or Space to activate buttons and links',
+      'Use Arrow keys to navigate between project cards',
+      'Use Escape to close this help dialog',
+      'Use Ctrl+F to search the page',
+    ],
+    useTabToNavigate: 'Use Tab to navigate between elements',
+    useTabToNavigateCards:
+      'Use Tab to navigate between project cards, or Arrow keys to move within the grid',
+    useTabToNavigateOptions: 'Use Tab to navigate between options',
+    closeKeyboardHelp: 'Close keyboard help',
+  },
+  screenReader: {
+    professionalStatistics: 'Professional Statistics',
+    projectCard: 'Project card',
+    viewSourceCode: 'View source code',
+    viewLiveDemo: 'View live demo',
+    downloadResume: 'Download Resume',
+    downloadResumeDescription:
+      'This will download my current resume as a PDF file',
+    keyboardNavigationHelp: 'Keyboard Navigation Help',
+    themeSwitchButton: 'Theme switch button',
+    switchToTheme: 'Switch to theme',
+    certificationCard: 'Certification card',
+    serviceCard: 'Service card',
+    skillBadge: 'Skill badge',
+  },
+  ariaLabels: {
+    mainNavigation: 'Main navigation',
+    socialLinks: 'Social media links',
+    themeToggle: 'Toggle theme',
+    mobileMenuToggle: 'Toggle mobile menu',
+    contactForm: 'Contact form',
+    projectsGrid: 'Projects grid',
+    skillsGrid: 'Skills grid',
+    certificationsGrid: 'Certifications grid',
+    servicesGrid: 'Services grid',
+  },
+};

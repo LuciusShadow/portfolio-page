@@ -22,16 +22,6 @@ export const personalConfig = {
     },
   },
 
-  projectsUrls: {
-    portfolio: 'https://www.sascha-bach.de',
-  },
-
-  // Project Repository
-  gitProjects: {
-    portfolio: 'https://github.com/LuciusShadow/portfolio-page',
-    ergoVR: 'https://github.com/LuciusShadow/ErgoVR',
-  },
-
   // Professional Details
   location: 'Germany',
   timezone: 'CET/CEST',

@@ -1,11 +1,8 @@
 import { GitBranch, ExternalLink } from 'lucide-react';
 import { useState, useRef, useEffect, type KeyboardEvent } from 'react';
-import { personalConfig } from '../../config/personal';
 import { getTexts } from '../../config/texts';
+import { projectsData } from '../../config/projects-config';
 import type { Project } from '../../data/Project';
-import ergoVRImage from '../../assets/ErgoVR.PNG';
-import portfolioImage from '../../assets/portfolio.PNG'
-import icaraceImage from '../../assets/icarace.PNG'
 
 
 interface ProjectsSectionProps {
@@ -26,24 +23,11 @@ export default function ProjectsSection(props: ProjectsSectionProps = {}) {
   const {
     title = texts.title,
     subtitle = texts.subtitle,
-    projects = texts.projectItems.map((project, index) => ({
-      id: index + 1,
-      title: project.title,
-      description: project.description,
-      image: [portfolioImage, ergoVRImage, icaraceImage][index] || portfolioImage,
-      technologies: [
-        ["React", "TypeScript", "SCSS", "Github Copilot"],
-        ["Unity3D", "C#", "Oculus SDK"],
-        ["Angular 4", "Typescript", "HTML", "CSS"]
-      ][index] || [],
-      year: ["2025", "2015", "2018"][index] || "2025",
-      github: [
-        personalConfig.gitProjects.portfolio,
-        personalConfig.gitProjects.ergoVR,
-        personalConfig.gitProjects.ergoVR
-      ][index],
-      live: index === 0 ? personalConfig.projectsUrls.portfolio : undefined
-    }))
+    projects = [...projectsData].sort((a, b) => {
+      const yearA = parseInt(a.year || '0');
+      const yearB = parseInt(b.year || '0');
+      return yearB - yearA; // Descending order (newest first)
+    })
   } = props;
 
   // Get available actions for a project

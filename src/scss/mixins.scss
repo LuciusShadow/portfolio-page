@@ -65,13 +65,47 @@
 
 // Responsive breakpoint mixins
 @mixin mobile-only {
-  @media (max-width: variables.$mobile-breakpoint) { 
+  @media (max-width: $mobile-breakpoint) { 
     @content;
   }
 }
 
 @mixin desktop-only {
-  @media (min-width: variables.$desktop-breakpoint) { 
+  @media (min-width: $desktop-breakpoint) { 
     @content;
   }
+}
+
+// Common section patterns
+@mixin section-container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+
+  @include desktop-only {
+    padding: 0 1.5rem;
+  }
+}
+
+@mixin section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+@mixin section-title {
+  font-size: 1.875rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: var(--color-text);
+
+  @include desktop-only {
+    font-size: 2.25rem;
+  }
+}
+
+@mixin section-subtitle {
+  font-size: 1.25rem;
+  color: var(--color-text-muted);
+  max-width: 48rem;
+  margin: 0 auto;
 }

@@ -1,5 +1,6 @@
 @use '../globals';
 @use '../variables' as *;
+@use '../mixins' as *;
 
 .services-section {
   min-height: auto;
@@ -14,36 +15,23 @@
   }
 
   &__container {
-    max-width: 80rem;
-    margin: 0 auto;
-    padding: 0 1rem;
+    @include section-container;
     width: 100%;
-
-    @include globals.desktop-only {
-      padding: 0 1.5rem;
-    }
   }
 
   &__header {
-    text-align: center;
+    @include section-header;
     margin-bottom: $services-header-margin;
 
-    @include globals.mobile-only {
+    @include mobile-only {
       margin-bottom: 1.5rem;
     }
   }
 
   &__title {
-    font-size: 1.875rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-    color: var(--color-text);
+    @include section-title;
 
-    @include globals.desktop-only {
-      font-size: 2.25rem;
-    }
-
-    @include globals.mobile-only {
+    @include mobile-only {
       font-size: 1.5rem;
     }
   }
@@ -54,7 +42,7 @@
     max-width: 32rem;
     margin: 0 auto;
 
-    @include globals.mobile-only {
+    @include mobile-only {
       font-size: 1rem;
     }
   }

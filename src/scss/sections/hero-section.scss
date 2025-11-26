@@ -19,6 +19,7 @@
 
 .hero-section {
   @include flex-center;
+  min-height: 100vh;
   background: var(--hero-background);
 
   &__container {
