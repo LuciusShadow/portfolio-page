@@ -1,5 +1,5 @@
 import { Code, Palette, ShieldCheck, Eye } from 'lucide-react';
-import { getTexts } from '../../config/texts';
+import { useLanguage } from '../../contexts/LanguageContext';
 import type { Service } from '../../data/Service';
 import saschaImage from '../../assets/sascha.png';
 
@@ -13,8 +13,9 @@ interface AboutSectionProps {
 }
 
 export default function AboutSection(props: AboutSectionProps = {}) {
-  const texts = getTexts().about;
-  const accessibilityTexts = getTexts().accessibility;
+  const { texts: allTexts } = useLanguage();
+  const texts = allTexts.about;
+  const accessibilityTexts = allTexts.accessibility;
 
   // Use centralized texts as defaults, allow props to override
   const {

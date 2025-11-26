@@ -209,23 +209,23 @@ export interface TextConfig {
   privacyPolicy: {
     title: string;
     lastUpdated: string;
+    introTitle: string;
+    introText: string;
     dataCollectionTitle: string;
     dataCollectionText: string;
     dataCollectionList: string[];
-    purposeTitle: string;
-    purposeText: string;
-    providerTitle: string;
-    providerText: string;
-    retentionTitle: string;
-    retentionText: string;
+    webhostingTitle: string;
+    webhostingText: string;
+    webhostingProvider: string;
+    webhostingProviderName: string;
+    webhostingProviderAddress: string;
+    webhostingProviderWebsite: string;
     rightsTitle: string;
     rightsText: string;
     rightsList: string[];
     contactTitle: string;
     contactText: string;
     contactEmail: string;
-    legalBasisTitle: string;
-    legalBasisText: string;
   };
 
   // Accessibility and Navigation

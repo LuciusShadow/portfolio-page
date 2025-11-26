@@ -1,5 +1,5 @@
 import { Eye, Lightbulb, Palette, Laptop, Rocket, ShieldCheck } from 'lucide-react';
-import { getTexts } from '../../config/texts';
+import { useLanguage } from '../../contexts/LanguageContext';
 import type { Service } from '../../data/Service';
 
 interface ServicesSectionProps {
@@ -9,8 +9,9 @@ interface ServicesSectionProps {
 }
 
 export default function ServicesSection(props: ServicesSectionProps = {}) {
-  const texts = getTexts().services;
-  const accessibilityTexts = getTexts().accessibility;
+  const { texts: allTexts } = useLanguage();
+  const texts = allTexts.services;
+  const accessibilityTexts = allTexts.accessibility;
 
   // Use centralized texts as defaults, allow props to override  
   const {

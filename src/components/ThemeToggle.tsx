@@ -1,5 +1,5 @@
 import React from 'react';
-import { getTexts } from '../config/texts';
+import { useLanguage } from '../contexts/LanguageContext';
 
 type Props = Readonly<{
   theme: 'light' | 'dark';
@@ -10,7 +10,7 @@ export default function ThemeToggle({
   theme,
   setTheme
 }: Props) {
-  const texts = getTexts();
+  const { texts } = useLanguage();
 
   const toggleTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');

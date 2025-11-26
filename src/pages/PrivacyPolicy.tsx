@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
-import { getTexts } from '../config/texts';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function PrivacyPolicy() {
-  const texts = getTexts().privacyPolicy;
+  const { texts: allTexts } = useLanguage();
+  const texts = allTexts.privacyPolicy;
 
   useEffect(() => {
     // Prevent indexing of this page

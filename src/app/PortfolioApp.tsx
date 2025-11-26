@@ -1,7 +1,12 @@
+import { LanguageProvider } from '../contexts/LanguageContext';
 import AppRouter from './AppRouter';
 
 function PortfolioApp() {
-  return <AppRouter />;
+  return (
+    <LanguageProvider>
+      <AppRouter />
+    </LanguageProvider>
+  );
 }
 
 export default PortfolioApp;

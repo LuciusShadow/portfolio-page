@@ -1,5 +1,5 @@
 import { Award } from 'lucide-react';
-import { getTexts } from '../../config/texts';
+import { useLanguage } from '../../contexts/LanguageContext';
 import type { Certification } from '../../data/Certification';
 
 interface CertificationsSectionProps {
@@ -9,8 +9,9 @@ interface CertificationsSectionProps {
 }
 
 export default function CertificationsSection(props: CertificationsSectionProps = {}) {
-  const texts = getTexts().certifications;
-  const accessibilityTexts = getTexts().accessibility;
+  const { texts: allTexts } = useLanguage();
+  const texts = allTexts.certifications;
+  const accessibilityTexts = allTexts.accessibility;
 
   // Use centralized texts as defaults, allow props to override  
   const {

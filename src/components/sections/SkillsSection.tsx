@@ -1,4 +1,4 @@
-import { getTexts } from '../../config/texts';
+import { useLanguage } from '../../contexts/LanguageContext';
 import type { Skill } from '../../data/Skill';
 
 interface SkillCategory {
@@ -27,8 +27,9 @@ const getColorByPosition = (index: number): string => {
 };
 
 export default function SkillsSection(props: SkillsSectionProps = {}) {
-  const texts = getTexts().skills;
-  const accessibilityTexts = getTexts().accessibility;
+  const { texts: allTexts } = useLanguage();
+  const texts = allTexts.skills;
+  const accessibilityTexts = allTexts.accessibility;
 
   // Use centralized texts as defaults, allow props to override
   const {

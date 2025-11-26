@@ -2,7 +2,7 @@ import { Download } from 'lucide-react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import type { StatItem } from '../../data/StatItem';
 import { scrollToProjects } from '../../utils/scrollUtils';
-import { getTexts } from '../../config/texts';
+import { useLanguage } from '../../contexts/LanguageContext';
 import resumePDF from '../../assets/CV_Sascha_Bach.pdf';
 
 interface HeroSectionProps {
@@ -15,8 +15,9 @@ interface HeroSectionProps {
 }
 
 export default function HeroSection(props: HeroSectionProps = {}) {
-  const texts = getTexts().hero;
-  const accessibilityTexts = getTexts().accessibility;
+  const { texts: allTexts } = useLanguage();
+  const texts = allTexts.hero;
+  const accessibilityTexts = allTexts.accessibility;
 
   // Use centralized texts as defaults, allow props to override
   const {

@@ -1,6 +1,6 @@
 import { GitBranch, ExternalLink } from 'lucide-react';
 import { useState, useRef, useEffect, type KeyboardEvent } from 'react';
-import { getTexts } from '../../config/texts';
+import { useLanguage } from '../../contexts/LanguageContext';
 import { projectsData } from '../../config/projects-config';
 import type { Project } from '../../data/Project';
 
@@ -12,8 +12,9 @@ interface ProjectsSectionProps {
 }
 
 export default function ProjectsSection(props: ProjectsSectionProps = {}) {
-  const texts = getTexts().projects;
-  const accessibilityTexts = getTexts().accessibility;
+  const { texts: allTexts } = useLanguage();
+  const texts = allTexts.projects;
+  const accessibilityTexts = allTexts.accessibility;
   const [activeCardIndex, setActiveCardIndex] = useState<number | null>(null);
   const [focusedActionIndex, setFocusedActionIndex] = useState<number>(0);
   const cardRefs = useRef<(HTMLElement | null)[]>([]);

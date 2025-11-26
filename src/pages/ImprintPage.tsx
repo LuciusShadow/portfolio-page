@@ -3,7 +3,8 @@ import { personalConfig } from '../config/personal';
 import { getTexts } from '../config/texts';
 
 export default function ImprintPage() {
-  const texts = getTexts().imprint;
+  const { texts: allTexts } = useLanguage();
+  const texts = allTexts.imprint;
 
   useEffect(() => {
     // Prevent indexing of this page

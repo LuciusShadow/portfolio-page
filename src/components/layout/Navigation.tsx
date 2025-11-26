@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import ThemeToggle from '../ThemeToggle';
+import LanguageToggle from '../LanguageToggle';
 import MobileMenu from './MobileMenu';
 import { personalConfig } from '../../config/personal';
-import { getTexts } from '../../config/texts';
+import { useLanguage } from '../../contexts/LanguageContext';
 import { scrollToSection } from '../../utils/scrollUtils';
 
 type Props = {
@@ -18,7 +19,7 @@ export default function Navbar({
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const texts = getTexts();
+  const { texts } = useLanguage();
 
   const menuItems = texts.navigation.menuItems;
 
@@ -43,6 +44,7 @@ export default function Navbar({
             {item}
           </button>
         ))}
+        <LanguageToggle />
         <ThemeToggle theme={theme} setTheme={setTheme} />
         {/* Burger Button für Mobile */}
         <button

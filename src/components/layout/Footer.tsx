@@ -1,10 +1,10 @@
 import { Github, Linkedin, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { personalConfig, createEmailLink } from '../../config/personal';
-import { getTexts } from '../../config/texts';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 export default function Footer() {
-  const texts = getTexts();
+  const { texts } = useLanguage();
   // Email obfuscation function using config
   const handleEmailClick = (e: React.MouseEvent) => {
     e.preventDefault();

@@ -1,6 +1,6 @@
 import { Mail, ExternalLink, Send } from 'lucide-react';
 import { personalConfig, getObfuscatedEmail } from '../../config/personal';
-import { getTexts } from '../../config/texts';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 interface ContactSectionProps {
   title?: string;
@@ -19,7 +19,8 @@ interface ContactSectionProps {
 }
 
 export default function ContactSection(props: ContactSectionProps = {}) {
-  const texts = getTexts().contact;
+  const { texts: allTexts } = useLanguage();
+  const texts = allTexts.contact;
 
   const {
     title = texts.title,

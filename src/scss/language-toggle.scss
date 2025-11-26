@@ -1,0 +1,48 @@
+@use './variables' as *;
+@use './globals';
+
+.language-toggle {
+  display: flex;
+  gap: 0.25rem;
+  background: transparent;
+  border: 1px solid var(--color-text-muted);
+  border-radius: $border-radius-sm;
+  padding: 0.25rem;
+
+  &__button {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 0.25rem;
+    background: transparent;
+    color: var(--color-text);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    @extend %hover-lift;
+
+    &:hover {
+      color: var(--color-text);
+    }
+
+    &:focus {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+
+    &:active {
+      box-shadow: 0 2px 4px var(--box-shadow-active);
+      transform: translateY(0);
+    }
+
+    &--active {
+      background: var(--color-primary);
+      color: var(--color-background);
+
+      &:hover {
+        background: var(--color-primary);
+        color: var(--color-background);
+      }
+    }
+  }
+}

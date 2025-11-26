@@ -2,7 +2,6 @@ import portfolioImage from '../assets/portfolio.PNG';
 import ergoVRImage from '../assets/ErgoVR.PNG';
 import icaraceImage from '../assets/icarace.PNG';
 import dancaAlegriaImage from '../assets/Danca-Alegria.png';
-import { personalConfig } from './personal';
 import { projects } from './locales/en/projects';
 import type { Project } from '../data/Project';
 
